@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2022 at 09:37 AM
+-- Generation Time: Jan 24, 2022 at 03:23 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -73,6 +73,19 @@ CREATE TABLE `foto_kegiatan` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `indeks_penilaian`
+--
+
+CREATE TABLE `indeks_penilaian` (
+  `id_indeks` int(11) NOT NULL,
+  `angka_awal` int(11) NOT NULL,
+  `angka_akhir` int(11) NOT NULL,
+  `keterangan` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jabatan`
 --
 
@@ -99,6 +112,25 @@ CREATE TABLE `jobdesk` (
   `status_jobdesk` enum('Selesai','Belum Selesai') NOT NULL DEFAULT 'Belum Selesai',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nilai`
+--
+
+CREATE TABLE `nilai` (
+  `id_nilai` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
+  `id_sertifikat` int(11) NOT NULL,
+  `kedisiplinan` int(11) NOT NULL,
+  `tanggung_jawab` int(11) NOT NULL,
+  `kerja_sama` int(11) NOT NULL,
+  `kerajinan` int(11) NOT NULL,
+  `inisiatif` int(11) NOT NULL,
+  `jumlah` double NOT NULL,
+  `rata_rata` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -160,7 +192,6 @@ CREATE TABLE `sekolah` (
 
 CREATE TABLE `sertifikat` (
   `id_sertifikat` int(11) NOT NULL,
-  `id_siswa` int(11) NOT NULL,
   `foto_sertifikat` varchar(30) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL
@@ -215,6 +246,12 @@ ALTER TABLE `foto_kegiatan`
   ADD KEY `id_jobdesk` (`id_jobdesk`);
 
 --
+-- Indexes for table `indeks_penilaian`
+--
+ALTER TABLE `indeks_penilaian`
+  ADD PRIMARY KEY (`id_indeks`);
+
+--
 -- Indexes for table `jabatan`
 --
 ALTER TABLE `jabatan`
@@ -226,6 +263,14 @@ ALTER TABLE `jabatan`
 ALTER TABLE `jobdesk`
   ADD PRIMARY KEY (`id_jobdesk`),
   ADD KEY `id_siswa` (`id_siswa`);
+
+--
+-- Indexes for table `nilai`
+--
+ALTER TABLE `nilai`
+  ADD PRIMARY KEY (`id_nilai`),
+  ADD KEY `id_siswa` (`id_siswa`),
+  ADD KEY `id_sertifikat` (`id_sertifikat`);
 
 --
 -- Indexes for table `pengajuan_magang`
@@ -251,8 +296,7 @@ ALTER TABLE `sekolah`
 -- Indexes for table `sertifikat`
 --
 ALTER TABLE `sertifikat`
-  ADD PRIMARY KEY (`id_sertifikat`),
-  ADD KEY `id_siswa` (`id_siswa`);
+  ADD PRIMARY KEY (`id_sertifikat`);
 
 --
 -- Indexes for table `siswa`
@@ -284,6 +328,12 @@ ALTER TABLE `foto_kegiatan`
   MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `indeks_penilaian`
+--
+ALTER TABLE `indeks_penilaian`
+  MODIFY `id_indeks` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
@@ -294,6 +344,12 @@ ALTER TABLE `jabatan`
 --
 ALTER TABLE `jobdesk`
   MODIFY `id_jobdesk` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nilai`
+--
+ALTER TABLE `nilai`
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengajuan_magang`
@@ -353,6 +409,13 @@ ALTER TABLE `foto_kegiatan`
 --
 ALTER TABLE `jobdesk`
   ADD CONSTRAINT `jobdesk_ibfk_1` FOREIGN KEY (`id_siswa`) REFERENCES `siswa` (`id_siswa`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `nilai`
+--
+ALTER TABLE `nilai`
+  ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`id_siswa`) REFERENCES `siswa` (`id_siswa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`id_sertifikat`) REFERENCES `sertifikat` (`id_sertifikat`);
 
 --
 -- Constraints for table `pengajuan_magang`
