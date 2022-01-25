@@ -78,81 +78,36 @@
             <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                    <th>No</th>
+                    <th>Nama Jabatan</th>
+                    <th>Aksi</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                    <th>No</th>
+                    <th>Nama Jabatan</th>
+                    <th>Aksi</th>
                 </tr>
               </tfoot>
               <tbody>
-                <tr>
-                  <td>Kate</td>
-                  <td>5516 Adolfo Rode</td>
-                  <td>Littelhaven</td>
-                  <td>26</td>
-                  <td>2014/06/13</td>
-                  <td>$635,852</td>
-                </tr>
-                <tr>
-                  <td>Chester</td>
-                  <td>14095 Kling Gateway</td>
-                  <td>Andresmouth</td>
-                  <td>21</td>
-                  <td>2014/09/27</td>
-                  <td>$177,404</td>
-                </tr>
-                <tr>
-                  <td>Melany</td>
-                  <td>1100 Steve Pines</td>
-                  <td>Immanuelfort</td>
-                  <td>12</td>
-                  <td>2014/06/28</td>
-                  <td>$162,453</td>
-                </tr>
-                <tr>
-                  <td>Thea</td>
-                  <td>26114 Narciso Lodge</td>
-                  <td>East Opal</td>
-                  <td>64</td>
-                  <td>2014/11/12</td>
-                  <td>$581,736</td>
-                </tr>
-                <tr>
-                  <td>Kreiger</td>
-                  <td>111 Hershel Stream</td>
-                  <td>Hermannborough</td>
-                  <td>36</td>
-                  <td>2013/11/27</td>
-                  <td>$921,021</td>
-                </tr>
-                <tr>
-                  <td>Simonis</td>
-                  <td>0778 Elvis Spurs</td>
-                  <td>Harrisfurt</td>
-                  <td>62</td>
-                  <td>2013/05/28</td>
-                  <td>$336,046</td>
-                </tr>
-                <tr>
-                  <td>Afton</td>
-                  <td>57724 Ernser Crossroad</td>
-                  <td>Lake Charity</td>
-                  <td>30</td>
-                  <td>2017/04/28</td>
-                  <td>$597,775</td>
-                </tr>
+                <?php
+                    $no = 1;
+                    foreach ($jabatan as $item) {
+                    ?>
+                    <tr>
+                        <td width="1%"><?= $no++; ?></td>
+                        <td><?= $item['nama_jabatan']; ?></td>
+                        <td>
+                            <center>
+                                <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_jabatan']; ?>)" class="btn btn-sm btn-edit btn-warning"><i
+                                        class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-sm btn-delete btn-danger" onclick="Hapus(<?= $item['id_jabatan']; ?>)" data-toggle="modal"
+                                    data-target="#deleteModal" data-id="<?= $item['id_jabatan']; ?>"><i class="fa fa-trash"></i></a>
+                            </center>
+                        </td>
+                    </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -165,7 +120,7 @@
 
     <!-- Start Modal Add Class-->
     <form action="<?php echo base_url('Admin/Jabatan/add_jabatan'); ?>" method="post" id="form_add"
-        data-parsley-validate="true">
+        data-parsley-validate="true" autocomplete="off">
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
@@ -200,7 +155,7 @@
 
     <!-- Modal Edit Class-->
     <form action="<?php echo base_url('Admin/Jabatan/update_jabatan'); ?>" method="post" id="form_edit"
-        data-parsley-validate="true">
+        data-parsley-validate="true" autocomplete="off">
         <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
@@ -265,13 +220,91 @@
     <!-- Footer -->
     <?= $this->include("Admin/layout/footer") ?>
 
-    <script>
+    <?= $this->include("Admin/layout/js_tabel") ?>
+
+     <script>
         function Hapus(id){
             $('.id').val(id);
             $('#deleteModal').modal('show');
         };
-    </script>
 
-    <?= $this->include("Admin/layout/js_tabel") ?>
+        $(function() {
+            $("#input_nama").keyup(function(){
+
+                var nama = $(this).val().trim();
+          
+                if(nama != ''){
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: '<?php echo base_url('Admin/Jabatan/cek_nama'); ?>' + '/' + nama,
+                        success: function (data) {
+                            if(data['results']>0){
+                                $("#error_nama").html('Nama telah dipakai,coba yang lain');
+                                $("#input_nama").val('');
+                            }else{
+                                $("#error_nama").html('');
+                            }
+                        }, error: function () {
+            
+                            alert('error');
+                        }
+                    });
+                }
+          
+              });
+            $("#edit_nama").keyup(function(){
+
+                var nama = $(this).val().trim();
+          
+                if(nama != '' && nama != $('#edit_nama_lama').val()){
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: '<?php echo base_url('Admin/Jabatan/cek_nama'); ?>' + '/' + nama,
+                        success: function (data) {
+                            if(data['results']>0){
+                                $("#error_edit_nama").html('Nama telah dipakai,coba yang lain');
+                                $("#edit_nama").val('');
+                            }else{
+                                $("#error_edit_nama").html('');
+                            }
+                        }, error: function () {
+            
+                            alert('error');
+                        }
+                    });
+                }
+          
+            });
+
+            $('#batal').on('click', function() {
+                $('#form_add')[0].reset();
+                $('#form_edit')[0].reset();
+                $("#input_nama").val('');
+                $("#input_deskripsi").val('');
+            });
+
+            $('#batal_add').on('click', function() {
+                $('#form_add')[0].reset();
+                $("#input_nama").val('');
+                $("#input_deskripsi").val('');
+            });
+
+            $('#batal_up').on('click', function() {
+                $('#form_edit')[0].reset();
+                $("#edit_nama").val('');
+                $("#edit_deskripsi").val('');
+            });
+        })
+
+        function detail_edit(isi) {
+            $.getJSON('<?php echo base_url('Admin/Jabatan/data_edit'); ?>' + '/' + isi, {},
+                function(json) {
+                    $('#id_jabatan').val(json.id_jabatan);
+                    $('#edit_nama').val(json.nama_jabatan);
+                });
+        }
+    </script>
   </body>
 </html>

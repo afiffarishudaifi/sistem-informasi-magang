@@ -165,7 +165,7 @@
 
     <!-- Start Modal Add Class-->
     <form action="<?php echo base_url('Admin/Nilai/add_nilai'); ?>" method="post" id="form_add"
-        data-parsley-validate="true">
+        data-parsley-validate="true" autocomplete="off">
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
@@ -200,7 +200,7 @@
 
     <!-- Modal Edit Class-->
     <form action="<?php echo base_url('Admin/Nilai/update_nilai'); ?>" method="post" id="form_edit"
-        data-parsley-validate="true">
+        data-parsley-validate="true" autocomplete="off">
         <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
