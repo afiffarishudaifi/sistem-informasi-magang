@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/tables/datatable.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/dropify/dropify.css">
     
     
     <!-- Fonts -->
@@ -78,81 +79,39 @@
             <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Sekolah</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Sekolah</th>
+                  <th>Aksi</th>
                 </tr>
               </tfoot>
               <tbody>
-                <tr>
-                  <td>Kate</td>
-                  <td>5516 Adolfo Rode</td>
-                  <td>Littelhaven</td>
-                  <td>26</td>
-                  <td>2014/06/13</td>
-                  <td>$635,852</td>
-                </tr>
-                <tr>
-                  <td>Chester</td>
-                  <td>14095 Kling Gateway</td>
-                  <td>Andresmouth</td>
-                  <td>21</td>
-                  <td>2014/09/27</td>
-                  <td>$177,404</td>
-                </tr>
-                <tr>
-                  <td>Melany</td>
-                  <td>1100 Steve Pines</td>
-                  <td>Immanuelfort</td>
-                  <td>12</td>
-                  <td>2014/06/28</td>
-                  <td>$162,453</td>
-                </tr>
-                <tr>
-                  <td>Thea</td>
-                  <td>26114 Narciso Lodge</td>
-                  <td>East Opal</td>
-                  <td>64</td>
-                  <td>2014/11/12</td>
-                  <td>$581,736</td>
-                </tr>
-                <tr>
-                  <td>Kreiger</td>
-                  <td>111 Hershel Stream</td>
-                  <td>Hermannborough</td>
-                  <td>36</td>
-                  <td>2013/11/27</td>
-                  <td>$921,021</td>
-                </tr>
-                <tr>
-                  <td>Simonis</td>
-                  <td>0778 Elvis Spurs</td>
-                  <td>Harrisfurt</td>
-                  <td>62</td>
-                  <td>2013/05/28</td>
-                  <td>$336,046</td>
-                </tr>
-                <tr>
-                  <td>Afton</td>
-                  <td>57724 Ernser Crossroad</td>
-                  <td>Lake Charity</td>
-                  <td>30</td>
-                  <td>2017/04/28</td>
-                  <td>$597,775</td>
-                </tr>
+                <?php
+                    $no = 1;
+                    foreach ($siswa as $item) {
+                    ?>
+                    <tr>
+                        <td width="1%"><?= $no++; ?></td>
+                        <td><?= $item['nama_siswa']; ?></td>
+                        <td><?= $item['nama_sekolah']; ?></td>
+                        <td>
+                            <center>
+                                <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_siswa']; ?>)" class="btn btn-sm btn-edit btn-warning"><i
+                                        class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-sm btn-delete btn-danger" onclick="Hapus(<?= $item['id_siswa']; ?>)" data-toggle="modal"
+                                    data-target="#deleteModal" data-id="<?= $item['id_siswa']; ?>"><i class="fa fa-trash"></i></a>
+                            </center>
+                        </td>
+                    </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -165,7 +124,7 @@
 
     <!-- Start Modal Add Class-->
     <form action="<?php echo base_url('Admin/Siswa/add_siswa'); ?>" method="post" id="form_add"
-        data-parsley-validate="true" autocomplete="off">
+        data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
@@ -183,8 +142,79 @@
 	                        <label class="form-control-label">Nama Siswa</label>
 	                        <input type="text" class="form-control" id="input_nama" name="input_nama"
                                 data-parsley-required="true" placeholder="Masukkan Nama Siswa" autocomplete="off" />
-                            <span class="text-danger" id="error_nama"></span>
 	                    </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Sekolah</label>
+                          <select name="input_sekolah" id="input_sekolah" class="form-control">
+                            <?php foreach ($sekolah as $value) { ?>
+                              <option value="<?= $value['id_sekolah'] ?>"><?= $value['nama_sekolah'] ?></option>
+                            <?php } ?>
+                          </select>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Nomor Induk</label>
+                          <input type="text" class="form-control" id="input_nis" name="input_nis"
+                                data-parsley-required="true" placeholder="Masukkan Nomor Induk" autocomplete="off" />
+                            <span class="text-danger" id="error_nis"></span>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Username Siswa</label>
+                          <input type="text" class="form-control" id="input_username" name="input_username"
+                                data-parsley-required="true" placeholder="Masukkan Username Siswa" autocomplete="off" />
+                            <span class="text-danger" id="error_username"></span>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-group form-material">Password Siswa</label>
+                          <input type="Password" class="form-control" id="input_password" name="input_password"
+                              data-parsley-required="true" placeholder="Masukkan Password Siswa" autofocus="on">
+                      </div>
+                      <div class="form-group form-material">
+                          <label class="form-group form-material">Ulangi Password</label>
+                          <input type="Password" class="form-control" id="input_password_konfirmasi" name="input_password_konfirmasi"
+                              data-parsley-required="true" placeholder="Masukkan Ulangi Password" autofocus="on" data-parsley-equalto="#input_password">
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Email Siswa</label>
+                          <input type="email" class="form-control" id="input_email" name="input_email"
+                                data-parsley-required="true" placeholder="Masukkan Email Siswa" autocomplete="off" />
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">No Telp</label>
+                          <input type="number" class="form-control" id="input_no_telp" name="input_no_telp"
+                                data-parsley-required="true" placeholder="Masukkan No Telp" autocomplete="off" />
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Alamat Siswa</label>
+                          <textarea class="form-control" id="input_alamat" name="input_alamat" data-parsley-required="true" placeholder="Masukkan Alamat"></textarea>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Jurusan</label>
+                          <input type="text" class="form-control" id="input_jurusan" name="input_jurusan"
+                                data-parsley-required="true" placeholder="Masukkan Jurusan" autocomplete="off" />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label"><b>Foto Siswa</b></label>
+                        <br>
+                          <input type="file" id="input_foto" class="dropify-event" name="input_foto" accept="image/png, image/gif, image/jpeg"
+                          />
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Status Siswa</label>
+                          <select name="input_status" class="form-control" id="input_status">
+                              <option value="Aktif" selected="">Aktif</option>
+                              <option value="Tidak Aktif">Tidak Aktif</option>
+                          </select>
+                      </div>
 
                     </div>
                     <div class="modal-footer">
@@ -200,7 +230,7 @@
 
     <!-- Modal Edit Class-->
     <form action="<?php echo base_url('Admin/Siswa/update_siswa'); ?>" method="post" id="form_edit"
-        data-parsley-validate="true" autocomplete="off">
+        data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
         <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
@@ -216,11 +246,89 @@
                         <input type="hidden" name="id_siswa" id="id_siswa">
 
                         <div class="form-group form-material">
-	                        <label class="form-control-label">Nama Siswa</label>
-	                        <input type="text" class="form-control" id="edit_nama" name="edit_nama"
+                          <label class="form-control-label">Nama Siswa</label>
+                          <input type="text" class="form-control" id="edit_nama" name="edit_nama"
                                 data-parsley-required="true" placeholder="Masukkan Nama Siswa" autocomplete="off" />
-                            <span class="text-danger" id="error_edit_nama"></span>
-	                    </div>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Sekolah</label>
+                          <select name="edit_sekolah" id="edit_sekolah" class="form-control">
+                            <?php foreach ($sekolah as $value) { ?>
+                              <option value="<?= $value['id_sekolah'] ?>"><?= $value['nama_sekolah'] ?></option>
+                            <?php } ?>
+                          </select>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Nomor Induk</label>
+                          <input type="text" class="form-control" id="edit_nis" name="edit_nis"
+                                data-parsley-required="true" placeholder="Masukkan Nomor Induk" autocomplete="off" />
+                            <span class="text-danger" id="error_nis"></span>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Username Siswa</label>
+                          <input type="text" class="form-control" id="edit_username" name="edit_username"
+                                data-parsley-required="true" placeholder="Masukkan Username Siswa" autocomplete="off" />
+                            <span class="text-danger" id="error_username"></span>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-group form-material">Password Siswa</label>
+                          <input type="Password" class="form-control" id="edit_password" name="edit_password" placeholder="Masukkan Password Siswa" autofocus="on">
+                      </div>
+                      <div class="form-group form-material">
+                          <label class="form-group form-material">Ulangi Password</label>
+                          <input type="Password" class="form-control" id="edit_password_konfirmasi" name="edit_password_konfirmasi" placeholder="Masukkan Ulangi Password" autofocus="on" data-parsley-equalto="#edit_password">
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Email Siswa</label>
+                          <input type="email" class="form-control" id="edit_email" name="edit_email"
+                                data-parsley-required="true" placeholder="Masukkan Email Siswa" autocomplete="off" />
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">No Telp</label>
+                          <input type="number" class="form-control" id="edit_no_telp" name="edit_no_telp"
+                                data-parsley-required="true" placeholder="Masukkan No Telp" autocomplete="off" />
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Alamat Siswa</label>
+                          <textarea class="form-control" id="edit_alamat" name="edit_alamat" data-parsley-required="true" placeholder="Masukkan Alamat"></textarea>
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Jurusan</label>
+                          <input type="text" class="form-control" id="edit_jurusan" name="edit_jurusan"
+                                data-parsley-required="true" placeholder="Masukkan Jurusan" autocomplete="off" />
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-12">
+                              <center>
+                                  <img id="foto_lama" style="width: 120px; height: 160px;" src="">
+                              </center>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label"><b>Foto Siswa</b></label>
+                        <br>
+                          <input type="file" id="edit_foto" class="dropify-event" name="edit_foto" accept="image/png, image/gif, image/jpeg"
+                          />
+                      </div>
+
+                      <div class="form-group form-material">
+                          <label class="form-control-label">Status Siswa</label>
+                          <select name="edit_status" class="form-control" id="edit_status">
+                              <option value="Aktif" selected="">Aktif</option>
+                              <option value="Tidak Aktif">Tidak Aktif</option>
+                          </select>
+                      </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-secondary" id="batal_up"
@@ -265,13 +373,116 @@
     <!-- Footer -->
     <?= $this->include("Admin/layout/footer") ?>
 
+    <?= $this->include("Admin/layout/js_tabel") ?>
+
     <script>
         function Hapus(id){
             $('.id').val(id);
             $('#deleteModal').modal('show');
         };
+
+        $(function() {
+
+            $("#input_username").keyup(function(){
+
+                var username = $(this).val().trim();
+          
+                if(username != ''){
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: '<?php echo base_url('Admin/Siswa/cek_username'); ?>' + '/' + username,
+                        success: function (data) {
+                            if(data['results']>0){
+                                $("#error_username").html('Username telah dipakai,coba yang lain');
+                                $("#input_username").val('');
+                            }else{
+                                $("#error_username").html('');
+                            }
+                        }, error: function () {
+            
+                            alert('error');
+                        }
+                    });
+                }
+          
+              });
+            $("#edit_username").keyup(function(){
+
+                var username = $(this).val().trim();
+          
+                if(username != '' && username != $('#edit_username_lama').val()){
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: '<?php echo base_url('Admin/Siswa/cek_username'); ?>' + '/' + username,
+                        success: function (data) {
+                            if(data['results']>0){
+                                $("#error_edit_username").html('Username telah dipakai,coba yang lain');
+                                $("#edit_username").val('');
+                            }else{
+                                $("#error_edit_username").html('');
+                            }
+                        }, error: function () {
+            
+                            alert('error');
+                        }
+                    });
+                }
+            });
+
+            
+
+            $('#batal').on('click', function() {
+                $('#form_add')[0].reset();
+                $('#form_edit')[0].reset();
+                $("#input_nama").val('');
+                $("#input_deskripsi").val('');
+            });
+
+            $('#batal_add').on('click', function() {
+                $('#form_add')[0].reset();
+                $("#input_nama").val('');
+                $("#input_deskripsi").val('');
+            });
+
+            $('#batal_up').on('click', function() {
+                $('#form_edit')[0].reset();
+                $("#edit_nama").val('');
+                $("#edit_deskripsi").val('');
+            });
+        })
+
+        function detail_edit(isi) {
+            $.getJSON('<?php echo base_url('Admin/Siswa/data_edit'); ?>' + '/' + isi, {},
+                function(json) {
+                    $('#id_siswa').val(json.id_siswa);
+                    $('#edit_sekolah').val(json.id_sekolah);
+                    $('#edit_nama').val(json.nama_sekolah);
+                    $('#edit_nis').val(json.nomor_induk);
+                    $('#edit_username').val(json.username_siswa);
+                    $('#edit_nama').val(json.nama_siswa);
+                    $('#edit_email').val(json.email_siswa);
+                    $('#edit_no_telp').val(json.no_telp_siswa);
+                    $('#edit_alamat').val(json.alamat_siswa);
+                    $('#edit_jurusan').val(json.jurusan);
+                    $('#edit_status').val(json.status);
+
+                    if (json.foto_resmi != '' || json.foto_resmi != null) {
+                        $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + json.foto_resmi) ;
+                    } else {
+                        $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + "docs/img/img_siswa/noimage.jpg");
+                    }
+
+                });
+        }
+    </script>
+    <script type="text/javascript">
+      
+        $(document).ready(function(){
+          
+        })
     </script>
 
-    <?= $this->include("Admin/layout/js_tabel") ?>
   </body>
 </html>

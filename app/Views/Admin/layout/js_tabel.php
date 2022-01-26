@@ -23,6 +23,7 @@
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/asrange/jquery-asRange.min.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/bootbox/bootbox.js"></script>
+    <script src="<?= base_url() ?>/docs/themeforest/global/vendor/dropify/dropify.min.js"></script>
     
     <!-- Scripts -->
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Component.js"></script>
@@ -46,6 +47,7 @@
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/slidepanel.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/switchery.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/datatables.js"></script>
+    <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/dropify.js"></script>
 
     <script src="<?= base_url() ?>/docs/themeforest/base/assets/examples/js/tables/datatable.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/base/assets/examples/js/uikit/icon.js"></script>
@@ -57,3 +59,4 @@
 
 
     <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/select2/js/select2.full.min.js"></script>
