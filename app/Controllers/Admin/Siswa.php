@@ -103,6 +103,7 @@ class Siswa extends BaseController
             }
         } else {
             $data = array(
+                'id_sekolah'     => $this->request->getPost('edit_sekolah'),
                 'nomor_induk'     => $this->request->getPost('edit_nis'),
                 'username_siswa'     => $this->request->getPost('edit_username'),
                 'password_siswa'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
