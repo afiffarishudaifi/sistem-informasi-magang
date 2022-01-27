@@ -64,14 +64,6 @@ $uri = service('uri');
                 </a>
               </li>
               <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Nilai') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Admin/Nilai'); ?>">
-                  <span class="site-menu-title">Nilai</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
                             if ($uri->getSegment(2) == 'Sekolah') {
                                 echo "active";
                             } ?>">

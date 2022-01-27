@@ -67,6 +67,11 @@
                                         data-target="#addModal"><i class="fa fa-plus"></i> Tambah Data</button>
         </div>
       </div>
+      <?php $session = session();
+      if ($session->getFlashdata('sukses')) { ?>
+      <input type="hidden" name="pemberitahuan" id="pemberitahuan"
+          value="<?php echo $session->getFlashdata('sukses'); ?>">
+      <?php } ?>
 
       <div class="page-content">
 
@@ -79,18 +84,18 @@
             <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Nama</th>
-                  <th>Sekolah</th>
-                  <th>Aksi</th>
+                  <th style="text-align: center;">No</th>
+                  <th style="text-align: center;">Nama</th>
+                  <th style="text-align: center;">Sekolah</th>
+                  <th style="text-align: center;">Aksi</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>No</th>
-                  <th>Nama</th>
-                  <th>Sekolah</th>
-                  <th>Aksi</th>
+                  <th style="text-align: center;">No</th>
+                  <th style="text-align: center;">Nama</th>
+                  <th style="text-align: center;">Sekolah</th>
+                  <th style="text-align: center;">Aksi</th>
                 </tr>
               </tfoot>
               <tbody>
@@ -104,10 +109,9 @@
                         <td><?= $item['nama_sekolah']; ?></td>
                         <td>
                             <center>
-                                <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_siswa']; ?>)" class="btn btn-sm btn-edit btn-warning"><i
-                                        class="fa fa-edit"></i></a>
+                                <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_siswa']; ?>)" class="btn btn-sm btn-edit btn-warning">Edit</i></a>
                                 <a href="" class="btn btn-sm btn-delete btn-danger" onclick="Hapus(<?= $item['id_siswa']; ?>)" data-toggle="modal"
-                                    data-target="#deleteModal" data-id="<?= $item['id_siswa']; ?>"><i class="fa fa-trash"></i></a>
+                                    data-target="#deleteModal" data-id="<?= $item['id_siswa']; ?>">Hapus</a>
                             </center>
                         </td>
                     </tr>
@@ -515,12 +519,6 @@
 
                 });
         }
-    </script>
-    <script type="text/javascript">
-      
-        $(document).ready(function(){
-          
-        })
     </script>
 
   </body>
