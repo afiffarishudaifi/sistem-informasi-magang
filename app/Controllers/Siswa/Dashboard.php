@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Siswa;
 
 use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
 {
 
-    protected $Model_dashboard;
     public function __construct()
     {
         $session = session();
 
-        // if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa' || $session->get('status_login') != 'Sekolah') {
-        //     return redirect()->to('Login');
-        // }
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa' || $session->get('status_login') != 'Sekolah') {
+            return redirect()->to('Login');
+        }
 
         helper(['form', 'url']);
     }
@@ -22,9 +21,9 @@ class Dashboard extends BaseController
     public function index()
     {
         $data = [
-            'judul' => 'Tabel Admin'
+            'judul' => 'Tabel Siswa'
         ];
-        return view('Admin/index', $data);
+        return view('Siswa/index', $data);
     }
 
     public function add_admin()

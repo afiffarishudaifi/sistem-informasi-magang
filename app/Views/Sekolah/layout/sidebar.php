@@ -1,6 +1,6 @@
 <?php
 $uri = service('uri');
-$session = session();
+// $session = session();
 ?>
 <div class="site-menubar">
   <div class="site-menubar-body">

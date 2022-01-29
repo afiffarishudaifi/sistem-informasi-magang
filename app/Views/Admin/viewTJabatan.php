@@ -1,56 +1,8 @@
-
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="bootstrap material admin template">
-    <meta name="author" content="">
-    
-    <title>E-Magang BANKESBANPOL</title>
-    
-    <link rel="apple-touch-icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/apple-touch-icon.png">
-    <link rel="shortcut icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/favicon.ico">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/css/bootstrap-extend.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/css/site.min.css">
-    
-    <!-- Plugins -->
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/animsition/animsition.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/asscrollable/asScrollable.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/switchery/switchery.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/intro-js/introjs.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/slidepanel/slidePanel.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/flag-icon-css/flag-icon.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/waves/waves.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/tables/datatable.css">
-    
-    
-    <!-- Fonts -->
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/fonts/font-awesome/font-awesome.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/fonts/material-design/material-design.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/fonts/brand-icons/brand-icons.min.css">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+  
+  <?= $this->include("Admin/layout/head_tabel"); ?>
 
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/forms/layouts.css">
-    
-    <!-- Scripts -->
-    <script src="<?= base_url() ?>/docs/themeforest/global/vendor/breakpoints/breakpoints.js"></script>
-    <script>
-      Breakpoints();
-    </script>
-  </head>
   <body class="animsition">
 
     <?= $this->include("Admin/layout/nav") ?>  
@@ -63,7 +15,7 @@
         <h1 class="page-title"><?= $judul; ?></h1>
         <div class="page-header-actions">
           <button class="btn btn-sm btn-primary btn-round" data-toggle="modal"
-                                        data-target="#addModal"><i class="fa fa-plus"></i> Tambah Data</button>
+            data-target="#addModal"><i class="fa fa-plus"></i> Tambah Data</button>
         </div>
       </div>
 
@@ -78,16 +30,16 @@
             <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
               <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Nama Jabatan</th>
-                    <th>Aksi</th>
+                    <th style="text-align: center;">No</th>
+                    <th style="text-align: center;">Nama Jabatan</th>
+                    <th style="text-align: center;">Aksi</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                    <th>No</th>
-                    <th>Nama Jabatan</th>
-                    <th>Aksi</th>
+                    <th style="text-align: center;">No</th>
+                    <th style="text-align: center;">Nama Jabatan</th>
+                    <th style="text-align: center;">Aksi</th>
                 </tr>
               </tfoot>
               <tbody>

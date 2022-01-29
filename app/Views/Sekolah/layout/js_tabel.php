@@ -1,5 +1,3 @@
-<?php $session = session(); ?>
-
 <!-- Core  -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/jquery/jquery.js"></script>
@@ -26,8 +24,6 @@
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/asrange/jquery-asRange.min.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/bootbox/bootbox.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/dropify/dropify.min.js"></script>
-
-    <script src="<?= base_url() ?>/docs/themeforest/global/vendor/toastr/toastr.min.js"></script>
     
     <!-- Scripts -->
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Component.js"></script>
@@ -64,13 +60,3 @@
 
     <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
     <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/select2/js/select2.full.min.js"></script>
-
-    <script type="text/javascript">
-
-        $( document ).ready(function() {
-            if ('<?= $session->getFlashdata('sukses'); ?>' != '') {
-                toastr.success('<?= $session->getFlashdata('sukses'); ?>')
-            } else if ('<?= $session->getFlashdata('gagal'); ?>' != '') {
-                toastr.error('<?= $session->getFlashdata('gagal'); ?>')
-            }
-        });</script>
