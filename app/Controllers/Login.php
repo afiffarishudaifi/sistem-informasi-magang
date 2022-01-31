@@ -98,7 +98,7 @@ class Login extends BaseController
             $verify_pass = $encrypter->decrypt(base64_decode($pass));
             if ($verify_pass == $password) {
                 $ses_data = [
-                    'user_id' => $data['id_admin'],
+                    'id_login' => $data['id_admin'],
                     'nama_login' => $data['nama_admin'],
                     'foto' => 'no_image.png',
                     'status_login' => $status,
@@ -144,7 +144,7 @@ class Login extends BaseController
                 $verify_pass =  $encrypter->decrypt(base64_decode($pass));
                 if ($verify_pass == $password) {
                     $ses_data = [
-                        'user_id' => $data['id_siswa'],
+                        'id_login' => $data['id_siswa'],
                         'nama_login' => $data['nama_siswa'],
                         'foto' => 'no_image.png',
                         'status_login' => $status,
@@ -170,7 +170,7 @@ class Login extends BaseController
                 $verify_pass =  $encrypter->decrypt(base64_decode($pass));
                 if ($verify_pass == $password) {
                     $ses_data = [
-                        'user_id' => $data['id_sekolah'],
+                        'id_login' => $data['id_sekolah'],
                         'nama_login' => $data['nama_sekolah'],
                     	'foto' => 'no_image.png',
                         'status_login' => $status,

@@ -147,7 +147,7 @@
         $(document).ready(function(){
           Site.run();
   	      if ('<?= $session->getFlashdata('msg'); ?>' != '') {
-  	          toastr.error('<?= $session->getFlashdata('msg'); ?>')
+  	          toastr.error('<?= $session->getFlashdata('msg'); ?>');
   	      }
         });
       })(document, window, jQuery);

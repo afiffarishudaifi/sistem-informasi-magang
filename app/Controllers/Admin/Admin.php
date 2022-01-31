@@ -11,6 +11,7 @@ class Admin extends BaseController
     protected $Model_admin;
     public function __construct()
     {
+        $session = session();
         $this->Model_admin = new Model_admin();
         helper(['form', 'url']);
     }
@@ -72,17 +73,30 @@ class Admin extends BaseController
             $namabaru     = $avatar->getRandomName();
             $avatar->move('docs/img/img_admin/', $namabaru);
 
-            $data = array(
-                'id_jabatan'     => $this->request->getPost('edit_jabatan'),
-                'username_admin'     => $this->request->getPost('edit_username'),
-                'password_admin'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
-                'nama_admin'     => $this->request->getPost('edit_nama'),
-                'no_telp_admin'     => $this->request->getPost('edit_no_telp'),
-                'foto_resmi_admin'     => "docs/img/img_admin/" . $namabaru,
-                'status_admin'     => $this->request->getPost('edit_status'),
-                'id_admin'     => $this->request->getPost('id_admin'),
-                'updated_at' => date('Y-m-d H:i:s')
-            );
+            if($this->request->getPost('edit_password') != '') {
+                $data = array(
+                    'id_jabatan'     => $this->request->getPost('edit_jabatan'),
+                    'username_admin'     => $this->request->getPost('edit_username'),
+                    'password_admin'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
+                    'nama_admin'     => $this->request->getPost('edit_nama'),
+                    'no_telp_admin'     => $this->request->getPost('edit_no_telp'),
+                    'foto_resmi_admin'     => "docs/img/img_admin/" . $namabaru,
+                    'status_admin'     => $this->request->getPost('edit_status'),
+                    'id_admin'     => $this->request->getPost('id_admin'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+            } else {
+                $data = array(
+                    'id_jabatan'     => $this->request->getPost('edit_jabatan'),
+                    'username_admin'     => $this->request->getPost('edit_username'),
+                    'nama_admin'     => $this->request->getPost('edit_nama'),
+                    'no_telp_admin'     => $this->request->getPost('edit_no_telp'),
+                    'foto_resmi_admin'     => "docs/img/img_admin/" . $namabaru,
+                    'status_admin'     => $this->request->getPost('edit_status'),
+                    'id_admin'     => $this->request->getPost('id_admin'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+            }
 
             $data_foto = $model->detail_data($id)->getRowArray();
 
@@ -94,16 +108,28 @@ class Admin extends BaseController
                 }
             }
         } else {
-            $data = array(
-                'id_jabatan'     => $this->request->getPost('edit_jabatan'),
-                'username_admin'     => $this->request->getPost('edit_username'),
-                'password_admin'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
-                'nama_admin'     => $this->request->getPost('edit_nama'),
-                'no_telp_admin'     => $this->request->getPost('edit_no_telp'),
-                'status_admin'     => $this->request->getPost('edit_status'),
-                'id_admin'     => $this->request->getPost('id_admin'),
-                'updated_at' => date('Y-m-d H:i:s')
-            );
+            if($this->request->getPost('edit_password') != '') {
+                    $data = array(
+                    'id_jabatan'     => $this->request->getPost('edit_jabatan'),
+                    'username_admin'     => $this->request->getPost('edit_username'),
+                    'password_admin'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
+                    'nama_admin'     => $this->request->getPost('edit_nama'),
+                    'no_telp_admin'     => $this->request->getPost('edit_no_telp'),
+                    'status_admin'     => $this->request->getPost('edit_status'),
+                    'id_admin'     => $this->request->getPost('id_admin'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+            } else {
+                $data = array(
+                    'id_jabatan'     => $this->request->getPost('edit_jabatan'),
+                    'username_admin'     => $this->request->getPost('edit_username'),
+                    'nama_admin'     => $this->request->getPost('edit_nama'),
+                    'no_telp_admin'     => $this->request->getPost('edit_no_telp'),
+                    'status_admin'     => $this->request->getPost('edit_status'),
+                    'id_admin'     => $this->request->getPost('id_admin'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+            };
         }
 
         $model->update_data($data, $id);

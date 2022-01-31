@@ -1,65 +1,36 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Siswa;
 
 use App\Controllers\BaseController;
 use App\Models\Model_siswa;
 
-class Siswa extends BaseController
+class Pengaturan extends BaseController
 {
 
-    protected $Model_siswa;
+    protected $Model_dashboard;
     public function __construct()
     {
+        $session = session();
+
+        // if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa' || $session->get('status_login') != 'Sekolah') {
+        //     return redirect()->to('Login');
+        // }
         $this->Model_siswa = new Model_siswa();
+
         helper(['form', 'url']);
     }
 
     public function index()
     {
         $model = new Model_siswa();
-        $siswa = $model->view_data()->getResultArray();
         $sekolah = $model->data_sekolah()->getResultArray();
 
         $data = [
-            'judul' => 'Tabel Siswa',
-            'siswa' => $siswa,
+            'judul' => 'Pengaturan Akun',
             'sekolah' => $sekolah
         ];
-        return view('Admin/viewTSiswa', $data);
-    }
-
-    public function add_siswa()
-    {
-        $session = session();
-        $encrypter = \Config\Services::encrypter();
-
-        $avatar      = $this->request->getFile('input_foto');
-        if ($avatar != '') {
-            $namabaru     = $avatar->getRandomName();
-            $avatar->move('docs/img/img_siswa/', $namabaru);
-        } else {
-            $namabaru = 'noimage.jpg';
-        }
-
-        $data = array(
-            'id_sekolah'     => $this->request->getPost('input_sekolah'),
-            'nomor_induk'     => $this->request->getPost('input_nis'),
-            'username_siswa'     => $this->request->getPost('input_username'),
-            'password_siswa'     => base64_encode($encrypter->encrypt($this->request->getPost('input_password'))),
-            'nama_siswa'     => $this->request->getPost('input_nama'),
-            'email_siswa'     => $this->request->getPost('input_email'),
-            'no_telp_siswa'     => $this->request->getPost('input_no_telp'),
-            'alamat_siswa'     => $this->request->getPost('input_alamat'),
-            'jurusan'     => $this->request->getPost('input_jurusan'),
-            'foto_resmi'     => "docs/img/img_siswa/" . $namabaru,
-            'status'     => $this->request->getPost('input_status')
-        );
-
-        $model = new Model_siswa();
-        $model->add_data($data);
-        $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
-        return redirect()->to(base_url('Admin/Siswa'));
+        return view('Siswa/viewPengaturan', $data);
     }
 
     public function update_siswa()
@@ -73,13 +44,12 @@ class Siswa extends BaseController
         $avatar      = $this->request->getFile('edit_foto');
         if ($avatar != '') {
             $namabaru     = $avatar->getRandomName();
-            $avatar->move('docs/img/img_admin/', $namabaru);
+            $avatar->move('docs/img/img_siswa/', $namabaru);
 
             if($this->request->getPost('edit_password') != '') {
                 $data = array(
                     'id_sekolah'     => $this->request->getPost('edit_sekolah'),
                     'nomor_induk'     => $this->request->getPost('edit_nis'),
-                    'username_siswa'     => $this->request->getPost('edit_username'),
                     'password_siswa'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
                     'nama_siswa'     => $this->request->getPost('edit_nama'),
                     'email_siswa'     => $this->request->getPost('edit_email'),
@@ -87,7 +57,6 @@ class Siswa extends BaseController
                     'alamat_siswa'     => $this->request->getPost('edit_alamat'),
                     'jurusan'     => $this->request->getPost('edit_jurusan'),
                     'foto_resmi'     => "docs/img/img_siswa/" . $namabaru,
-                    'status'     => $this->request->getPost('edit_status'),
                     'id_siswa'     => $this->request->getPost('id_siswa'),
                     'updated_at' => date('Y-m-d H:i:s')
                 );
@@ -95,14 +64,12 @@ class Siswa extends BaseController
                 $data = array(
                     'id_sekolah'     => $this->request->getPost('edit_sekolah'),
                     'nomor_induk'     => $this->request->getPost('edit_nis'),
-                    'username_siswa'     => $this->request->getPost('edit_username'),
                     'nama_siswa'     => $this->request->getPost('edit_nama'),
                     'email_siswa'     => $this->request->getPost('edit_email'),
                     'no_telp_siswa'     => $this->request->getPost('edit_no_telp'),
                     'alamat_siswa'     => $this->request->getPost('edit_alamat'),
                     'jurusan'     => $this->request->getPost('edit_jurusan'),
                     'foto_resmi'     => "docs/img/img_siswa/" . $namabaru,
-                    'status'     => $this->request->getPost('edit_status'),
                     'id_siswa'     => $this->request->getPost('id_siswa'),
                     'updated_at' => date('Y-m-d H:i:s')
                 );
@@ -122,14 +89,12 @@ class Siswa extends BaseController
                 $data = array(
                     'id_sekolah'     => $this->request->getPost('edit_sekolah'),
                     'nomor_induk'     => $this->request->getPost('edit_nis'),
-                    'username_siswa'     => $this->request->getPost('edit_username'),
                     'password_siswa'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
                     'nama_siswa'     => $this->request->getPost('edit_nama'),
                     'email_siswa'     => $this->request->getPost('edit_email'),
                     'no_telp_siswa'     => $this->request->getPost('edit_no_telp'),
                     'alamat_siswa'     => $this->request->getPost('edit_alamat'),
                     'jurusan'     => $this->request->getPost('edit_jurusan'),
-                    'status'     => $this->request->getPost('edit_status'),
                     'id_siswa'     => $this->request->getPost('id_siswa'),
                     'updated_at' => date('Y-m-d H:i:s')
                 );
@@ -137,13 +102,11 @@ class Siswa extends BaseController
                 $data = array(
                     'id_sekolah'     => $this->request->getPost('edit_sekolah'),
                     'nomor_induk'     => $this->request->getPost('edit_nis'),
-                    'username_siswa'     => $this->request->getPost('edit_username'),
                     'nama_siswa'     => $this->request->getPost('edit_nama'),
                     'email_siswa'     => $this->request->getPost('edit_email'),
                     'no_telp_siswa'     => $this->request->getPost('edit_no_telp'),
                     'alamat_siswa'     => $this->request->getPost('edit_alamat'),
                     'jurusan'     => $this->request->getPost('edit_jurusan'),
-                    'status'     => $this->request->getPost('edit_status'),
                     'id_siswa'     => $this->request->getPost('id_siswa'),
                     'updated_at' => date('Y-m-d H:i:s')
                 );
@@ -152,31 +115,7 @@ class Siswa extends BaseController
 
         $model->update_data($data, $id);
         $session->setFlashdata('sukses', 'Data sudah berhasil diubah');
-        return redirect()->to(base_url('Admin/Siswa'));
-    }
-
-    public function delete_siswa()
-    {
-        $session = session();
-        $model = new Model_siswa();
-        $id = $this->request->getPost('id');
-        // $foreign = $model->cek_foreign($id);
-        // if ($foreign == 0) {
-            $data_foto = $model->detail_data($id)->getRowArray();
-
-            if ($data_foto != null) {
-                if ($data_foto['foto_resmi'] != 'docs/img/img_siswa/noimage.jpg') {
-                    if (file_exists($data_foto['foto_resmi'])) {
-                        unlink($data_foto['foto_resmi']);
-                    }
-                }
-            }
-            $model->delete_data($id);
-            session()->setFlashdata('sukses', 'Data ini berhasil dihapus');
-        // } else {
-        //     session()->setFlashdata('gagal', 'Data ini dipakai di tabel lain dan tidak bisa dihapus');
-        // }
-        return redirect()->to('/Admin/Siswa');
+        return redirect()->to(base_url('Login/logout'));
     }
 
     public function cek_username($username)
@@ -216,24 +155,8 @@ class Siswa extends BaseController
             $isi['no_telp_siswa'] = $value['no_telp_siswa'];
             $isi['alamat_siswa'] = $value['alamat_siswa'];
             $isi['jurusan'] = $value['jurusan'];
-            $isi['status'] = $value['status'];
             $isi['foto_resmi'] = $value['foto_resmi'];
         endforeach;
         echo json_encode($isi);
-    }
-
-    public function data_sekolah()
-    {
-        $model = new Model_siswa();
-        $data_sekolah = $model->view_data_sekolah();
-        $respon = json_decode(json_encode($data_sekolah), true);
-        $data['results'] = array();
-
-        foreach ($respon as $value) {
-            $isi['id'] = $value['id_sekolah'];
-            $isi['text'] = $value['nama_sekolah'];
-            array_push($data['results'], $isi);
-        }
-        echo json_encode($data);
     }
 }

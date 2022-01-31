@@ -68,12 +68,12 @@
           <p>Login untuk dapat akses ke sistem.</p>
 
           <form method="POST" action="<?= base_url('Login/loginSistem'); ?>" autocomplete="off">
-            <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
+            <div class="form-group form-material floating" data-plugin="formMaterial">
                 <input type="text" class="form-control" id="username" name="username"
                       data-parsley-required="true" autocomplete="off" autofocus="" />
                 <label class="floating-label">Username</label>
             </div>
-            <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
+            <div class="form-group form-material floating" data-plugin="formMaterial">
                 <input type="password" class="form-control" id="password" name="password"
                       data-parsley-required="true" autocomplete="off" />
                 <label class="floating-label">Password</label>
@@ -152,9 +152,9 @@
         var Site = window.Site;
         $(document).ready(function(){
           Site.run();
-	      if ('<?= $session->getFlashdata('msg'); ?>' != '') {
-	          toastr.error('<?= $session->getFlashdata('msg'); ?>')
-	      }
+  	      if ('<?= $session->getFlashdata('msg'); ?>' != '') {
+  	          toastr.error('<?= $session->getFlashdata('msg'); ?>')
+  	      }
         });
       })(document, window, jQuery);
     </script>
