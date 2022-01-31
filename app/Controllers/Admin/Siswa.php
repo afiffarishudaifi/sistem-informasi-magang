@@ -73,7 +73,7 @@ class Siswa extends BaseController
         $avatar      = $this->request->getFile('edit_foto');
         if ($avatar != '') {
             $namabaru     = $avatar->getRandomName();
-            $avatar->move('docs/img/img_admin/', $namabaru);
+            $avatar->move('docs/img/img_siswa/', $namabaru);
 
             if($this->request->getPost('edit_password') != '') {
                 $data = array(
@@ -200,7 +200,6 @@ class Siswa extends BaseController
     public function data_edit($id_siswa)
     {
         $model = new Model_siswa();
-        $encrypter = \Config\Services::encrypter();
 
         $data_pengguna = $model->detail_data($id_siswa)->getResultArray();
         $respon = json_decode(json_encode($data_pengguna), true);

@@ -144,6 +144,15 @@ $session = session();
               </li>
             </ul>
           </li>
+          <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'Profil') {
+                                echo "active";
+                            } ?>">
+            <a class="animsition-link" href="<?= base_url('Admin/Profil'); ?>">
+                    <i class="site-menu-icon md-pin-drop" aria-hidden="true"></i>
+                    <span class="site-menu-title">Pengaturan Profil</span>
+                </a>
+          </li>
         </ul>   
       </div>
     </div>

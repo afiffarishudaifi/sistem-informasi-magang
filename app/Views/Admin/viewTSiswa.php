@@ -1,3 +1,4 @@
+<?php $session = session(); ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
   
@@ -332,7 +333,6 @@
         };
 
         $(function() {
-
             $("#input_username").keyup(function(){
 
                 var username = $(this).val().trim();

@@ -1,3 +1,4 @@
+<?php $session = session(); ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
   
@@ -192,7 +193,7 @@
             $('#deleteModal').modal('show');
         };
 
-        $(function() {            
+        $(function() {
 
             $('#batal').on('click', function() {
                 $('#form_add')[0].reset();
