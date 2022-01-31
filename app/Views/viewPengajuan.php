@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/slidepanel/slidePanel.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/flag-icon-css/flag-icon.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/waves/waves.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/pages/login-v2.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/pages/register-v3.css">
     
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/toastr/toastr.min.css">
     
@@ -34,61 +34,84 @@
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/fonts/material-design/material-design.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/fonts/brand-icons/brand-icons.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
-    
     <!-- Scripts -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/breakpoints/breakpoints.js"></script>
     <script>
       Breakpoints();
     </script>
   </head>
-  <body class="animsition page-login-v2 layout-full page-dark">
+  <body class="animsition page-register-v3 layout-full">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
 
     <!-- Page -->
-    <div class="page" data-animsition-in="fade-in" data-animsition-out="fade-out">
-      <div class="page-content">
-        <div class="page-brand-info">
-          <div class="brand">
-            <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets/images/logo@2x.png" alt="...">
-            <h2 class="brand-text font-size-40">Remark</h2>
+    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">
+      <div class="page-content vertical-align-middle">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="brand">
+              <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets//images/logo-colored.png" alt="...">
+              <h2 class="brand-text font-size-18">Remark</h2>
+            </div>
+            <form method="post" action="<?= base_url('Login/simpanPengajuan'); ?>" data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
+
+            	  <div class="form-group form-material floating" data-plugin="formMaterial">
+                  <select name="input_siswa" id="input_siswa" class="form-control">
+                      <?php foreach ($hasil as $value) { ?>
+                        <option value="<?= $value['id_siswa'] ?>"><?= $value['nama_siswa'] ?></option>
+                      <?php } ?>
+                    </select>
+                </div>
+
+                <div class="form-group form-material floating" data-plugin="formMaterial">
+                    <input type="datetime-local" class="form-control" id="input_mulai" name="input_mulai"
+                      data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" />
+                    <label class="floating-label">Selesai Magang</label>
+                </div>
+
+                <div class="form-group form-material floating" data-plugin="formMaterial">
+                    <input type="datetime-local" class="form-control" id="input_selesai" name="input_selesai"
+                      data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" />
+                    <label class="floating-label">Selesai Magang</label>
+                </div>
+
+		            <div class="form-group">
+		                <label class="label"><b>File Pengantar</b></label>
+		                <br>
+		                  <input type="file" id="input_pengantar" data-parsley-required="true" class="dropify-event" name="input_pengantar" accept="application/pdf"
+		                  />
+		            </div>
+
+		            <div class="form-group" data-plugin="formMaterial">
+		                <label class="floating-label" style="text-align: left;"><b>File Pengajuan</b></label>
+		                <br>
+		                  <input type="file" id="input_proposal" data-parsley-required="true" class="dropify-event" name="input_proposal" accept="application/pdf"
+		                  />
+		            </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg mt-40" id="simpan">Pengajuan</button>
+            </form>
+            <p>Sudah melakukan pengajuan ? <a href="<?= base_url('Login'); ?>">Klik </a>untuk login</p>
           </div>
-          <p class="font-size-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
 
-        <div class="page-login-main">
-          <div class="brand hidden-md-up">
-            <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets/images/logo-colored@2x.png" alt="...">
-            <h3 class="brand-text font-size-40">Remark</h3>
+        <footer class="page-copyright page-copyright-inverse">
+          <p>WEBSITE BY Creation Studio</p>
+          <p>© 2018. All RIGHT RESERVED.</p>
+          <div class="social">
+            <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+            <i class="icon bd-twitter" aria-hidden="true"></i>
+          </a>
+            <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+            <i class="icon bd-facebook" aria-hidden="true"></i>
+          </a>
+            <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+            <i class="icon bd-google-plus" aria-hidden="true"></i>
+          </a>
           </div>
-          <h3 class="font-size-24">E-Magang</h3>
-          <p>Login untuk dapat akses ke sistem.</p>
-
-          <form method="POST" action="<?= base_url('Login/loginSistemAdmin'); ?>" autocomplete="off">
-            <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
-                <input type="text" class="form-control" id="username" name="username"
-                      data-parsley-required="true" autocomplete="off" autofocus="" />
-                <label class="floating-label">Username</label>
-            </div>
-            <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
-                <input type="password" class="form-control" id="password" name="password"
-                      data-parsley-required="true" autocomplete="off" />
-                <label class="floating-label">Password</label>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-          </form>
-
-          <p>No account? <a href="<?= base_url('Login/registrasiSiswa'); ?>">Sign Up</a></p>
-
-          <footer class="page-copyright">
-            <p>WEBSITE BY Creation Studio</p>
-            <p>© 2018. All RIGHT RESERVED.</p>
-          </footer>
-        </div>
-
+        </footer>
       </div>
     </div>
     <!-- End Page -->
@@ -128,7 +151,7 @@
     
     <script src="<?= base_url() ?>/docs/themeforest/global/js/config/colors.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/base/assets/js/config/tour.js"></script>
-    <script>Config.set('assets', '<?= base_url() ?>/docs/themeforest/base/ssets');</script>
+    <script>Config.set('assets', '<?= base_url() ?>/docs/themeforest/base/assets');</script>
     
     <!-- Page -->
     <script src="<?= base_url() ?>/docs/themeforest/base/assets/js/Site.js"></script>
@@ -142,13 +165,13 @@
     <script>
       (function(document, window, $){
         'use strict';
-    
+
         var Site = window.Site;
         $(document).ready(function(){
           Site.run();
-  	      if ('<?= $session->getFlashdata('msg'); ?>' != '') {
-  	          toastr.error('<?= $session->getFlashdata('msg'); ?>')
-  	      }
+          if ('<?= $session->getFlashdata('sukses'); ?>' != '') {
+              toastr.success('<?= $session->getFlashdata('sukses'); ?>')
+          }
         });
       })(document, window, jQuery);
     </script>

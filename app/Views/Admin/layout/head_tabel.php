@@ -43,6 +43,10 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/forms/layouts.css">
+
+    
+    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/select2/css/select2.min.css"></script>
+    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"></script>
     
     <!-- Scripts -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/breakpoints/breakpoints.js"></script>

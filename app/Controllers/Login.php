@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\Model_login;
+use App\Models\Model_siswa;
 
 class Login extends BaseController
 {
@@ -22,15 +23,48 @@ class Login extends BaseController
     public function pengajuanMagang()
     {
         $session = session();
+        $model = new Model_login();
+        $siswa_tedaftar = array();
 
-        // if ($session->get('username_login') || $session->get('status_login') == 'Admin') {
-        //     return redirect()->to('Admin/Dashboard');
-        // } else if ($session->get('username_login') || $session->get('status_login') == 'Customer') {
-        //     return redirect()->to('Customer/Dashboard');
-        // }
+        $siswa = $model->data_siswa()->getResultArray();
+        foreach ($siswa as $value) {
+            array_push($siswa_tedaftar, $value['id_siswa']);
+        }
+        $hasil = $model->data_seleksi($siswa_tedaftar)->getResultArray();
 
+        $data = [
+            'hasil' => $hasil
+        ];
         helper(['form']);
-        return view('viewPengajuanMagang');
+        return view('viewPengajuan', $data);
+    }
+
+    public function simpanPengajuan()
+    {
+        $session = session();
+        $encrypter = \Config\Services::encrypter();
+
+        $avatar_pengantar = $this->request->getFile('input_pengantar');
+        $namabaru_pengantar = $avatar_pengantar->getRandomName();
+        $avatar_pengantar->move('docs/file_pengantar/', $namabaru_pengantar);
+
+        $avatar_proposal = $this->request->getFile('input_proposal');
+        $namabaru_proposal = $avatar_proposal->getRandomName();
+        $avatar_proposal->move('docs/file_proposal/', $namabaru_proposal);
+
+        $data = array(
+            'id_siswa'     => $this->request->getPost('input_siswa'),
+            'waktu_mulai'     => $this->request->getPost('input_mulai'),
+            'waktu_selesai'     => $this->request->getPost('input_selesai'),
+            'pengantar'     => "docs/file_pengantar/" . $namabaru_pengantar,
+            'proposal'     => "docs/file_proposal/" . $namabaru_proposal,
+            'status_pengajuan'     => 'Pengajuan'
+        );
+
+        $model = new Model_login();
+        $model->add_pengajuan($data);
+        $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
+        return redirect()->to(base_url('Login/pengajuanMagang'));
     }
 
     public function loginAdmin()
@@ -159,8 +193,45 @@ class Login extends BaseController
     public function registrasiSiswa()
     {
         $session = session();
-        $model = new Model_login();
-        return view('viewRegistrasi');
+        $model = new Model_siswa();
+        $sekolah = $model->data_sekolah()->getResultArray();
+        $data = [
+            'sekolah' => $sekolah
+        ];
+        return view('viewRegistrasi', $data);
+    }
+
+    public function simpanSiswa()
+    {
+        $session = session();
+        $encrypter = \Config\Services::encrypter();
+
+        $avatar      = $this->request->getFile('input_foto');
+        if ($avatar != '') {
+            $namabaru     = $avatar->getRandomName();
+            $avatar->move('docs/img/img_siswa/', $namabaru);
+        } else {
+            $namabaru = 'noimage.jpg';
+        }
+
+        $data = array(
+            'id_sekolah'     => $this->request->getPost('input_sekolah'),
+            'nomor_induk'     => $this->request->getPost('input_nis'),
+            'username_siswa'     => $this->request->getPost('input_username'),
+            'password_siswa'     => base64_encode($encrypter->encrypt($this->request->getPost('input_password'))),
+            'nama_siswa'     => $this->request->getPost('input_nama'),
+            'email_siswa'     => $this->request->getPost('input_email'),
+            'no_telp_siswa'     => $this->request->getPost('input_no_telp'),
+            'alamat_siswa'     => $this->request->getPost('input_alamat'),
+            'jurusan'     => $this->request->getPost('input_jurusan'),
+            'foto_resmi'     => "docs/img/img_siswa/" . $namabaru,
+            'status'     => 'Tidak Aktif'
+        );
+
+        $model = new Model_siswa();
+        $model->add_data($data);
+        $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
+        return redirect()->to(base_url('Login/registrasiSiswa'));
     }
 
     public function logout()

@@ -55,7 +55,6 @@ class Sertifikat extends BaseController
         $session = session();
         $encrypter = \Config\Services::encrypter();
         $model = new Model_sertifikat();
-        date_default_timezone_set('Asia/Jakarta');
         
         $id = $this->request->getPost('id_sertifikat');
 

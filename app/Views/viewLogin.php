@@ -68,24 +68,26 @@
           <p>Login untuk dapat akses ke sistem.</p>
 
           <form method="POST" action="<?= base_url('Login/loginSistem'); ?>" autocomplete="off">
-            <div class="form-group form-material floating">
-              <input type="text" required="" class="form-control empty" id="username" name="username">
-              <label class="floating-label">Username</label>
+            <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
+                <input type="text" class="form-control" id="username" name="username"
+                      data-parsley-required="true" autocomplete="off" autofocus="" />
+                <label class="floating-label">Username</label>
             </div>
-            <div class="form-group form-material floating">
-              <input type="password" required="" class="form-control empty" id="password" name="password">
-              <label class="floating-label">Password</label>
+            <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
+                <input type="password" class="form-control" id="password" name="password"
+                      data-parsley-required="true" autocomplete="off" />
+                <label class="floating-label">Password</label>
             </div>
-	        <div class="form-group form-material floating">
-	            <select name="status" required="" class="form-control" id="status">
-	                <option value="Siswa" selected="">Siswa</option>
-	                <option value="Sekolah">Sekolah</option>
-	            </select>
-	        </div>
+  	        <div class="form-group form-material floating">
+  	            <select name="status" required="" class="form-control" id="status">
+  	                <option value="Siswa" selected="">Siswa</option>
+  	                <option value="Sekolah">Sekolah</option>
+  	            </select>
+  	        </div>
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
           </form>
 
-          <p>No account? <a href="register-v2.html">Sign Up</a></p>
+          <p>Pengajuan peserta magang baru? <a href="<?= base_url('Login/registrasiSiswa'); ?>">Klik</a> untuk melakukan pengajuan</p>
 
           <footer class="page-copyright">
             <p>WEBSITE BY Creation Studio</p>
@@ -141,6 +143,7 @@
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/switchery.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/jquery-placeholder.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/js/Plugin/material.js"></script>
+    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
     
     <script>
       (function(document, window, $){

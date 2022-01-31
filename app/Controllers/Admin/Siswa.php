@@ -67,7 +67,6 @@ class Siswa extends BaseController
         $session = session();
         $encrypter = \Config\Services::encrypter();
         $model = new Model_siswa();
-        date_default_timezone_set('Asia/Jakarta');
         
         $id = $this->request->getPost('id_siswa');
 
@@ -188,5 +187,20 @@ class Siswa extends BaseController
             $isi['foto_resmi'] = $value['foto_resmi'];
         endforeach;
         echo json_encode($isi);
+    }
+
+    public function data_sekolah()
+    {
+        $model = new Model_siswa();
+        $data_sekolah = $model->view_data_sekolah();
+        $respon = json_decode(json_encode($data_sekolah), true);
+        $data['results'] = array();
+
+        foreach ($respon as $value) {
+            $isi['id'] = $value['id_sekolah'];
+            $isi['text'] = $value['nama_sekolah'];
+            array_push($data['results'], $isi);
+        }
+        echo json_encode($data);
     }
 }

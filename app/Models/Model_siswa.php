@@ -82,6 +82,7 @@ class Model_siswa extends Model
     {
     	$db      = \Config\Database::connect();
         $builder = $db->table('sekolah');
+        $builder->select('id_sekolah, nama_sekolah');
         return $builder->get();
     }
 }
