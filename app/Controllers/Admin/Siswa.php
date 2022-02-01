@@ -253,10 +253,10 @@ class Siswa extends BaseController
             $data = $query->getResult();
         }
 
-        foreach ($data as $country) {
+        foreach ($data as $sekolah) {
             $poli[] = array(
-                "id" => $country->id_sekolah,
-                "text" => $country->nama_sekolah,
+                "id" => $sekolah->id_sekolah,
+                "text" => $sekolah->nama_sekolah,
             );
         }
 

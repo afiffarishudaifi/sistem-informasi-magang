@@ -13,18 +13,16 @@ class Jobdesk extends BaseController
     {
         $this->Model_jobdesk = new Model_jobdesk();
         helper(['form', 'url']);
+        $this->db = db_connect();
     }
 
     public function index()
     {
         $model = new Model_jobdesk();
         $jobdesk = $model->view_data()->getResultArray();
-        $siswa = $model->data_siswa()->getResultArray();
-
         $data = [
             'judul' => 'Tabel Job Deskripsi',
-            'jobdesk' => $jobdesk,
-            'siswa' => $siswa
+            'jobdesk' => $jobdesk
 
         ];
         return view('Admin/viewTJobdesk', $data);
@@ -102,5 +100,48 @@ class Jobdesk extends BaseController
             $isi['status_jobdesk'] = $value['status_jobdesk'];
         endforeach;
         echo json_encode($isi);
+    }
+
+    public function data_siswa()
+    {
+        $request = service('request');
+        $postData = $request->getPost(); // OR $this->request->getPost();
+
+        $response = array();
+
+        $data = array();
+
+        $db      = \Config\Database::connect();
+        $builder = $this->db->table("siswa");
+
+        $poli = [];
+
+        if (isset($postData['query'])) {
+
+            $query = $postData['query'];
+
+            // Fetch record
+            $builder->select('id_siswa, nama_siswa');
+            $builder->like('nama_siswa', $query, 'both');
+            $query = $builder->get();
+            $data = $query->getResult();
+        } else {
+
+            // Fetch record
+            $builder->select('id_siswa, nama_siswa');
+            $query = $builder->get();
+            $data = $query->getResult();
+        }
+
+        foreach ($data as $siswa) {
+            $poli[] = array(
+                "id" => $siswa->id_siswa,
+                "text" => $siswa->nama_siswa,
+            );
+        }
+
+        $response['data'] = $poli;
+
+        return $this->response->setJSON($response);
     }
 }
