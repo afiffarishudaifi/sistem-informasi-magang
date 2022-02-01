@@ -13,6 +13,7 @@ class Siswa extends BaseController
     {
         $this->Model_siswa = new Model_siswa();
         helper(['form', 'url']);
+        $this->db = db_connect();
     }
 
     public function index()
@@ -223,16 +224,44 @@ class Siswa extends BaseController
 
     public function data_sekolah()
     {
-        $model = new Model_siswa();
-        $data_sekolah = $model->view_data_sekolah();
-        $respon = json_decode(json_encode($data_sekolah), true);
-        $data['results'] = array();
+        $request = service('request');
+        $postData = $request->getPost(); // OR $this->request->getPost();
 
-        foreach ($respon as $value) {
-            $isi['id'] = $value['id_sekolah'];
-            $isi['text'] = $value['nama_sekolah'];
-            array_push($data['results'], $isi);
+        $response = array();
+
+        $data = array();
+
+        $db      = \Config\Database::connect();
+        $builder = $this->db->table("sekolah");
+
+        $poli = [];
+
+        if (isset($postData['query'])) {
+
+            $query = $postData['query'];
+
+            // Fetch record
+            $builder->select('id_sekolah, nama_sekolah');
+            $builder->like('nama_sekolah', $query, 'both');
+            $query = $builder->get();
+            $data = $query->getResult();
+        } else {
+
+            // Fetch record
+            $builder->select('id_sekolah, nama_sekolah');
+            $query = $builder->get();
+            $data = $query->getResult();
         }
-        echo json_encode($data);
+
+        foreach ($data as $country) {
+            $poli[] = array(
+                "id" => $country->id_sekolah,
+                "text" => $country->nama_sekolah,
+            );
+        }
+
+        $response['data'] = $poli;
+
+        return $this->response->setJSON($response);
     }
 }

@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/tables/datatable.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/select2/select2.css">
     
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/global/vendor/toastr/toastr.min.css">
     
@@ -43,10 +44,6 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
     <link rel="stylesheet" href="<?= base_url() ?>/docs/themeforest/base/assets/examples/css/forms/layouts.css">
-
-    
-    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/select2/css/select2.min.css"></script>
-    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"></script>
     
     <!-- Scripts -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/breakpoints/breakpoints.js"></script>

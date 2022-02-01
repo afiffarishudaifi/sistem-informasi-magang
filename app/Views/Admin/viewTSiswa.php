@@ -76,7 +76,7 @@
     <!-- Start Modal Add Class-->
     <form action="<?php echo base_url('Admin/Siswa/add_siswa'); ?>" method="post" id="form_add"
         data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
-        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="addModal" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
             <div class="modal-dialog" role="document">
@@ -97,10 +97,8 @@
 
                       <div class="form-group form-material">
                           <label class="form-control-label">Sekolah</label>
-                          <select name="input_sekolah" id="input_sekolah" class="form-control">
-                            <?php foreach ($sekolah as $value) { ?>
-                              <option value="<?= $value['id_sekolah'] ?>"><?= $value['nama_sekolah'] ?></option>
-                            <?php } ?>
+                          <br>
+                          <select name="input_sekolah" id="input_sekolah" style="width: 100%;" class="form-control select2" data-plugin="select2">
                           </select>
                       </div>
 
@@ -182,7 +180,7 @@
     <!-- Modal Edit Class-->
     <form action="<?php echo base_url('Admin/Siswa/update_siswa'); ?>" method="post" id="form_edit"
         data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
-        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="updateModal" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <?= csrf_field(); ?>
             <div class="modal-dialog" role="document">
@@ -204,10 +202,8 @@
 
                       <div class="form-group form-material">
                           <label class="form-control-label">Sekolah</label>
-                          <select name="edit_sekolah" id="edit_sekolah" class="form-control">
-                            <?php foreach ($sekolah as $value) { ?>
-                              <option value="<?= $value['id_sekolah'] ?>"><?= $value['nama_sekolah'] ?></option>
-                            <?php } ?>
+                          <br>
+                          <select name="edit_sekolah" id="edit_sekolah" style="width: 100%;" class="form-control select2" data-plugin="select2">
                           </select>
                       </div>
 
@@ -294,7 +290,7 @@
 
     <!-- Start Modal Delete Class -->
     <form action="<?php echo base_url('Admin/Siswa/delete_siswa'); ?>" method="post">
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -333,6 +329,50 @@
         };
 
         $(function() {
+            $("#input_sekolah").select2({
+                placeholder: "Pilih Sekolah",
+                theme: 'bootstrap4',
+                ajax: {
+                    url: '<?php echo base_url('Admin/Siswa/data_sekolah'); ?>',
+                    type: "post",
+                    delay: 250,
+                    dataType: 'json',
+                    data: function(params) {
+                        return {
+                            query: params.term, // search term
+                        };
+                    },
+                    processResults: function(response) {
+                        return {
+                            results: response.data
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $("#edit_sekolah").select2({
+                placeholder: "Pilih Sekolah",
+                theme: 'bootstrap4',
+                ajax: {
+                    url: '<?php echo base_url('Admin/Siswa/data_sekolah'); ?>',
+                    type: "post",
+                    delay: 250,
+                    dataType: 'json',
+                    data: function(params) {
+                        return {
+                            query: params.term, // search term
+                        };
+                    },
+                    processResults: function(response) {
+                        return {
+                            results: response.data
+                        };
+                    },
+                    cache: true
+                }
+            });
+
             $("#input_username").keyup(function(){
 
                 var username = $(this).val().trim();
