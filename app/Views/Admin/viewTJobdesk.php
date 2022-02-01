@@ -99,15 +99,25 @@
               </tr>
             </tfoot>
             <tbody>
-              <tr>
-                <td width="1%"><?= $no++; ?></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              <?php
+              $no = 1;
+              foreach ($jobdesk as $item) {
+              ?>
+                <tr>
+                  <td width="1%"><?= $no++; ?></td>
+                  <td><?= $item['nama_siswa']; ?></td>
+                  <td><?= $item['nama_jobdesk']; ?></td>
+                  <td><?= $item['deskripsi']; ?></td>
+                  <td><?= $item['waktu_mulai']; ?> - <?= $item['waktu_selesai']; ?></td>
+                  <td><?= $item['status_jobdesk']; ?></td>
+                  <td>
+                    <center>
+                      <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_jobdesk']; ?>)" class="btn btn-sm btn-edit btn-warning">Edit</i></a>
+                      <a href="" class="btn btn-sm btn-delete btn-danger" onclick="Hapus(<?= $item['id_jobdesk']; ?>)" data-toggle="modal" data-target="#deleteModal" data-id="<?= $item['id_jobdesk']; ?>">Hapus</a>
+                    </center>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>
@@ -153,12 +163,20 @@
 
             <div class="form-group form-material">
               <label class="form-control-label">Waktu Mulai</label>
-              <input type="datetime" class="form-control" id="input_waktu_mulai" name="input_waktu_mulai" data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
+              <input type="datetime-local" value="<?= date('Y-m-d') ?>T00:00" class="form-control" id="input_waktu_mulai" name="input_waktu_mulai" data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
             </div>
 
             <div class="form-group form-material">
               <label class="form-control-label">Waktu Selesai</label>
-              <input type="datetime" class="form-control" id="input_waktu_selesai" name="input_waktu_selesai" data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
+              <input type="datetime-local" value="<?= date('Y-m-d') ?>T00:00" class="form-control" id="input_waktu_selesai" name="input_waktu_selesai" data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
+            </div>
+
+            <div class="form-group form-material">
+              <label class="form-control-label">Status Jobdesk</label>
+              <select name="input_status" class="form-control" id="input_status">
+                <option value="Selesai" selected="">Selesai</option>
+                <option value="Belum Selesai">Belum Selesai</option>
+              </select>
             </div>
 
           </div>
@@ -208,12 +226,20 @@
 
             <div class="form-group form-material">
               <label class="form-control-label">Waktu Mulai</label>
-              <input type="datetime" class="form-control" id="edit_waktu_mulai" name="edit_waktu_mulai" data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
+              <input type="datetime-local" value="<?= date('d/m/Y') ?>T00:00" class="form-control" id="edit_waktu_mulai" name="edit_waktu_mulai" data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
             </div>
 
             <div class="form-group form-material">
               <label class="form-control-label">Waktu Selesai</label>
-              <input type="datetime" class="form-control" id="edit_waktu_selesai" name="edit_waktu_selesai" data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
+              <input type="datetime-local" value="<?= date('d/m/Y') ?>T00:00" class="form-control" id="edit_waktu_selesai" name="edit_waktu_selesai" data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
+            </div>
+
+            <div class="form-group form-material">
+              <label class="form-control-label">Status Jobdesk</label>
+              <select name="edit_status" class="form-control" id="edit_status">
+                <option value="Selesai" selected="">Selesai</option>
+                <option value="Belum Selesai">Belum Selesai</option>
+              </select>
             </div>
 
           </div>
@@ -257,15 +283,69 @@
 
   <!-- Footer -->
   <?= $this->include("Admin/layout/footer") ?>
+  <?= $this->include("Admin/layout/js_tabel") ?>
 
   <script>
     function Hapus(id) {
       $('.id').val(id);
       $('#deleteModal').modal('show');
     };
+
+    $(function() {
+      $('#batal').on('click', function() {
+        $('#form_add')[0].reset();
+        $('#form_edit')[0].reset();
+        $("#input_siswa").val('');
+        $("#input_nama").val('');
+        $("#input_deskripsi").val('');
+        $("#input_waktu_mulai").val('');
+        $("#input_waktu_selesai").val('');
+        $("#input_status").val('');
+      });
+
+      $('#batal_add').on('click', function() {
+        $('#form_add')[0].reset();
+        $("#input_siswa").val('');
+        $("#input_nama").val('');
+        $("#input_deskripsi").val('');
+        $("#input_waktu_mulai").val('');
+        $("#input_waktu_selesai").val('');
+        $("#input_status").val('');
+      });
+
+      $('#batal_up').on('click', function() {
+        $('#form_edit')[0].reset();
+        $("#edit_siswa").val('');
+        $("#edit_nama").val('');
+        $("#edit_deskripsi").val('');
+        $("#edit_waktu_mulai").val('');
+        $("#edit_waktu_selesai").val('');
+        $("#edit_status").val('');
+      });
+    })
+
+    function detail_edit(isi) {
+      $.getJSON('<?php echo base_url('Admin/Jobdesk/data_edit'); ?>' + '/' + isi, {},
+        function(json) {
+          $('#id_jobdesk').val(json.id_jobdesk);
+          $('edit_nama').val(json.nama_jobdesk)
+          $('#edit_deskripsi').val(json.deskripsi);
+          $('#edit_waktu_mulai').val(json.waktu_mulai);
+          $('#edit_waktu_selesai').val(json.waktu_selesai);
+          $('#edit_status').val(json.status_jobdesk);
+
+          $('#edit_siswa').append('<option selected value="' + json.id_siswa + '">' + json.nama_siswa +
+            '</option>');
+          $('#edit_siswa').select2('data', {
+            id: json.id_siswa,
+            text: json.nama_siswa
+          });
+          $('#edit_siswa').trigger('change');
+        });
+    }
   </script>
 
-  <?= $this->include("Admin/layout/js_tabel") ?>
+
 </body>
 
 </html>
