@@ -13,8 +13,7 @@ class Model_jobdesk extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('jobdesk');
-        $builder->select('jobdesk.id_jobdesk, siswa.nama_siswa, jobdesk.nama_jobdesk, jobdesk.deskripsi, 
-        jobdesk.waktu_mulai, jobdesk.waktu_selesai, jobdesk.status_jobdesk');
+        $builder->select('jobdesk.id_jobdesk, jobdesk.nama_jobdesk, jobdesk.deskripsi, jobdesk.waktu_mulai, jobdesk.waktu_selesai, jobdesk.status_jobdesk, siswa.nama_siswa');
         $builder->join('siswa', 'jobdesk.id_siswa = siswa.id_siswa');
         return $builder->get();
     }
@@ -29,8 +28,7 @@ class Model_jobdesk extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('jobdesk');
-        $builder->select('jobdesk.id_jobdesk, jobdesk.nama_jobdesk, jobdesk.deskripsi, 
-        jobdesk.waktu_mulai, jobdesk.waktu_selesai, jobdesk.status_jobdesk, siswa.id_siswa, siswa.nama_siswa');
+        $builder->select('jobdesk.id_jobdesk, jobdesk.nama_jobdesk, jobdesk.deskripsi, jobdesk.waktu_mulai, jobdesk.waktu_selesai, jobdesk.status_jobdesk, siswa.id_siswa, siswa.nama_siswa');
         $builder->join('siswa', 'jobdesk.id_siswa = siswa.id_siswa');
         $builder->where('id_jobdesk', $id);
         return $builder->get();

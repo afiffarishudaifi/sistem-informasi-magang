@@ -82,7 +82,8 @@
                 <th>Nama Siswa</th>
                 <th>Judul</th>
                 <th>Deskripsi</th>
-                <th>Waktu</th>
+                <th>Waktu Mulai</th>
+                <th>Waktu Selesai</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -93,7 +94,8 @@
                 <th>Nama Siswa</th>
                 <th>Judul</th>
                 <th>Deskripsi</th>
-                <th>Waktu</th>
+                <th>Waktu Mulai</th>
+                <th>Waktu Selesai</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -108,7 +110,8 @@
                   <td><?= $item['nama_siswa']; ?></td>
                   <td><?= $item['nama_jobdesk']; ?></td>
                   <td><?= $item['deskripsi']; ?></td>
-                  <td><?= $item['waktu_mulai']; ?> - <?= $item['waktu_selesai']; ?></td>
+                  <td><?= $item['waktu_mulai']; ?></td>
+                  <td><?= $item['waktu_selesai']; ?></td>
                   <td><?= $item['status_jobdesk']; ?></td>
                   <td>
                     <center>
@@ -328,7 +331,7 @@
       $.getJSON('<?php echo base_url('Admin/Jobdesk/data_edit'); ?>' + '/' + isi, {},
         function(json) {
           $('#id_jobdesk').val(json.id_jobdesk);
-          $('edit_nama').val(json.nama_jobdesk)
+          $('#edit_nama').val(json.nama_jobdesk)
           $('#edit_deskripsi').val(json.deskripsi);
           $('#edit_waktu_mulai').val(json.waktu_mulai);
           $('#edit_waktu_selesai').val(json.waktu_selesai);
