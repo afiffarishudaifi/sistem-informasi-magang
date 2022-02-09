@@ -19,7 +19,7 @@ class Absen extends BaseController
     public function index()
     {
         $model = new Model_absen();
-        $absen = $model->view_data()->getResultArray();
+        $absen = $model->view_data_pengajuan()->getResultArray();
 
         $data = [
             'judul' => 'Tabel Absensi',

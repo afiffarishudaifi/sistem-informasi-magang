@@ -18,6 +18,16 @@ class Model_absen extends Model
         return $builder->get();
     }
 
+    public function view_data_pengajuan()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('absen');
+        $builder->select('absen.id_absen, absen.foto_absen, siswa.nama_siswa, absen.status_absen');
+        $builder->join('siswa', 'siswa.id_siswa = absen.id_siswa');
+        $builder->where('konfirmasi_absen','Menunggu');
+        return $builder->get();
+    }
+
     public function add_data($data)
     {
         $query = $this->db->table('absen')->insert($data);
@@ -66,5 +76,14 @@ class Model_absen extends Model
         $builder = $db->table('siswa');
         $builder->select('id_siswa, nama_siswa');
         return $builder->get();
+    }
+
+    public function view_data_sudah($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('absen');
+        $builder->where('id_siswa', $id);
+        $builder->where('date(waktu_absen)', date('Y-m-d'));
+        return $builder->countAllResults();
     }
 }

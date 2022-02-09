@@ -23,7 +23,7 @@ class Dashboard extends BaseController
         $data = [
             'judul' => 'Tabel Siswa'
         ];
-        return view('Siswa/index', $data);
+        return view('Peserta/index', $data);
     }
 
     public function add_admin()
