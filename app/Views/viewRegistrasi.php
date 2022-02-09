@@ -59,7 +59,7 @@
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_nama">
                     <input type="text" class="form-control" id="input_nama" name="input_nama"
                         data-parsley-required="true" autocomplete="off" autofocus="" />
-                    <label class="floating-label">Nama Siswa</label>
+                    <label class="floating-label">Nama Peserta Magang</label>
                 </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_sekolah">
@@ -80,14 +80,14 @@
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
                   <input type="text" class="form-control" id="input_username" name="input_username"
                         data-parsley-required="true" autocomplete="off" />
-                  <label class="floating-label">Username Siswa</label>
+                  <label class="floating-label">Username Peserta Magang</label>
                     <span class="text-danger" id="error_username"></span>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_password">
                   <input type="Password" class="form-control" id="input_password" name="input_password"
                       data-parsley-required="true" autofocus="on">
-                  <label class="floating-label">Password Siswa</label>
+                  <label class="floating-label">Password Peserta Magang</label>
               </div>
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_konfirmasi_password">
                   <input type="Password" class="form-control" id="input_password_konfirmasi" name="input_password_konfirmasi"
@@ -98,7 +98,7 @@
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_email">
                   <input type="email" class="form-control" id="input_email" name="input_email"
                         data-parsley-required="true" autocomplete="off" />
-                  <label class="floating-label">Email Siswa</label>
+                  <label class="floating-label">Email Peserta Magang</label>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_no_telp">
@@ -109,17 +109,17 @@
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_alamat">
                   <textarea class="form-control" id="input_alamat" name="input_alamat" data-parsley-required="true" ></textarea>
-                  <label class="floating-label">Alamat Siswa</label>
+                  <label class="floating-label">Alamat Peserta Magang</label>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_jurusan">
                   <input type="text" class="form-control" id="input_jurusan" name="input_jurusan"
                         data-parsley-required="true" autocomplete="off" />
-                  <label class="floating-label">Jurusan</label>
+                  <label class="floating-label">Jurusan/Program Studi</label>
               </div>
 
               <div class="form-group" id="see_foto">
-                <label class="label"><b>Foto Siswa</b></label>
+                <label class="label"><b>Foto Peserta Magang</b></label>
                 <br>
                   <input type="file" id="input_foto" class="dropify-event" data-parsley-required="true" name="input_foto" accept="image/png, image/gif, image/jpeg"
                   />

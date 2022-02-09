@@ -21,7 +21,7 @@ $session = session();
                             if (
                                 $uri->getSegment(2) == 'Admin' || $uri->getSegment(2) == 'IndeksPenilaian' ||
                                 $uri->getSegment(2) == 'Jabatan' || $uri->getSegment(2) == 'Jobdesk' ||
-                                $uri->getSegment(2) == 'Nilai' || $uri->getSegment(2) == 'Sekolah' || $uri->getSegment(2) == 'Sertifikat' || $uri->getSegment(2) == 'Siswa'
+                                $uri->getSegment(2) == 'Nilai' || $uri->getSegment(2) == 'Sekolah' || $uri->getSegment(2) == 'Sertifikat' || $uri->getSegment(2) == 'Peserta'
                             ) {
                                 echo "active";
                             } ?>">
@@ -80,11 +80,11 @@ $session = session();
                 </a>
               </li>
               <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Siswa') {
+                            if ($uri->getSegment(2) == 'Peserta') {
                                 echo "active";
                             } ?>">
-                <a class="animsition-link" href="<?= base_url('Admin/Siswa'); ?>">
-                  <span class="site-menu-title">Siswa</span>
+                <a class="animsition-link" href="<?= base_url('Admin/Peserta'); ?>">
+                  <span class="site-menu-title">Peserta Magang</span>
                 </a>
               </li>
             </ul>

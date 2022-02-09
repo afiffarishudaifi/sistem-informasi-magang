@@ -3,22 +3,22 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\Model_siswa;
+use App\Models\Model_peserta;
 
-class Siswa extends BaseController
+class Peserta extends BaseController
 {
 
-    protected $Model_siswa;
+    protected $Model_peserta;
     public function __construct()
     {
-        $this->Model_siswa = new Model_siswa();
+        $this->Model_peserta = new Model_peserta();
         helper(['form', 'url']);
         $this->db = db_connect();
     }
 
     public function index()
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $siswa = $model->view_data()->getResultArray();
         $sekolah = $model->data_sekolah()->getResultArray();
 
@@ -57,7 +57,7 @@ class Siswa extends BaseController
             'status'     => $this->request->getPost('input_status')
         );
 
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $model->add_data($data);
         $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
         return redirect()->to(base_url('Admin/Siswa'));
@@ -67,7 +67,7 @@ class Siswa extends BaseController
     {
         $session = session();
         $encrypter = \Config\Services::encrypter();
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         
         $id = $this->request->getPost('id_siswa');
 
@@ -159,7 +159,7 @@ class Siswa extends BaseController
     public function delete_siswa()
     {
         $session = session();
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $id = $this->request->getPost('id');
         // $foreign = $model->cek_foreign($id);
         // if ($foreign == 0) {
@@ -182,7 +182,7 @@ class Siswa extends BaseController
 
     public function cek_username($username)
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $cek_username = $model->cek_username($username)->getResultArray();
         $respon = json_decode(json_encode($cek_username), true);
         $data['results'] = count($respon);
@@ -191,7 +191,7 @@ class Siswa extends BaseController
 
     public function cek_nis($nis)
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $cek_nis = $model->cek_nis($nis)->getResultArray();
         $respon = json_decode(json_encode($cek_nis), true);
         $data['results'] = count($respon);
@@ -200,7 +200,7 @@ class Siswa extends BaseController
 
     public function data_edit($id_siswa)
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
 
         $data_pengguna = $model->detail_data($id_siswa)->getResultArray();
         $respon = json_decode(json_encode($data_pengguna), true);
