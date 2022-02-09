@@ -30,7 +30,7 @@ class Pengaturan extends BaseController
             'judul' => 'Pengaturan Akun',
             'sekolah' => $sekolah
         ];
-        return view('Siswa/viewPengaturan', $data);
+        return view('Peserta/viewPengaturan', $data);
     }
 
     public function update_siswa()
