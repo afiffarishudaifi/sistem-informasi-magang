@@ -130,8 +130,11 @@ $session = session();
                     <span class="site-menu-title">Peserta Magang</span>
                 </a>
               </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Admin/IndeksPenilaian'); ?>">
+              <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'LaporanAbsensi') {
+                                echo "active";
+                            } ?>">
+                <a class="animsition-link" href="<?= base_url('Admin/LaporanAbsensi'); ?>">
                     <span class="site-menu-title">Absensi Magang</span>
                 </a>
               </li>
