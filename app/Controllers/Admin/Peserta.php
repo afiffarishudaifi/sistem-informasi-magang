@@ -60,7 +60,7 @@ class Peserta extends BaseController
         $model = new Model_peserta();
         $model->add_data($data);
         $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
-        return redirect()->to(base_url('Admin/Siswa'));
+        return redirect()->to(base_url('Admin/Peserta'));
     }
 
     public function update_siswa()
@@ -153,7 +153,7 @@ class Peserta extends BaseController
 
         $model->update_data($data, $id);
         $session->setFlashdata('sukses', 'Data sudah berhasil diubah');
-        return redirect()->to(base_url('Admin/Siswa'));
+        return redirect()->to(base_url('Admin/Peserta'));
     }
 
     public function delete_siswa()
@@ -177,7 +177,7 @@ class Peserta extends BaseController
         // } else {
         //     session()->setFlashdata('gagal', 'Data ini dipakai di tabel lain dan tidak bisa dihapus');
         // }
-        return redirect()->to('/Admin/Siswa');
+        return redirect()->to('/Admin/Peserta');
     }
 
     public function cek_username($username)
