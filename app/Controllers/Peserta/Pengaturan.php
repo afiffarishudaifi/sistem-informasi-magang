@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers\Siswa;
+namespace App\Controllers\Peserta;
 
 use App\Controllers\BaseController;
-use App\Models\Model_siswa;
+use App\Models\Model_peserta;
 
 class Pengaturan extends BaseController
 {
@@ -16,14 +16,14 @@ class Pengaturan extends BaseController
         // if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa' || $session->get('status_login') != 'Sekolah') {
         //     return redirect()->to('Login');
         // }
-        $this->Model_siswa = new Model_siswa();
+        $this->Model_peserta = new Model_peserta();
 
         helper(['form', 'url']);
     }
 
     public function index()
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $sekolah = $model->data_sekolah()->getResultArray();
 
         $data = [
@@ -37,7 +37,7 @@ class Pengaturan extends BaseController
     {
         $session = session();
         $encrypter = \Config\Services::encrypter();
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         
         $id = $this->request->getPost('id_siswa');
 
@@ -120,7 +120,7 @@ class Pengaturan extends BaseController
 
     public function cek_username($username)
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $cek_username = $model->cek_username($username)->getResultArray();
         $respon = json_decode(json_encode($cek_username), true);
         $data['results'] = count($respon);
@@ -129,7 +129,7 @@ class Pengaturan extends BaseController
 
     public function cek_nis($nis)
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $cek_nis = $model->cek_nis($nis)->getResultArray();
         $respon = json_decode(json_encode($cek_nis), true);
         $data['results'] = count($respon);
@@ -138,7 +138,7 @@ class Pengaturan extends BaseController
 
     public function data_edit($id_siswa)
     {
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $encrypter = \Config\Services::encrypter();
 
         $data_pengguna = $model->detail_data($id_siswa)->getResultArray();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Siswa;
+namespace App\Controllers\Peserta;
 
 use App\Controllers\BaseController;
 

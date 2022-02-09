@@ -49,9 +49,9 @@
     <![endif]-->
 
     
-    <?= $this->include("Siswa/layout/nav") ?>  
+    <?= $this->include("Peserta/layout/nav") ?>  
 
-    <?= $this->include("Siswa/layout/sidebar") ?>  
+    <?= $this->include("Peserta/layout/sidebar") ?>  
 
     <!-- Page -->
     <div class="page">
@@ -140,7 +140,7 @@
 
 
     <!-- Footer -->
-    <?= $this->include("Siswa/layout/footer") ?>
+    <?= $this->include("Peserta/layout/footer") ?>
     
     <!-- Core  -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>

@@ -4,13 +4,13 @@ $session = session();
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
   
-  <?= $this->include("Siswa/layout/head_tabel"); ?>
+  <?= $this->include("Peserta/layout/head_tabel"); ?>
 
   <body class="animsition">
 
-    <?= $this->include("Siswa/layout/nav") ?>  
+    <?= $this->include("Peserta/layout/nav") ?>  
 
-    <?= $this->include("Siswa/layout/sidebar") ?> 
+    <?= $this->include("Peserta/layout/sidebar") ?> 
 
     <!-- Page -->
     <div class="page">
@@ -29,15 +29,15 @@ $session = session();
           </header>
           <div class="panel-body">
             <!-- Modal Edit Class-->
-		    <form action="<?php echo base_url('Siswa/Pengaturan/update_siswa'); ?>" method="post" id="form_edit"
+		    <form action="<?php echo base_url('Peserta/Pengaturan/update_siswa'); ?>" method="post" id="form_edit"
 		        data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
 		        <?= csrf_field(); ?>
 
                     <input type="hidden" value="<?= $session->get('id_login'); ?>" name="id_siswa" id="id_siswa">
                       <div class="form-group form-material">
-                          <label class="form-control-label">Nama Siswa</label>
+                          <label class="form-control-label">Nama Peserta Magang</label>
                           <input type="text" class="form-control" id="edit_nama" name="edit_nama"
-                                data-parsley-required="true" placeholder="Masukkan Nama Siswa" autofocus="" autocomplete="off" />
+                                data-parsley-required="true" placeholder="Masukkan Nama Peserta Magang" autofocus="" autocomplete="off" />
                       </div>
 
                       <div class="form-group form-material">
@@ -57,8 +57,8 @@ $session = session();
                       </div>
 
                       <div class="form-group form-material">
-                          <label class="form-group form-material">Password Siswa</label>
-                          <input type="Password" class="form-control" id="edit_password" name="edit_password" placeholder="Masukkan Password Siswa" autofocus="on">
+                          <label class="form-group form-material">Password Peserta Magang</label>
+                          <input type="Password" class="form-control" id="edit_password" name="edit_password" placeholder="Masukkan Password Peserta Magang" autofocus="on">
                       </div>
                       <div class="form-group form-material">
                           <label class="form-group form-material">Ulangi Password</label>
@@ -66,9 +66,9 @@ $session = session();
                       </div>
 
                       <div class="form-group form-material">
-                          <label class="form-control-label">Email Siswa</label>
+                          <label class="form-control-label">Email Peserta Magang</label>
                           <input type="email" class="form-control" id="edit_email" name="edit_email"
-                                data-parsley-required="true" placeholder="Masukkan Email Siswa" autocomplete="off" />
+                                data-parsley-required="true" placeholder="Masukkan Email Peserta Magang" autocomplete="off" />
                       </div>
 
                       <div class="form-group form-material">
@@ -78,12 +78,12 @@ $session = session();
                       </div>
 
                       <div class="form-group form-material">
-                          <label class="form-control-label">Alamat Siswa</label>
+                          <label class="form-control-label">Alamat Peserta Magang</label>
                           <textarea class="form-control" id="edit_alamat" name="edit_alamat" data-parsley-required="true" placeholder="Masukkan Alamat"></textarea>
                       </div>
 
                       <div class="form-group form-material">
-                          <label class="form-control-label">Jurusan</label>
+                          <label class="form-control-label">Jurusan/Program Studi</label>
                           <input type="text" class="form-control" id="edit_jurusan" name="edit_jurusan"
                                 data-parsley-required="true" placeholder="Masukkan Jurusan" autocomplete="off" />
                       </div>
@@ -97,7 +97,7 @@ $session = session();
                       </div>
 
                       <div class="form-group">
-                        <label class="form-control-label"><b>Foto Siswa</b></label>
+                        <label class="form-control-label"><b>Foto Peserta Magang</b></label>
                         <br>
                           <input type="file" id="edit_foto" class="dropify-event" name="edit_foto" accept="image/png, image/gif, image/jpeg"
                           />
@@ -116,9 +116,9 @@ $session = session();
     <!-- End Page -->
 
     <!-- Footer -->
-    <?= $this->include("Siswa/layout/footer") ?>
+    <?= $this->include("Peserta/layout/footer") ?>
 
-    <?= $this->include("Siswa/layout/js_tabel") ?>
+    <?= $this->include("Peserta/layout/js_tabel") ?>
 
     <script>
         function Hapus(id){
@@ -128,7 +128,7 @@ $session = session();
 
         $(function() {
 
-        	$.getJSON('<?php echo base_url('Siswa/Pengaturan/data_edit'); ?>' + '/' + <?= $session->get('id_login'); ?>, {},
+        	$.getJSON('<?php echo base_url('Peserta/Pengaturan/data_edit'); ?>' + '/' + <?= $session->get('id_login'); ?>, {},
                 function(json) {
                     $('#id_siswa').val(json.id_siswa);
                     $('#edit_nis').val(json.nomor_induk);
@@ -166,7 +166,7 @@ $session = session();
                     $.ajax({
                         type: 'GET',
                         dataType: 'json',
-                        url: '<?php echo base_url('Siswa/Pengaturan/cek_username'); ?>' + '/' + username,
+                        url: '<?php echo base_url('Peserta/Pengaturan/cek_username'); ?>' + '/' + username,
                         success: function (data) {
                             if(data['results']>0){
                                 $("#error_edit_username").html('Username telah dipakai,coba yang lain');

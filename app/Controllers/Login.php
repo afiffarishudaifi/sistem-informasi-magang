@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\Model_login;
-use App\Models\Model_siswa;
+use App\Models\Model_peserta;
 
 class Login extends BaseController
 {
@@ -11,7 +11,7 @@ class Login extends BaseController
         $session = session();
 
         if ($session->get('nama_login') || $session->get('status_login') == 'Siswa') {
-            return redirect()->to('Siswa/Dashboard');
+            return redirect()->to('Peserta/Dashboard');
         } else if ($session->get('nama_login') || $session->get('status_login') == 'Sekolah') {
             return redirect()->to('Sekolah/Dashboard');
         }
@@ -123,7 +123,7 @@ class Login extends BaseController
         $session = session();
 
         if ($session->get('nama_login') || $session->get('status_login') == 'Siswa') {
-            return redirect()->to('Siswa/Dashboard');
+            return redirect()->to('Peserta/Dashboard');
         } else if ($session->get('nama_login') || $session->get('status_login') == 'Sekolah') {
             return redirect()->to('Sekolah/Dashboard');
         }
@@ -152,7 +152,7 @@ class Login extends BaseController
                         'is_admin' => TRUE
                     ];
                     $session->set($ses_data);
-                    return redirect()->to('/Siswa/Dashboard');
+                    return redirect()->to('/Peserta/Dashboard');
                 } else {
                     $session->setFlashdata('msg', 'Password Tidak Sesuai');
                     return redirect()->to('/Login');
@@ -193,7 +193,7 @@ class Login extends BaseController
     public function registrasiSiswa()
     {
         $session = session();
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $sekolah = $model->data_sekolah()->getResultArray();
         $data = [
             'sekolah' => $sekolah
@@ -228,7 +228,7 @@ class Login extends BaseController
             'status'     => 'Tidak Aktif'
         );
 
-        $model = new Model_siswa();
+        $model = new Model_peserta();
         $model->add_data($data);
         $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
         return redirect()->to(base_url('Login/registrasiSiswa'));
