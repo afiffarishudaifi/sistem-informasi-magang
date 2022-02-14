@@ -1,76 +1,80 @@
 <?php $session = session(); ?>
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
-  
-  <?= $this->include("Admin/layout/head_tabel"); ?>
 
-  <body class="animsition">
+<?= $this->include("Admin/layout/head_tabel"); ?>
 
-    <?= $this->include("Admin/layout/nav") ?>  
+<body class="animsition">
 
-    <?= $this->include("Admin/layout/sidebar") ?> 
+    <?= $this->include("Admin/layout/nav") ?>
+
+    <?= $this->include("Admin/layout/sidebar") ?>
 
     <!-- Page -->
     <div class="page">
-      <div class="page-header">
-        <h1 class="page-title"><?= $judul; ?></h1>
-        <div class="page-header-actions">
-          <button class="btn btn-sm btn-primary btn-round" data-toggle="modal"
-            data-target="#addModal"><i class="fa fa-plus"></i> Tambah Data</button>
+        <div class="page-header">
+            <h1 class="page-title"><?= $judul; ?></h1>
+            <div class="page-header-actions">
+                <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
+                        class="fa fa-plus"></i> Tambah Data</button>
+            </div>
         </div>
-      </div>
 
-      <div class="page-content">
-
-        <!-- Panel Table Individual column searching -->
-        <div class="panel">
-          <header class="panel-heading">
-            <h3 class="panel-title"><?= $judul; ?></h3>
-          </header>
-          <div class="panel-body">
-            <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
-              <thead>
-                <tr>
-                  <th style="text-align: center;">No</th>
-                  <th style="text-align: center;">Desain Sertifikat</th>
-                  <th style="text-align: center;">Aksi</th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th style="text-align: center;">No</th>
-                  <th style="text-align: center;">Desain Sertifikat</th>
-                  <th style="text-align: center;">Aksi</th>
-                </tr>
-              </tfoot>
-              <tbody>
-                <?php
+        <div class="page-content">
+            <!-- Panel Table Individual column searching -->
+            <div class="panel">
+                <header class="panel-heading">
+                    <h3 class="panel-title"><?= $judul; ?></h3>
+                </header>
+                <div class="panel-body">
+                    <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">No</th>
+                                <th style="text-align: center;">Desain Sertifikat</th>
+                                <th style="text-align: center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th style="text-align: center;">No</th>
+                                <th style="text-align: center;">Desain Sertifikat</th>
+                                <th style="text-align: center;">Aksi</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <?php
                     $no = 1;
                     foreach ($sertifikat as $item) {
                     ?>
-                    <tr>
-                        <td width="1%"><?= $no++; ?></td>
-                        <td>
-                          <center>
-                              <img class="img-rounded" style="width: 200px; height: 120px;" src="<?= base_url() . '/' .$item['foto_sertifikat']; ?>">
-                          </center>
-                        </td>
-                        <td>
-                            <center>
-                                <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_sertifikat']; ?>)" class="btn btn-sm btn-edit btn-warning">Edit</a>
-                                <a href="" class="btn btn-sm btn-delete btn-danger" onclick="Hapus(<?= $item['id_sertifikat']; ?>)" data-toggle="modal"
-                                    data-target="#deleteModal" data-id="<?= $item['id_sertifikat']; ?>">Hapus</a>
-                            </center>
-                        </td>
-                    </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- End Panel Table Individual column searching -->
+                            <tr>
+                                <td width="1%"><?= $no++; ?></td>
+                                <td>
+                                    <center>
+                                        <img class="img-rounded" style="width: 200px; height: 120px;"
+                                            src="<?= base_url() . '/' .$item['foto_sertifikat']; ?>">
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal"
+                                            name="btn-edit" onclick="detail_edit(<?= $item['id_sertifikat']; ?>)"
+                                            class="btn btn-sm btn-edit btn-warning">Edit</a>
+                                        <a href="" class="btn btn-sm btn-delete btn-danger"
+                                            onclick="Hapus(<?= $item['id_sertifikat']; ?>)" data-toggle="modal"
+                                            data-target="#deleteModal"
+                                            data-id="<?= $item['id_sertifikat']; ?>">Hapus</a>
+                                    </center>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- End Panel Table Individual column searching -->
 
-      </div>
+        </div>
     </div>
     <!-- End Page -->
 
@@ -90,12 +94,12 @@
                     </div>
                     <div class="modal-body">
 
-	                    <div class="form-group">
-                        <label class="form-control-label"><b>Foto Sertifikat</b></label>
-                        <br>
-                          <input type="file" id="input_foto" class="dropify-event" name="input_foto" accept="image/png, image/gif, image/jpeg"
-                          />
-                      </div>
+                        <div class="form-group">
+                            <label class="form-control-label"><b>Foto Sertifikat</b></label>
+                            <br>
+                            <input type="file" id="input_foto" class="dropify-event" name="input_foto"
+                                accept="image/png, image/gif, image/jpeg" />
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -119,32 +123,31 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Ubah Data Sertifikat </h5>
-                            <button type="reset" class="close" data-dismiss="modal" id="batal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <button type="reset" class="close" data-dismiss="modal" id="batal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="id_sertifikat" id="id_sertifikat">
 
                         <div class="form-group">
-                          <div class="col-md-12">
-                              <center>
-                                  <img id="foto_lama" style="width: 400px; height: 300px;" src="">
-                              </center>
-                          </div>
-                      </div>
+                            <div class="col-md-12">
+                                <center>
+                                    <img id="foto_lama" style="width: 400px; height: 300px;" src="">
+                                </center>
+                            </div>
+                        </div>
 
-                      <div class="form-group">
-                          <label class="form-control-label"><b>Foto Sertifikat</b></label>
-                          <br>
-                          <input type="file" id="edit_foto" class="dropify-event" name="edit_foto" accept="image/png, image/gif, image/jpeg"
-                          />
-                      </div>
+                        <div class="form-group">
+                            <label class="form-control-label"><b>Foto Sertifikat</b></label>
+                            <br>
+                            <input type="file" id="edit_foto" class="dropify-event" name="edit_foto"
+                                accept="image/png, image/gif, image/jpeg" />
+                        </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="reset" class="btn btn-secondary" id="batal_up"
-                            data-dismiss="modal">Batal</button>
+                        <button type="reset" class="btn btn-secondary" id="batal_up" data-dismiss="modal">Batal</button>
                         <button type="submit" name="update" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
@@ -181,52 +184,52 @@
     </form>
     <!-- End Modal Delete Class -->
 
-
     <!-- Footer -->
     <?= $this->include("Admin/layout/footer") ?>
 
     <?= $this->include("Admin/layout/js_tabel") ?>
 
     <script>
-        function Hapus(id){
-            $('.id').val(id);
-            $('#deleteModal').modal('show');
-        };
+    function Hapus(id) {
+        $('.id').val(id);
+        $('#deleteModal').modal('show');
+    };
 
-        $(function() {
+    $(function() {
 
-            $('#batal').on('click', function() {
-                $('#form_add')[0].reset();
-                $('#form_edit')[0].reset();
-                $("#input_foto").val('');
+        $('#batal').on('click', function() {
+            $('#form_add')[0].reset();
+            $('#form_edit')[0].reset();
+            $("#input_foto").val('');
+        });
+
+        $('#batal_add').on('click', function() {
+            $('#form_add')[0].reset();
+            $("#input_foto").val('');
+        });
+
+        $('#batal_up').on('click', function() {
+            $('#form_edit')[0].reset();
+            $("#edit_foto").val('');
+        });
+    })
+
+    function detail_edit(isi) {
+        $.getJSON('<?php echo base_url('Admin/Sertifikat/data_edit'); ?>' + '/' + isi, {},
+            function(json) {
+                $('#id_sertifikat').val(json.id_sertifikat);
+
+                if (json.foto_sertifikat != '' || json.foto_sertifikat != null) {
+                    $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + json.foto_sertifikat);
+                } else {
+                    $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + "docs/img/img_sertifikat/noimage.jpg");
+                }
+
             });
-
-            $('#batal_add').on('click', function() {
-                $('#form_add')[0].reset();
-                $("#input_foto").val('');
-            });
-
-            $('#batal_up').on('click', function() {
-                $('#form_edit')[0].reset();
-                $("#edit_foto").val('');
-            });
-        })
-
-        function detail_edit(isi) {
-            $.getJSON('<?php echo base_url('Admin/Sertifikat/data_edit'); ?>' + '/' + isi, {},
-                function(json) {
-                    $('#id_sertifikat').val(json.id_sertifikat);
-
-                    if (json.foto_sertifikat != '' || json.foto_sertifikat != null) {
-                        $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + json.foto_sertifikat) ;
-                    } else {
-                        $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + "docs/img/img_sertifikat/noimage.jpg");
-                    }
-
-                });
-        }
+    }
     </script>
 
 
-  </body>
+</body>
+
 </html>
