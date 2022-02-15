@@ -29,7 +29,7 @@
                 </header>
 
                 <div class="panel-body">
-                	<form method="POST">
+                	<form method="POST" style="padding-bottom: 20px;">
                 		<div class="row">
                 			<div class="col-md-4">
                 				<div class="input-group">
@@ -41,13 +41,11 @@
                                     <input type="text" class="form-control float-right" id="tanggal" name="tanggal">
                                 </div>
                 			</div>
+                            <div class="col-md-2">
+                                <button class="btn btn-sm btn-success"><span class="fa fa-print"></span> Cetak</button>
+                            </div>
                 		</div>
                 	</form>
-                	<div class="row" style="padding-top: 10px;padding-bottom: 10px;">
-                		<div class="col-md-2">
-                			<button class="btn btn-sm btn-success"><span class="fa fa-print"></span> Cetak</button>
-                		</div>
-                	</div>
                     <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch table">
                         <thead>
                             <tr>
