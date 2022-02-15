@@ -85,10 +85,7 @@
         $(function() {            
             /* Isi Table */
             $('.table').DataTable({
-                "lengthMenu": [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"]
-                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "ajax": {
                     "url": "<?= base_url() ?>/Admin/LaporanPeserta/data/" + $('#tanggal').val(),
                     "dataSrc": ""
@@ -114,8 +111,7 @@
                     {
                         "data": "status"
                     }
-                ],
-                dom: 'Bfrtip'
+                ]
             });
             /* Isi Table */
         });
