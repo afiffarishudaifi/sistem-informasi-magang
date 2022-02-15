@@ -126,7 +126,7 @@ $session = session();
                 </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Admin/Admin'); ?>">
+                <a class="animsition-link" href="<?= base_url('Admin/LaporanPeserta'); ?>">
                     <span class="site-menu-title">Peserta Magang</span>
                 </a>
               </li>
@@ -139,7 +139,7 @@ $session = session();
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Admin/Jabatan'); ?>">
+                <a class="animsition-link" href="<?= base_url('Admin/LaporanPeserta'); ?>">
                     <span class="site-menu-title">Riwayat Peserta Magang</span>
                 </a>
               </li>
