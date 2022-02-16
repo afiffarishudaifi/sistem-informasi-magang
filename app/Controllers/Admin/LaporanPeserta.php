@@ -28,13 +28,19 @@ class LaporanPeserta extends BaseController
         return view('Admin/viewLaporanPeserta', $data);
     }
 
-    public function data($tanggal = null)
+    public function data($tanggal = null, $status = null)
     {
         $session = session();
 
         if ($tanggal) $tgl = explode(' - ', $tanggal);
-        if ($tanggal) $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0]));
-        if ($tanggal) $param['cek_waktu2'] = date("Y-m-d", strtotime($tgl[1]));
+        if ($tanggal) { $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0])); } else { $param['cek_waktu1'] = date("Y-m-d"); };
+        if ($tanggal) { $param['cek_waktu2'] = date("Y-m-d", strtotime($tgl[1])); } else { $param['cek_waktu2'] = date("Y-m-d"); };
+
+        if ($status != 'null') {
+            $param['status'] = $status;
+        } else {
+            $param['status'] = null;
+        }
 
         $model = new Model_laporan_peserta();
         $laporan = $model->filter($param)->getResultArray();
@@ -60,14 +66,20 @@ class LaporanPeserta extends BaseController
         echo json_encode($data);
     }
 
-    public function data_cetak($tanggal = null)
+    public function data_cetak($tanggal = null, $status = null)
     {
         $session = session();
 
         if ($tanggal) $tgl = explode(' - ', $tanggal);
-        if ($tanggal) $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0]));
-        if ($tanggal) $param['cek_waktu2'] = date("Y-m-d", strtotime($tgl[1]));
+        if ($tanggal) { $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0])); } else { $param['cek_waktu1'] = date("Y-m-d"); };
+        if ($tanggal) { $param['cek_waktu2'] = date("Y-m-d", strtotime($tgl[1])); } else { $param['cek_waktu2'] = date("Y-m-d"); };
 
+        if ($status != 'null') {
+            $param['status'] = $status;
+        } else {
+            $param['status'] = null;
+        }
+        
         $model = new Model_laporan_peserta();
         $laporan = $model->filter($param)->getResultArray();
 

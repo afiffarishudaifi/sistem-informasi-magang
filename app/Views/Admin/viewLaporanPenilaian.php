@@ -41,21 +41,6 @@
                                     <input type="text" class="form-control float-right" id="tanggal" name="tanggal">
                                 </div>
                 			</div>
-
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-pencil"></i>
-                                        </span>
-                                    </div>
-                                    <select name="input_status" class="form-control float-right" id="input_status" onchange="ganti(this.value)">
-                                        <option value="null" selected="">Pilih Status</option>
-                                        <option value="Aktif">Aktif</option>
-                                        <option value="Tidak Aktif">Tidak aktif</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="col-md-2">
                                 <button class="btn btn-sm btn-success"><span class="fa fa-print"></span> Cetak</button>
                             </div>
@@ -65,12 +50,12 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center;">Nama Siswa</th>
-                                <th style="text-align: center;">Alamat Siswa</th>
-                                <th style="text-align: center;">Jurusan</th>
-                                <th style="text-align: center;">Asal sekolah</th>
-                                <th style="text-align: center;">Mulai Magang</th>
-                                <th style="text-align: center;">Selesai Magang</th>
-                                <th style="text-align: center;">Status Magang</th>
+                                <th style="text-align: center;">Kedisiplinan</th>
+                                <th style="text-align: center;">Tanggung Jawab</th>
+                                <th style="text-align: center;">Kerja Sama</th>
+                                <th style="text-align: center;">Kerajinan</th>
+                                <th style="text-align: center;">Inisiatif</th>
+                                <th style="text-align: center;">Rata Rata</th>
                             </tr>
                         </thead>
                     </table>
@@ -95,38 +80,34 @@
             }
         });
 
-        function ganti(status) {
-            $('.table').DataTable().ajax.url('<?= base_url() ?>/Admin/LaporanPeserta/data/' + $('#tanggal').val() + '/' + status).load();
-        };
-
         $(function() {            
             /* Isi Table */
             $('.table').DataTable({
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "ajax": {
-                    "url": "<?= base_url() ?>/Admin/LaporanPeserta/data/" + $('#tanggal').val() + '/' + $('#input_status').val(),
+                    "url": "<?= base_url() ?>/Admin/LaporanPenilaian/data/" + $('#tanggal').val(),
                     "dataSrc": ""
                 },
                 "columns": [{
                         "data": "nama_siswa"
                     },
                     {
-                        "data": "alamat_siswa"
+                        "data": "kedisiplinan"
                     },
                     {
-                        "data": "jurusan"
+                        "data": "tanggung_jawab"
                     },
                     {
-                        "data": "nama_sekolah"
+                        "data": "kerja_sama"
                     },
                     {
-                        "data": "waktu_mulai"
+                        "data": "kerajinan"
                     },
                     {
-                        "data": "waktu_selesai"
+                        "data": "inisiatif"
                     },
                     {
-                        "data": "status"
+                        "data": "rata_rata"
                     }
                 ]
             });
@@ -135,7 +116,7 @@
 
         $('#tanggal').on('apply.daterangepicker', function(ev, picker) {
             var tanggal = picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY');
-            $('.table').DataTable().ajax.url('<?= base_url() ?>/Admin/LaporanPeserta/data/' + tanggal + '/' + $('#input_status').val()).load();
+            $('.table').DataTable().ajax.url('<?= base_url() ?>/Admin/LaporanPenilaian/data/' + tanggal).load();
         });
     </script>
 

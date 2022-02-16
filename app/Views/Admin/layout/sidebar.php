@@ -118,7 +118,13 @@ $session = session();
                 </a>
           </li>
           <li class="site-menu-category">LAPORAN</li>
-          <li class="site-menu-item has-sub">
+          <li class="site-menu-item has-sub <?php
+                            if (
+                                $uri->getSegment(2) == 'LaporanPeserta' || $uri->getSegment(2) == 'LaporanAbsensi' ||
+                                $uri->getSegment(2) == 'LaporanPenilaian'
+                            ) {
+                                echo "active";
+                            } ?>">
             <a href="javascript:void(0)">
                     <i class="site-menu-icon md-assignment" aria-hidden="true"></i>
                     <span class="site-menu-title">Laporan</span>
@@ -139,12 +145,7 @@ $session = session();
                 </a>
               </li>
               <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Admin/LaporanPeserta'); ?>">
-                    <span class="site-menu-title">Riwayat Peserta Magang</span>
-                </a>
-              </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Admin/Jobdesk'); ?>">
+                <a class="animsition-link" href="">
                     <span class="site-menu-title">Penilaian Magang</span>
                 </a>
               </li>

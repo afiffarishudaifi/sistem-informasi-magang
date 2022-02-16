@@ -45,6 +45,7 @@ class Model_laporan_peserta extends Model
 		$builder->join('pengajuan_magang','pengajuan_magang.id_siswa = siswa.id_siswa','left');
         if ($param['cek_waktu1']) $builder->where('waktu_mulai >= ', $param['cek_waktu1']);
         if ($param['cek_waktu2']) $builder->where('waktu_selesai <= ', $param['cek_waktu2']);
+        if ($param['status']) $builder->where('status', $param['status']);
         
         return $builder->get();
     }
