@@ -25,26 +25,27 @@
 </head>
 <body>
 	<center>
-		<table>
+		<table width="625">
 			<tr>
 				<td><img src="<?= base_url() ?>/docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif" width="90" height="90"></td>
 				<td>
 				<center>
-					<font size="4"><b>BADAN KESATUAN BANGSA DAN POLITIK DALAM NEGERI</b></font><br>
-					<font size="4"><b>KABUPATEN MADIUN</b></font><br>
-					<font size="2"><i>Jl. MT. Haryono Telp. (0351) 451 295 Kode Pos 63153 Caruban Kabupaten Madiun Jawa Timur</i></font>
+					<font size="4"><b>PEMERINTAH KABUPATEN MADIUN</b></font><br>
+					<font size="3"><b>BADAN KESATUAN BANGSA DAN POLITIK DALAM NEGERI</b></font><br>
+					<font size="2"><i>Jalan Alun MT. Haryono Telp. (0351) 451295</i></font><br>
+					<font size="2"><i>Email : bakesbangpoldagrikabmadiun@gmail.com</i></font><br>
+					<font size="3">CARUBAN (63153)</font>
 				</center>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><hr></td>
+				<td colspan="2"><b><hr></b></td>
 			</tr>
 		</table>
 		<br>
 		<table width="625">
 			<tr>
 				<td>
-					coba
 				</td>
 		    </tr>
 		</table>
