@@ -32,7 +32,7 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Siswa</th>
+                                <th style="text-align: center;">Nama Peserta</th>
                                 <th style="text-align: center;">Bukti Absen</th>
                                 <th style="text-align: center;">Status Absen</th>
                                 <th style="text-align: center;">Aksi</th>
@@ -41,7 +41,7 @@
                         <tfoot>
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Siswa</th>
+                                <th style="text-align: center;">Nama Peserta</th>
                                 <th style="text-align: center;">Bukti Absen</th>
                                 <th style="text-align: center;">Status Absen</th>
                                 <th style="text-align: center;">Aksi</th>

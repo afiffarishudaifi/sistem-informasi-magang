@@ -64,7 +64,7 @@
                     <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch table">
                         <thead>
                             <tr>
-                                <th style="text-align: center;">Nama Siswa</th>
+                                <th style="text-align: center;">Nama Peserta</th>
                                 <th style="text-align: center;">Status Absen</th>
                                 <th style="text-align: center;">Keterangan</th>
                                 <th style="text-align: center;">Konfirmasi Absen</th>

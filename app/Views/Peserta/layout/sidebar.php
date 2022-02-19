@@ -47,13 +47,19 @@ $uri = service('uri');
                             <span class="site-menu-arrow"></span>
                 </a>
             <ul class="site-menu-sub">
-              <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Peserta/Admin'); ?>">
+              <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'PesertaLaporanJobdesk') {
+                                echo "active";
+                            } ?>">
+                <a class="animsition-link" href="<?= base_url('Peserta/PesertaLaporanJobdesk'); ?>">
                     <span class="site-menu-title">Jobdesk Magang</span>
                 </a>
               </li>
-              <li class="site-menu-item">
-                <a class="animsition-link" href="<?= base_url('Peserta/IndeksPenilaian'); ?>">
+              <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'PesertaLaporanAbsensi') {
+                                echo "active";
+                            } ?>">
+                <a class="animsition-link" href="<?= base_url('Peserta/PesertaLaporanAbsensi'); ?>">
                     <span class="site-menu-title">Absensi Magang</span>
                 </a>
               </li>

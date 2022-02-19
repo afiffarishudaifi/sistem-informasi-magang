@@ -41,4 +41,19 @@ class Model_laporan_absen extends Model
         
         return $builder->get();
     }
+
+    public function peserta_filter($param)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('absen');
+        $builder->select('absen.id_absen, nama_siswa, waktu_absen, status_absen, keterangan, konfirmasi_absen, DATE_FORMAT(waktu_absen, "%d %m %Y") as waktu_absen');
+        $builder->join('siswa','siswa.id_siswa = absen.id_siswa');
+        $builder->join('sekolah','sekolah.id_sekolah = siswa.id_sekolah');
+        $builder->where('absen.id_siswa', $param['id_siswa']);
+        if ($param['cek_waktu1']) $builder->where('waktu_absen >= ', $param['cek_waktu1']);
+        if ($param['cek_waktu2']) $builder->where('waktu_absen <= ', $param['cek_waktu2']);
+        if ($param['status_absen']) $builder->where('status_absen', $param['status_absen']);
+        
+        return $builder->get();
+    }
 }

@@ -80,7 +80,7 @@
             </div>
   	        <div class="form-group form-material floating">
   	            <select name="status" required="" class="form-control" id="status">
-  	                <option value="Siswa" selected="">Siswa</option>
+  	                <option value="Siswa" selected="">Peserta</option>
   	                <option value="Sekolah">Sekolah</option>
   	            </select>
   	        </div>

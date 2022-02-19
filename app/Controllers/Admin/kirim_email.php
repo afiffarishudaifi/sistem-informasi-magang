@@ -20,7 +20,7 @@ class kirim_email extends BaseController
     {
     	$email = \Config\Services::email();
         $email->setFrom('bakesbangpoldagrikabmadiun@gmail.com','Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun');
-		$email->setTo('afiffaris5@gmail.com');
+		$email->setTo('ditamega0411@gmail.com');
 
 		$email->attach(base_url('docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif'));
 

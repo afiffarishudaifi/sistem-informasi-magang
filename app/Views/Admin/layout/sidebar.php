@@ -131,7 +131,10 @@ $session = session();
                             <span class="site-menu-arrow"></span>
                 </a>
             <ul class="site-menu-sub">
-              <li class="site-menu-item">
+              <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'LaporanPeserta') {
+                                echo "active";
+                            } ?>">
                 <a class="animsition-link" href="<?= base_url('Admin/LaporanPeserta'); ?>">
                     <span class="site-menu-title">Peserta Magang</span>
                 </a>
@@ -144,9 +147,20 @@ $session = session();
                     <span class="site-menu-title">Absensi Magang</span>
                 </a>
               </li>
-              <li class="site-menu-item">
+              <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'LaporanAbsensi') {
+                                echo "active";
+                            } ?>">
                 <a class="animsition-link" href="">
                     <span class="site-menu-title">Penilaian Magang</span>
+                </a>
+              </li>
+              <li class="site-menu-item <?php
+                            if ($uri->getSegment(2) == 'LaporanJobdesk') {
+                                echo "active";
+                            } ?>">
+                <a class="animsition-link" href="<?= base_url('Admin/LaporanJobdesk'); ?>">
+                    <span class="site-menu-title">Jobdesk Magang</span>
                 </a>
               </li>
             </ul>
