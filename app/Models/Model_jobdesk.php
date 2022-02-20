@@ -66,4 +66,14 @@ class Model_jobdesk extends Model
         $builder = $db->table('siswa');
         return $builder->get();
     }
+
+    public function view_jobdesk()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('jobdesk');
+        $builder->select('jobdesk.id_jobdesk, jobdesk.nama_jobdesk, jobdesk.deskripsi, jobdesk.waktu_mulai, jobdesk.waktu_selesai, jobdesk.status_jobdesk, siswa.nama_siswa');
+        $builder->join('siswa', 'jobdesk.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.status', 'Aktif');
+        return $builder->get();
+    }
 }

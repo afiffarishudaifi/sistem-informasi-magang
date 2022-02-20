@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Peserta;
 
 use App\Controllers\BaseController;
 use App\Models\Model_jobdesk;
@@ -25,7 +25,7 @@ class Jobdesk extends BaseController
             'jobdesk' => $jobdesk
 
         ];
-        return view('Admin/viewTJobdesk', $data);
+        return view('Peserta/viewJobdesk', $data);
     }
 
     public function add_jobdesk()
@@ -34,7 +34,7 @@ class Jobdesk extends BaseController
         $model = new Model_jobdesk();
 
         $data = array(
-            'id_siswa'          => $this->request->getPost('input_siswa'),
+            'id_siswa'          => $session->get('id_login'),
             'nama_jobdesk'      => $this->request->getPost('input_nama'),
             'deskripsi'         => $this->request->getPost('input_deskripsi'),
             'waktu_mulai'       => $this->request->getPost('input_waktu_mulai'),
@@ -44,7 +44,7 @@ class Jobdesk extends BaseController
 
         $model->add_data($data);
         $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
-        return redirect()->to(base_url('Admin/Jobdesk'));
+        return redirect()->to(base_url('Peserta/Jobdesk'));
     }
 
     public function update_jobdesk()
@@ -56,7 +56,7 @@ class Jobdesk extends BaseController
         $id = $this->request->getPost('id_jobdesk');
 
         $data = array(
-            'id_siswa'          => $this->request->getPost('edit_siswa'),
+            'id_siswa'          => $session->get('id_login'),
             'nama_jobdesk'      => $this->request->getPost('edit_nama'),
             'deskripsi'         => $this->request->getPost('edit_deskripsi'),
             'waktu_mulai'       => $this->request->getPost('edit_waktu_mulai'),
@@ -67,7 +67,7 @@ class Jobdesk extends BaseController
 
         $model->update_data($data, $id);
         $session->setFlashdata('sukses', 'Data sudah berhasil diubah');
-        return redirect()->to(base_url('Admin/Jobdesk'));
+        return redirect()->to(base_url('Peserta/Jobdesk'));
     }
 
     public function delete_jobdesk()
@@ -78,7 +78,7 @@ class Jobdesk extends BaseController
 
         $model->delete_data($id);
         session()->setFlashdata('sukses', 'Data sudah berhasil dihapus');
-        return redirect()->to('/Admin/Jobdesk');
+        return redirect()->to('/Peserta/Jobdesk');
     }
 
     public function data_edit($id_jobdesk)
@@ -143,17 +143,5 @@ class Jobdesk extends BaseController
         $response['data'] = $poli;
 
         return $this->response->setJSON($response);
-    }
-
-    public function view_jobdesk()
-    {
-        $model = new Model_jobdesk();
-        $jobdesk = $model->view_data()->getResultArray();
-        $data = [
-            'judul' => 'Tabel Job Deskripsi',
-            'jobdesk' => $jobdesk
-
-        ];
-        return view('Admin/viewJobdeskPeserta', $data);
     }
 }
