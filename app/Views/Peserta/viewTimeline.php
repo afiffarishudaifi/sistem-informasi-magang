@@ -46,9 +46,9 @@
   </head>
   <body class="animsition app-calendar page-aside-left">
 
-    <?= $this->include("Admin/layout/nav") ?>
+    <?= $this->include("Peserta/layout/nav") ?>
 
-    <?= $this->include("Admin/layout/sidebar") ?>
+    <?= $this->include("Peserta/layout/sidebar") ?>
 
     <div class="page">
       <div class="page-aside">
@@ -82,7 +82,7 @@
     </div>
 
     <!-- Footer -->
-    <?= $this->include("Admin/layout/footer") ?>
+    <?= $this->include("Peserta/layout/footer") ?>
     <!-- Core  -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/jquery/jquery.js"></script>
