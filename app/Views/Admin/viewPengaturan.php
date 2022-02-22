@@ -170,10 +170,7 @@ $session = session();
                     });
                 }
             });
-
-        })
-
-        
+        });
     </script>
 
   </body>

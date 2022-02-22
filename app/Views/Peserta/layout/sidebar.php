@@ -19,6 +19,15 @@ $uri = service('uri');
           </li>
           <li class="site-menu-category">Kegiatan Magang</li>
           <li class="site-menu-item has-sub <?php
+                            if ($uri->getSegment(2) == 'Timeline') {
+                                echo "active";
+                            } ?>">
+            <a href="<?= base_url('Peserta/Timeline'); ?>">
+                    <i class="site-menu-icon md-calendar" aria-hidden="true"></i>
+                    <span class="site-menu-title">Timeline Peserta</span>
+                </a>
+          </li>
+          <li class="site-menu-item has-sub <?php
                             if ($uri->getSegment(2) == 'Absen') {
                                 echo "active";
                             } ?>">

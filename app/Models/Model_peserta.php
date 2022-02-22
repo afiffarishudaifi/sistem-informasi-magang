@@ -18,6 +18,37 @@ class Model_peserta extends Model
         return $builder->get();
     }
 
+    public function view_data_calender()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
+        $builder->select("siswa.nama_siswa, DATE_FORMAT(pengajuan_magang.waktu_mulai, '%Y-%m-%d') as waktu_mulai, DATE_FORMAT(pengajuan_magang.waktu_selesai, '%Y-%m-%d') as waktu_selesai");
+        $builder->join('pengajuan_magang', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.status','Aktif');
+        // $builder->where('pengajuan_magang.waktu_selesai','>=', date('Y-m-d'));
+        return $builder->get();
+    }
+
+    public function view_data_calender_peserta($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
+        $builder->select("siswa.nama_siswa, DATE_FORMAT(pengajuan_magang.waktu_mulai, '%Y-%m-%d') as waktu_mulai, DATE_FORMAT(pengajuan_magang.waktu_selesai, '%Y-%m-%d') as waktu_selesai");
+        $builder->join('pengajuan_magang', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.id_siswa',$id);
+        return $builder->get();
+    }
+
+    public function view_data_calender_sekolah($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
+        $builder->select("siswa.nama_siswa, DATE_FORMAT(pengajuan_magang.waktu_mulai, '%Y-%m-%d') as waktu_mulai, DATE_FORMAT(pengajuan_magang.waktu_selesai, '%Y-%m-%d') as waktu_selesai");
+        $builder->join('pengajuan_magang', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.id_sekolah',$id);
+        return $builder->get();
+    }
+
     public function add_data($data)
     {
         $query = $this->db->table('siswa')->insert($data);

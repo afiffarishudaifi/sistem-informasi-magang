@@ -21,6 +21,7 @@
   _exports.default = _exports.AppCalendar = void 0;
   _Site2 = babelHelpers.interopRequireDefault(_Site2);
 
+  var tanggal = "<?= date('Y/m/d') ?>";
   var AppCalendar =
   /*#__PURE__*/
   function (_Site) {
@@ -53,52 +54,23 @@
     }, {
       key: "handleFullcalendar",
       value: function handleFullcalendar() {
-        var myEvents = [{
-          title: 'All Day Event',
-          start: '2016-10-01'
-        }, {
+        var myEvents = [
+        <?php foreach($peserta as $value) { ?>
+        {
           title: 'Long Event',
-          start: '2016-10-07',
-          end: '2016-10-10',
+          start: "<?= $value['waktu_mulai'] ?>",
+          end: "<?= $value['waktu_selesai'] ?>",
           backgroundColor: (0, _Config.colors)('cyan', 600),
           borderColor: (0, _Config.colors)('cyan', 600)
-        }, {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2016-10-09T16:00:00',
-          backgroundColor: (0, _Config.colors)('red', 600),
-          borderColor: (0, _Config.colors)('red', 600)
-        }, {
-          title: 'Conference',
-          start: '2016-10-11',
-          end: '2016-10-13'
-        }, {
-          title: 'Meeting',
-          start: '2016-10-12T10:30:00',
-          end: '2016-10-12T12:30:00'
-        }, {
-          title: 'Lunch',
-          start: '2016-10-12T12:00:00'
-        }, {
-          title: 'Meeting',
-          start: '2016-10-12T14:30:00'
-        }, {
-          title: 'Happy Hour',
-          start: '2016-10-12T17:30:00'
-        }, {
-          title: 'Dinner',
-          start: '2016-10-12T20:00:00'
-        }, {
-          title: 'Birthday Party',
-          start: '2016-10-13T07:00:00'
-        }];
+        },
+        <?php } ?>];
         var myOptions = {
           header: {
             left: null,
             center: 'prev,title,next',
             right: 'month,agendaWeek,agendaDay'
           },
-          defaultDate: '2016-10-12',
+          defaultDate: tanggal,
           selectable: true,
           selectHelper: true,
           select: function select() {

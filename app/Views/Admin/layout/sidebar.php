@@ -90,7 +90,16 @@ $session = session();
             </ul>
           </li>
           <li class="site-menu-category">Kegiatan Magang</li>
-          <li class="site-menu-item has-sub">
+          <li class="site-menu-item has-sub <?php
+                            if ($uri->getSegment(2) == 'Timeline') {
+                                echo "active";
+                            } ?>">
+            <a href="<?= base_url('Admin/Timeline'); ?>">
+                    <i class="site-menu-icon md-calendar" aria-hidden="true"></i>
+                    <span class="site-menu-title">Timeline Peserta</span>
+                </a>
+          </li>
+          <li class="site-menu-item has-sub ">
             <a href="javascript:void(0)">
                     <i class="site-menu-icon md-notifications-none" aria-hidden="true"></i>
                     <span class="site-menu-title">Pengajuan Magang</span>
