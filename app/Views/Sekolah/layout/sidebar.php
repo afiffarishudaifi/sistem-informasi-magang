@@ -17,78 +17,6 @@ $session = session();
                     <span class="site-menu-title">Dashboard</span>
                 </a>
           </li>
-          <li class="site-menu-item has-sub <?php
-                            if (
-                                $uri->getSegment(2) == 'Admin' || $uri->getSegment(2) == 'IndeksPenilaian' ||
-                                $uri->getSegment(2) == 'Jabatan' || $uri->getSegment(2) == 'Jobdesk' ||
-                                $uri->getSegment(2) == 'Nilai' || $uri->getSegment(2) == 'Sekolah' || $uri->getSegment(2) == 'Sertifikat' || $uri->getSegment(2) == 'Peserta'
-                            ) {
-                                echo "active";
-                            } ?>">
-            <a href="javascript:void(0)">
-                    <i class="site-menu-icon md-view-compact" aria-hidden="true"></i>
-                    <span class="site-menu-title">Data Master</span>
-                            <span class="site-menu-arrow"></span>
-                </a>
-            <ul class="site-menu-sub">
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Admin') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/Admin'); ?>">
-                  <span class="site-menu-title">Admin</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'IndeksPenilaian') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/IndeksPenilaian'); ?>">
-                  <span class="site-menu-title">Indeks Penilaian</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Jabatan') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/Jabatan'); ?>">
-                  <span class="site-menu-title">Jabatan</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Jobdesk') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/Jobdesk'); ?>">
-                  <span class="site-menu-title">Job Deskripsi</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Sekolah') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/Sekolah'); ?>">
-                  <span class="site-menu-title">Sekolah</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Sertifikat') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/Sertifikat'); ?>">
-                  <span class="site-menu-title">Sertifikat</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Peserta') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Sekolah/Peserta'); ?>">
-                  <span class="site-menu-title">Peserta Magang</span>
-                </a>
-              </li>
-            </ul>
-          </li>
           <li class="site-menu-category">Kegiatan Magang</li>
           <li class="site-menu-item has-sub <?php
                             if ($uri->getSegment(2) == 'Timeline') {
@@ -173,15 +101,6 @@ $session = session();
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Profil') {
-                                echo "active";
-                            } ?>">
-            <a class="animsition-link" href="<?= base_url('Sekolah/Profil'); ?>">
-                    <i class="site-menu-icon md-pin-drop" aria-hidden="true"></i>
-                    <span class="site-menu-title">Pengaturan Profil</span>
-                </a>
           </li>
         </ul>   
       </div>

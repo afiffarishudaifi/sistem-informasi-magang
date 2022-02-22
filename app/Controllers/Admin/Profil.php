@@ -18,7 +18,7 @@ class Profil extends BaseController
     public function index()
     {
         $data = [
-            'judul' => 'Profil BANKESBANPOL'
+            'judul' => 'Profil BAKESBANGPOLDAGRI'
         ];
         return view('Admin/viewProfil', $data);
     }

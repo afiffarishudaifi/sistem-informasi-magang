@@ -191,7 +191,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Password</label>
-                            <input type="text" class="form-control" id="edit_password" name="edit_password"
+                            <input type="password" class="form-control" id="edit_password" name="edit_password"
                                 data-parsley-required="true" placeholder="Masukkan Password Sekolah"
                                 autocomplete="off" />
                         </div>

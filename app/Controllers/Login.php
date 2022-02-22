@@ -131,11 +131,11 @@ class Login extends BaseController
         $model = new Model_login();
         $encrypter = \Config\Services::encrypter();
 
-        $status = $this->request->getPost('status');
+        // $status = $this->request->getPost('status');
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        if ($status == 'Siswa') {
+        // if ($status == 'Siswa') {
             $data = $model->loginSiswa($username)->getRowArray();
 
             if ($data) {
@@ -158,36 +158,61 @@ class Login extends BaseController
                     return redirect()->to('/Login');
                 }
             } else {
-                $session->setFlashdata('msg', 'Username Tidak di Temukan');
-                return redirect()->to('/Login');
-            }
-        } else {
-            $data = $model->loginSekolah($username)->getRowArray();
+                // $session->setFlashdata('msg', 'Username Tidak di Temukan');
+                // return redirect()->to('/Login');
+                $data = $model->loginSekolah($username)->getRowArray();
 
-            if ($data) {
-                $pass = $data['password_sekolah'];
-                $status = 'Sekolah';
-                $verify_pass =  $encrypter->decrypt(base64_decode($pass));
-                if ($verify_pass == $password) {
-                    $ses_data = [
-                        'id_login' => $data['id_sekolah'],
-                        'nama_login' => $data['nama_sekolah'],
-                    	'foto' => 'no_image.png',
-                        'status_login' => $status,
-                        'logged_in' => TRUE,
-                        'is_admin' => TRUE
-                    ];
-                    $session->set($ses_data);
-                    return redirect()->to('/Sekolah/Dashboard');
+                if ($data) {
+                    $pass = $data['password_sekolah'];
+                    $status = 'Sekolah';
+                    $verify_pass =  $encrypter->decrypt(base64_decode($pass));
+                    if ($verify_pass == $password) {
+                        $ses_data = [
+                            'id_login' => $data['id_sekolah'],
+                            'nama_login' => $data['nama_sekolah'],
+                            'foto' => 'no_image.png',
+                            'status_login' => $status,
+                            'logged_in' => TRUE,
+                            'is_admin' => TRUE
+                        ];
+                        $session->set($ses_data);
+                        return redirect()->to('/Sekolah/Dashboard');
+                    } else {
+                        $session->setFlashdata('msg', 'Password Tidak Sesuai');
+                        return redirect()->to('/Login');
+                    }
                 } else {
-                    $session->setFlashdata('msg', 'Password Tidak Sesuai');
+                    $session->setFlashdata('msg', 'Username Tidak di Temukan');
                     return redirect()->to('/Login');
                 }
-            } else {
-                $session->setFlashdata('msg', 'Username Tidak di Temukan');
-                return redirect()->to('/Login');
             }
-        }
+        // } else {
+        //     $data = $model->loginSekolah($username)->getRowArray();
+
+        //     if ($data) {
+        //         $pass = $data['password_sekolah'];
+        //         $status = 'Sekolah';
+        //         $verify_pass =  $encrypter->decrypt(base64_decode($pass));
+        //         if ($verify_pass == $password) {
+        //             $ses_data = [
+        //                 'id_login' => $data['id_sekolah'],
+        //                 'nama_login' => $data['nama_sekolah'],
+        //             	'foto' => 'no_image.png',
+        //                 'status_login' => $status,
+        //                 'logged_in' => TRUE,
+        //                 'is_admin' => TRUE
+        //             ];
+        //             $session->set($ses_data);
+        //             return redirect()->to('/Sekolah/Dashboard');
+        //         } else {
+        //             $session->setFlashdata('msg', 'Password Tidak Sesuai');
+        //             return redirect()->to('/Login');
+        //         }
+        //     } else {
+        //         $session->setFlashdata('msg', 'Username Tidak di Temukan');
+        //         return redirect()->to('/Login');
+        //     }
+        // }
     }
 
     public function registrasiSiswa()

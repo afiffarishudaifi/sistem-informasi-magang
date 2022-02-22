@@ -8,7 +8,7 @@
     <meta name="description" content="bootstrap material admin template">
     <meta name="author" content="">
     
-    <title>Dashboard | Remark Material Admin Template</title>
+    <title>E-Magang BAKESBANGPOLDAGRI</title>
     
     <link rel="apple-touch-icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/apple-touch-icon.png">
     <link rel="shortcut icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/favicon.ico">

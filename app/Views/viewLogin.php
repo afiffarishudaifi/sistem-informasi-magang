@@ -8,7 +8,7 @@
     <meta name="description" content="bootstrap material admin template">
     <meta name="author" content="">
     
-    <title>E-Magang BANKESBANPOL</title>
+    <title>E-Magang BAKESBANGPOLDAGRI</title>
     
     <link rel="apple-touch-icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/apple-touch-icon.png">
     <link rel="shortcut icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/favicon.ico">
@@ -78,12 +78,12 @@
                       data-parsley-required="true" autocomplete="off" />
                 <label class="floating-label">Password</label>
             </div>
-  	        <div class="form-group form-material floating">
+  	        <!-- <div class="form-group form-material floating">
   	            <select name="status" required="" class="form-control" id="status">
   	                <option value="Siswa" selected="">Peserta</option>
   	                <option value="Sekolah">Sekolah</option>
   	            </select>
-  	        </div>
+  	        </div> -->
             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
           </form>
 
