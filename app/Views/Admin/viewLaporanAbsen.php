@@ -28,7 +28,7 @@
                     <h3 class="panel-title"><?= $judul; ?></h3>
                 </header>
                 <div class="panel-body">
-                    <form method="POST" style="padding-bottom: 20px;">
+                    <form method="POST" action="<?= base_url('Admin/LaporanAbsensi/data_cetak') ?>" style="padding-bottom: 20px;">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group">

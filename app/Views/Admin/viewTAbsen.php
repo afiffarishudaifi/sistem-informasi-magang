@@ -49,9 +49,9 @@
                         </tfoot>
                         <tbody>
                             <?php
-                    $no = 1;
-                    foreach ($absen as $item) {
-                    ?>
+                            $no = 1;
+                            foreach ($absen as $item) {
+                            ?>
                             <tr>
                                 <td width="1%"><?= $no++; ?></td>
                                 <td><?= $item['nama_siswa']; ?></td>

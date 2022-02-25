@@ -59,9 +59,12 @@ class LaporanAbsensi extends BaseController
         echo json_encode($data);
     }
 
-    public function data_cetak($tanggal = null, $status = null)
+    public function data_cetak()
     {
         $session = session();
+
+        $status = $this->request->getPost('input_status');
+        $tanggal = $this->request->getPost('tanggal');
 
         if ($tanggal) $tgl = explode(' - ', $tanggal);
         if ($tanggal) { $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0])); } else { $param['cek_waktu1'] = date("Y-m-d"); };
@@ -75,22 +78,10 @@ class LaporanAbsensi extends BaseController
 
         $model = new Model_laporan_absen();
         $laporan = $model->filter($param)->getResultArray();
-
-        $respon = $laporan;
-        $data = array();
-
-        if ($respon) {
-            foreach ($respon as $value) {
-                $isi['id_absen'] = $value['id_absen'];
-                $isi['nama_siswa'] = $value['nama_siswa'];
-                $isi['status_absen'] = $value['status_absen'];
-                $isi['keterangan'] = $value['keterangan'];
-                $isi['konfirmasi_absen'] = $value['konfirmasi_absen'];
-                $isi['waktu_absen'] = $value['waktu_absen'];
-                array_push($data, $isi);
-            }
-        }
-
-        echo json_encode($data);
+        $data = [
+            'judul' => 'Laporan Absensi Magang ' . $tanggal,
+            'laporan' => $laporan
+        ];
+        return view('Admin/cetakLaporanAbsensi', $data);
     }
 }

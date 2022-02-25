@@ -51,10 +51,10 @@
             <tr>
                 <th style="text-align: center;">No</th>
                 <th style="text-align: center;">Peserta</th>
-                <th style="text-align: center;">Jurusan</th>
-                <th style="text-align: center;">Sekolah</th>
-                <th style="text-align: center;">Mulai Magang</th>
-                <th style="text-align: center;">Selesai Magang</th>
+                <th style="text-align: center;">Status Kehadiran</th>
+                <th style="text-align: center;">Keterangan</th>
+                <th style="text-align: center;">Konfirmasi</th>
+                <th style="text-align: center;">Waktu Absen</th>
             </tr>
         	<?php
             $no = 1;
@@ -63,10 +63,10 @@
             <tr>
                 <td width="1%" style="text-align: center;"><?= $no++; ?></td>
                 <td><?= $item['nama_siswa']; ?></td>
-                <td><?= $item['jurusan']; ?></td>
-                <td><?= $item['nama_sekolah']; ?></td>
-                <td style="text-align: center;"><?= $item['waktu_mulai']; ?></td>
-                <td style="text-align: center;"><?= $item['waktu_selesai']; ?></td>
+                <td style="text-align: center;"><?= $item['status_absen']; ?></td>
+                <td style="text-align: center;"><?= $item['keterangan']; ?></td>
+                <td style="text-align: center;"><?= $item['konfirmasi_absen']; ?></td>
+                <td style="text-align: center;"><?= $item['waktu_absen']; ?></td>
             </tr>
             <?php } ?>
 		</table>

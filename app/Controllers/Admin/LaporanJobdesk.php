@@ -61,9 +61,12 @@ class LaporanJobdesk extends BaseController
         echo json_encode($data);
     }
 
-    public function data_cetak($tanggal = null, $status = null)
+    public function data_cetak()
     {
         $session = session();
+
+        $status = $this->request->getPost('input_status');
+        $tanggal = $this->request->getPost('tanggal');
 
         if ($tanggal) $tgl = explode(' - ', $tanggal);
         if ($tanggal) { $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0])); } else { $param['cek_waktu1'] = date("Y-m-d"); };
@@ -77,22 +80,10 @@ class LaporanJobdesk extends BaseController
 
         $model = new Model_laporan_jobdesk();
         $laporan = $model->filter($param)->getResultArray();
-
-        $respon = $laporan;
-        $data = array();
-
-        if ($respon) {
-            foreach ($respon as $value) {
-                $isi['nama_siswa'] = $value['nama_siswa'];
-                $isi['nama_jobdesk'] = $value['nama_jobdesk'];
-                $isi['deskripsi'] = $value['deskripsi'];
-                $isi['waktu_mulai'] = $value['waktu_mulai'];
-                $isi['waktu_selesai'] = $value['waktu_selesai'];
-                $isi['status_jobdesk'] = $value['status_jobdesk'];
-                array_push($data, $isi);
-            }
-        }
-
-        echo json_encode($data);
+        $data = [
+            'judul' => 'Laporan Jobdesk Magang ' . $tanggal,
+            'laporan' => $laporan
+        ];
+        return view('Admin/cetakLaporanJobdesk', $data);
     }
 }

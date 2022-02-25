@@ -40,11 +40,11 @@ class Model_laporan_peserta extends Model
     {
     	$db      = \Config\Database::connect();
         $builder = $db->table('siswa');
-		$builder->select('siswa.id_siswa, nama_siswa, alamat_siswa, no_telp_siswa, status, jurusan, nama_sekolah, waktu_mulai, waktu_selesai');
+		$builder->select("siswa.id_siswa, nama_siswa, alamat_siswa, no_telp_siswa, status, jurusan, nama_sekolah, DATE_FORMAT(waktu_mulai, '%d-%m-%Y') as waktu_mulai, DATE_FORMAT(waktu_selesai, '%d-%m-%Y') as waktu_selesai");
 		$builder->join('sekolah','sekolah.id_sekolah = siswa.id_sekolah');
 		$builder->join('pengajuan_magang','pengajuan_magang.id_siswa = siswa.id_siswa','left');
         if ($param['cek_waktu1']) $builder->where('waktu_mulai >= ', $param['cek_waktu1']);
-        if ($param['cek_waktu2']) $builder->where('waktu_selesai <= ', $param['cek_waktu2']);
+        if ($param['cek_waktu2']) $builder->where('waktu_mulai <= ', $param['cek_waktu2']);
         if ($param['status']) $builder->where('status', $param['status']);
         
         return $builder->get();
