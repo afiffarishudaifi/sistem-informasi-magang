@@ -21,7 +21,7 @@ $session = session();
                             if (
                                 $uri->getSegment(2) == 'Admin' || $uri->getSegment(2) == 'IndeksPenilaian' ||
                                 $uri->getSegment(2) == 'Jabatan' || $uri->getSegment(2) == 'Jobdesk' ||
-                                $uri->getSegment(2) == 'Nilai' || $uri->getSegment(2) == 'Sekolah' || $uri->getSegment(2) == 'Sertifikat' || $uri->getSegment(2) == 'Peserta'
+                                $uri->getSegment(2) == 'Nilai' || $uri->getSegment(2) == 'Sekolah' || $uri->getSegment(2) == 'Peserta'
                             ) {
                                 echo "active";
                             } ?>">
@@ -69,14 +69,6 @@ $session = session();
                             } ?>">
                 <a class="animsition-link" href="<?= base_url('Admin/Sekolah'); ?>">
                   <span class="site-menu-title">Sekolah</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                            if ($uri->getSegment(2) == 'Sertifikat') {
-                                echo "active";
-                            } ?>">
-                <a class="animsition-link" href="<?= base_url('Admin/Sertifikat'); ?>">
-                  <span class="site-menu-title">Sertifikat</span>
                 </a>
               </li>
               <li class="site-menu-item <?php

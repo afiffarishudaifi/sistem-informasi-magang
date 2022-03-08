@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>contoh surat pengunguman</title>
+	<title>Cetak Laporan</title>
 	<style type="text/css">
 		table {
 			font-family: "Times New Roman", serif;
