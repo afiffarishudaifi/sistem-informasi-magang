@@ -155,10 +155,10 @@ $session = session();
                 </a>
               </li>
               <li class="site-menu-item <?php
-                                        if ($uri->getSegment(2) == 'LaporanAbsensi') {
+                                        if ($uri->getSegment(2) == 'LaporanPenilaian') {
                                           echo "active";
                                         } ?>">
-                <a class="animsition-link" href="">
+                <a class="animsition-link" href="<?= base_url('Admin/LaporanPenilaian'); ?>">
                   <span class="site-menu-title">Penilaian Magang</span>
                 </a>
               </li>

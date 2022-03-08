@@ -142,12 +142,12 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Jumlah Nilai</label>
-                            <input type="text" class="form-control" id="input_jumlah" name="input_jumlah" placeholder="Jumlah Nilai" disabled>
+                            <input type="text" class="form-control" id="input_jumlah" name="input_jumlah" placeholder="Jumlah Nilai" readonly="">
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Rata - Rata</label>
-                            <input type="text" class="form-control" id="input_rata" name="input_rata" placeholder="Rata - Rata Nilai" disabled>
+                            <input type="text" class="form-control" id="input_rata" name="input_rata" placeholder="Rata - Rata Nilai" readonly="">
                         </div>
 
                     </div>
@@ -217,12 +217,12 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Jumlah Nilai</label>
-                            <input type="text" class="form-control" id="edit_jumlah" name="edit_jumlah" placeholder="Jumlah Nilai" disabled>
+                            <input type="text" class="form-control" id="edit_jumlah" name="edit_jumlah" placeholder="Jumlah Nilai" readonly="">
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Rata - Rata</label>
-                            <input type="text" class="form-control" id="edit_rata" name="edit_rata" placeholder="Rata - Rata Nilai" disabled>
+                            <input type="text" class="form-control" id="edit_rata" name="edit_rata" placeholder="Rata - Rata Nilai" readonly="">
                         </div>
 
                     </div>

@@ -13,9 +13,8 @@ class Model_nilai extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('nilai');
-        $builder->select('nilai.id_nilai, siswa.id_siswa, siswa.nama_siswa, sertifikat.id_sertifikat, nilai.kedisiplinan, nilai.tanggung_jawab, nilai.kerja_sama, nilai.kerajinan, nilai.inisiatif, nilai.jumlah, nilai.rata_rata');
+        $builder->select('nilai.id_nilai, siswa.id_siswa, siswa.nama_siswa, nilai.kedisiplinan, nilai.tanggung_jawab, nilai.kerja_sama, nilai.kerajinan, nilai.inisiatif, nilai.jumlah, nilai.rata_rata');
         $builder->join('siswa', 'nilai.id_siswa = siswa.id_siswa');
-        $builder->join('sertifikat', 'nilai.id_sertifikat = sertifikat.id_sertifikat');
         $builder->where('siswa.status', 'Aktif');
         return $builder->get();
     }
@@ -30,9 +29,8 @@ class Model_nilai extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('nilai');
-        $builder->select('nilai.id_nilai, siswa.id_siswa, siswa.nama_siswa, sertifikat.id_sertifikat, nilai.kedisiplinan, nilai.tanggung_jawab, nilai.kerja_sama, nilai.kerajinan, nilai.inisiatif, nilai.jumlah, nilai.rata_rata');
+        $builder->select('nilai.id_nilai, siswa.id_siswa, siswa.nama_siswa, nilai.kedisiplinan, nilai.tanggung_jawab, nilai.kerja_sama, nilai.kerajinan, nilai.inisiatif, nilai.jumlah, nilai.rata_rata');
         $builder->join('siswa', 'nilai.id_siswa = siswa.id_siswa');
-        $builder->join('sertifikat', 'nilai.id_sertifikat = sertifikat.id_sertifikat');
         $builder->where('id_nilai', $id);
         return $builder->get();
     }

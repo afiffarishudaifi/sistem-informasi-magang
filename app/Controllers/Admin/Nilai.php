@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Model_nilai;
+use App\Models\Model_peserta;
 
 class Nilai extends BaseController
 {
@@ -33,9 +34,10 @@ class Nilai extends BaseController
         $session = session();
         $model = new Model_nilai();
 
+        $id = $this->request->getPost('input_siswa');
+
         $data = array(
-            'id_siswa'          => $this->request->getPost('input_siswa'),
-            'id_sertifikat'     => 1,
+            'id_siswa'          => $id,
             'kedisiplinan'      => $this->request->getPost('input_kedisiplinan'),
             'tanggung_jawab'    => $this->request->getPost('input_tanggung_jawab'),
             'kerja_sama'        => $this->request->getPost('input_kerja_sama'),
@@ -46,6 +48,13 @@ class Nilai extends BaseController
         );
 
         $model->add_data($data);
+
+        $data = array(
+            'status'     => 'Selesai',
+            'updated_at' => date('Y-m-d H:i:s')
+        );
+        $modelsiswa = new Model_peserta();
+        $modelsiswa->update_data($data, $id);
         $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
         return redirect()->to(base_url('Admin/Nilai'));
     }
@@ -59,7 +68,6 @@ class Nilai extends BaseController
 
         $data = array(
             'id_siswa'     => $this->request->getPost('edit_siswa'),
-            'id_sertifikat'     => 1,
             'kedisiplinan'      => $this->request->getPost('edit_kedisiplinan'),
             'tanggung_jawab'    => $this->request->getPost('edit_tanggung_jawab'),
             'kerja_sama'        => $this->request->getPost('edit_kerja_sama'),
