@@ -74,7 +74,7 @@
 		<table width="625">
 			<tr>
 				<td width="430"><br><br><br><br></td>
-				<td class="text" align="center">Kepala BANKESBANPOLDAGRI<br><br><br><br>Afif Faris Hudaifi, A.Md.Kom</td>
+				<td class="text" align="center">Kepala BANKESBANPOLDAGRI<br><br><br><br>Kepala Kantor</td>
 			</tr>
 	     </table>
 	</center>
