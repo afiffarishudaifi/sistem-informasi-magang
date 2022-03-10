@@ -77,7 +77,7 @@
     <!-- End Page -->
 
     <!-- Start Modal Add Class-->
-    <form action="<?php echo base_url('Admin/Siswa/add_siswa'); ?>" method="post" id="form_add"
+    <form action="<?php echo base_url('Admin/Peserta/add_siswa'); ?>" method="post" id="form_add"
         data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
         <div class="modal fade" id="addModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <?= csrf_field(); ?>
@@ -184,7 +184,7 @@
     <!-- End Modal Add Class-->
 
     <!-- Modal Edit Class-->
-    <form action="<?php echo base_url('Admin/Siswa/update_siswa'); ?>" method="post" id="form_edit"
+    <form action="<?php echo base_url('Admin/Peserta/update_siswa'); ?>" method="post" id="form_edit"
         data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
         <div class="modal fade" id="updateModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <?= csrf_field(); ?>
@@ -298,7 +298,7 @@
     <!-- End Modal Edit Class-->
 
     <!-- Start Modal Delete Class -->
-    <form action="<?php echo base_url('Admin/Siswa/delete_siswa'); ?>" method="post">
+    <form action="<?php echo base_url('Admin/Peserta/delete_siswa'); ?>" method="post">
         <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -340,7 +340,7 @@
             placeholder: "Pilih Sekolah",
             theme: 'bootstrap4',
             ajax: {
-                url: '<?php echo base_url('Admin/Siswa/data_sekolah'); ?>',
+                url: '<?php echo base_url('Admin/Peserta/data_sekolah'); ?>',
                 type: "post",
                 delay: 250,
                 dataType: 'json',
@@ -362,7 +362,7 @@
             placeholder: "Pilih Sekolah",
             theme: 'bootstrap4',
             ajax: {
-                url: '<?php echo base_url('Admin/Siswa/data_sekolah'); ?>',
+                url: '<?php echo base_url('Admin/Peserta/data_sekolah'); ?>',
                 type: "post",
                 delay: 250,
                 dataType: 'json',
@@ -387,7 +387,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'json',
-                    url: '<?php echo base_url('Admin/Siswa/cek_username'); ?>' + '/' + username,
+                    url: '<?php echo base_url('Admin/Peserta/cek_username'); ?>' + '/' + username,
                     success: function(data) {
                         if (data['results'] > 0) {
                             $("#error_username").html(
@@ -413,7 +413,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'json',
-                    url: '<?php echo base_url('Admin/Siswa/cek_username'); ?>' + '/' + username,
+                    url: '<?php echo base_url('Admin/Peserta/cek_username'); ?>' + '/' + username,
                     success: function(data) {
                         if (data['results'] > 0) {
                             $("#error_edit_username").html(
@@ -483,7 +483,7 @@
     })
 
     function detail_edit(isi) {
-        $.getJSON('<?php echo base_url('Admin/Siswa/data_edit'); ?>' + '/' + isi, {},
+        $.getJSON('<?php echo base_url('Admin/Peserta/data_edit'); ?>' + '/' + isi, {},
             function(json) {
                 $('#id_siswa').val(json.id_siswa);
                 $('#edit_nis').val(json.nomor_induk);
