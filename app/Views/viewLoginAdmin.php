@@ -162,12 +162,12 @@
     var onloadCallback = function() {
         if (document.getElementById('reChaptcha-login') != null) {
             grecaptcha.render('reChaptcha-login', {
-                'sitekey' : '6Le9lroeAAAAAGg2f6cSScCf0Rk11P7_zXeaDJCj'
+                'sitekey' : '6LcHgtMeAAAAAC7rnGpIJKktILKUvdZbc-PFayHP'
             });
         }
 
         grecaptcha.render('html_element', {
-            'sitekey' : '6Le9lroeAAAAAGg2f6cSScCf0Rk11P7_zXeaDJCj',
+            'sitekey' : '6LcHgtMeAAAAAC7rnGpIJKktILKUvdZbc-PFayHP',
         });
     };
     
