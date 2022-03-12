@@ -52,8 +52,7 @@
         <div class="panel">
           <div class="panel-body">
             <div class="brand">
-              <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets//images/logo-colored.png" alt="...">
-              <h2 class="brand-text font-size-18">Remark</h2>
+              <h2 class="brand-text font-size-18">E-Magang</h2>
             </div>
             <form method="post" action="<?= base_url('Login/simpanPengajuan'); ?>" data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
 

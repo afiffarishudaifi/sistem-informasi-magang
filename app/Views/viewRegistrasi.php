@@ -52,8 +52,7 @@
         <div class="panel">
           <div class="panel-body">
             <div class="brand">
-              <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets//images/logo-colored.png" alt="...">
-              <h2 class="brand-text font-size-18">Remark</h2>
+              <h2 class="brand-text font-size-18">E-Magang</h2>
             </div>
             <form method="post" action="<?= base_url('Login/simpanSiswa'); ?>" data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_nama">
@@ -208,7 +207,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'json',
-                    url: '<?php echo base_url('Admin/Siswa/cek_username'); ?>' + '/' + username,
+                    url: '<?php echo base_url('Admin/Peserta/cek_username'); ?>' + '/' + username,
                     success: function (data) {
                         if(data['results']>0){
                             $("#error_username").html('Username telah dipakai,coba yang lain');
@@ -232,7 +231,7 @@
                 $.ajax({
                     type: 'GET',
                     dataType: 'json',
-                    url: '<?php echo base_url('Admin/Siswa/cek_username'); ?>' + '/' + username,
+                    url: '<?php echo base_url('Admin/Peserta/cek_username'); ?>' + '/' + username,
                     success: function (data) {
                         if(data['results']>0){
                             $("#error_edit_username").html('Username telah dipakai,coba yang lain');

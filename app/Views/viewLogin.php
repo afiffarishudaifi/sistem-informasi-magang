@@ -78,13 +78,18 @@
                       data-parsley-required="true" autocomplete="off" />
                 <label class="floating-label">Password</label>
             </div>
+            <div class="form-group form-material floating" data-plugin="formMaterial">
+                <div class="col-xs-12">
+                    <div id="html_element" data-callback="loginPassed"></div>
+                </div>
+            </div>
   	        <!-- <div class="form-group form-material floating">
   	            <select name="status" required="" class="form-control" id="status">
   	                <option value="Siswa" selected="">Peserta</option>
   	                <option value="Sekolah">Sekolah</option>
   	            </select>
   	        </div> -->
-            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+            <button type="submit" class="btn btn-primary btn-block" id="btnLogin" disabled>Sign in</button>
           </form>
 
           <p>Pengajuan peserta magang baru? <a href="<?= base_url('Login/registrasiSiswa'); ?>">Klik</a> untuk melakukan pengajuan</p>
@@ -157,6 +162,26 @@
   	      }
         });
       })(document, window, jQuery);
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script>
+    
+    var onloadCallback = function() {
+        if (document.getElementById('reChaptcha-login') != null) {
+            grecaptcha.render('reChaptcha-login', {
+                'sitekey' : '6Le9lroeAAAAAGg2f6cSScCf0Rk11P7_zXeaDJCj'
+            });
+        }
+
+        grecaptcha.render('html_element', {
+            'sitekey' : '6Le9lroeAAAAAGg2f6cSScCf0Rk11P7_zXeaDJCj',
+        });
+    };
+    
+    function loginPassed() {
+        document.getElementById('btnLogin').disabled = false;
+    }
     </script>
     
   </body>
