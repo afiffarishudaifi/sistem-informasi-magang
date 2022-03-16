@@ -116,4 +116,13 @@ class Model_peserta extends Model
         $builder->select('id_sekolah, nama_sekolah');
         return $builder->get();
     }
+
+    public function cek_akun($username)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
+        $builder->select('id_siswa');
+        $builder->where('username_siswa', $username);
+        return $builder->get();
+    }
 }

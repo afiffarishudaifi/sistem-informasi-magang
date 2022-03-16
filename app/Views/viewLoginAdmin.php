@@ -87,8 +87,8 @@
           </form>
 
           <footer class="page-copyright">
-            <p>WEBSITE BY Creation Studio</p>
-            <p>© 2018. All RIGHT RESERVED.</p>
+            <p>WEBSITE E-Magang</p>
+            <p>© 2022. BAKESBANGPOLDAGRI.</p>
           </footer>
         </div>
 

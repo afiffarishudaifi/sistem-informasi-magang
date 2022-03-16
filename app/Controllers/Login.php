@@ -259,6 +259,34 @@ class Login extends BaseController
         return redirect()->to(base_url('Login/registrasiSiswa'));
     }
 
+    public function resetPassword()
+    {
+        $session = session();
+        return view('viewResetPassword');
+    }
+
+    public function prosesResetPassword()
+    {
+        $session = session();
+        $encrypter = \Config\Services::encrypter();
+        $model = new Model_peserta();
+        $username = $this->request->getPost('input_username');
+        $password = $this->request->getPost('input_password');
+        $konf_password = $this->request->getPost('input_konf_password');
+        $cek_akun = $model->cek_akun($username)->getRowArray();
+        if ($cek_akun == null) {
+            $session->setFlashdata('gagal', 'Data tidak ditemukan');
+            return redirect()->to(base_url('Login/resetPassword'));
+        }
+        $id = $cek_akun['id_siswa'];
+        $data = array(
+            'password_siswa' => base64_encode($encrypter->encrypt($this->request->getPost('input_password')))
+        );
+        $model->update_data($data, $id);
+        $session->setFlashdata('sukses', 'Data sudah berhasil ditambah');
+        return redirect()->to(base_url('Login/resetPassword'));
+    }
+
     public function logout()
     {
         $session = session();

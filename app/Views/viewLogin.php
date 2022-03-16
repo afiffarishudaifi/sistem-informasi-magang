@@ -89,14 +89,21 @@
   	                <option value="Sekolah">Sekolah</option>
   	            </select>
   	        </div> -->
+            <div class="form-group clearfix">
+              <div class="checkbox-custom checkbox-inline checkbox-primary float-left">
+                <input type="checkbox" id="remember" name="checkbox">
+                <label for="inputCheckbox">Remember me</label>
+              </div>
+              <a class="float-right" href="<?= base_url('Login/resetPassword'); ?>">Lupa Password?</a>
+            </div>
             <button type="submit" class="btn btn-primary btn-block" id="btnLogin" disabled>Sign in</button>
           </form>
 
           <p>Pengajuan peserta magang baru? <a href="<?= base_url('Login/registrasiSiswa'); ?>">Klik</a> untuk melakukan pengajuan</p>
 
           <footer class="page-copyright">
-            <p>WEBSITE BY Creation Studio</p>
-            <p>© 2018. All RIGHT RESERVED.</p>
+            <p>WEBSITE E-Magang</p>
+            <p>© 2022. BAKESBANGPOLDAGRI.</p>
           </footer>
         </div>
 
