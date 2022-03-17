@@ -11,12 +11,21 @@ class Sertifikat extends BaseController
     protected $Model_sertifikat;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_sertifikat = new Model_sertifikat();
         helper(['form', 'url']);
     }
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_sertifikat();
         $sertifikat = $model->view_data()->getResultArray();
 

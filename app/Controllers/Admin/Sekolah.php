@@ -11,12 +11,21 @@ class Sekolah extends BaseController
     protected $Model_sekolah;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_sekolah = new Model_sekolah();
         helper(['form', 'url']);
     }
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_sekolah();
         $sekolah = $model->view_data()->getResultArray();
 

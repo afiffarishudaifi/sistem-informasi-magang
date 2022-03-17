@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Cetak Laporan</title>
+    <link rel="shortcut icon" href="<?= base_url() ?>/docs/themeforest/base/assets/images/favicon.ico">
 	<style type="text/css">
 		table {
 			font-family: "Times New Roman", serif;

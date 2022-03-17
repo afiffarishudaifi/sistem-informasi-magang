@@ -11,6 +11,10 @@ class Peserta extends BaseController
     protected $Model_peserta;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_peserta = new Model_peserta();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -18,6 +22,11 @@ class Peserta extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_peserta();
         $siswa = $model->view_data()->getResultArray();
         $sekolah = $model->data_sekolah()->getResultArray();

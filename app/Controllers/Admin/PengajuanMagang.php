@@ -11,6 +11,10 @@ class PengajuanMagang extends BaseController
     protected $Model_pengajuan;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_pengajuan = new Model_pengajuan();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -18,6 +22,11 @@ class PengajuanMagang extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_pengajuan();
         $pengajuan = $model->view_data()->getResultArray();
 

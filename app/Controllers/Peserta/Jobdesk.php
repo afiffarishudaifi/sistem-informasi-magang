@@ -11,13 +11,23 @@ class Jobdesk extends BaseController
     protected $Model_jobdesk;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+        
         $this->Model_jobdesk = new Model_jobdesk();
         helper(['form', 'url']);
         $this->db = db_connect();
     }
 
     public function index()
-    {
+    {   
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+        
         $model = new Model_jobdesk();
         $jobdesk = $model->view_data()->getResultArray();
         $data = [

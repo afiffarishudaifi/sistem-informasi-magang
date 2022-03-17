@@ -12,10 +12,9 @@ class Pengaturan extends BaseController
     public function __construct()
     {
         $session = session();
-
-        // if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa' || $session->get('status_login') != 'Sekolah') {
-        //     return redirect()->to('Login');
-        // }
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_admin = new Model_admin();
 
         helper(['form', 'url']);
@@ -23,6 +22,11 @@ class Pengaturan extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_admin();
         $jabatan = $model->data_jabatan()->getResultArray();
 

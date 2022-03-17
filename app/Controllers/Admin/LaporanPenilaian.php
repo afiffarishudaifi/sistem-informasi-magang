@@ -11,6 +11,10 @@ class LaporanPenilaian extends BaseController
     protected $Model_laporan_penilaian;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_laporan_penilaian = new Model_laporan_penilaian();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -18,6 +22,11 @@ class LaporanPenilaian extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_laporan_penilaian();
         $data = $model->view_data()->getResultArray();
 

@@ -3,8 +3,9 @@
 namespace App\Controllers\Peserta;
 
 use App\Controllers\BaseController;
+use App\Models\Model_nilai;
 
-class Dashboard extends BaseController
+class Penilaian extends BaseController
 {
 
     public function __construct()
@@ -13,32 +14,26 @@ class Dashboard extends BaseController
         if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
             return redirect()->to('Login');
         }
+        $this->Model_nilai = new Model_nilai();
 
         helper(['form', 'url']);
     }
 
     public function index()
-    {   
+    {	
         $session = session();
         if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
             return redirect()->to('Login');
         }
         
+        $id = $session->get('id_login');
+        $model = new Model_nilai();
+        $nilai = $model->data_nilai($id)->getRowArray();
+
         $data = [
-            'judul' => 'Tabel Siswa'
+            'judul' => 'Penilaian ' . $session->get('nama_login'),
+            'nilai' => $nilai
         ];
-        return view('Peserta/index', $data);
-    }
-
-    public function add_admin()
-    {
-    }
-
-    public function update_admin()
-    {
-    }
-
-    public function delete_admin()
-    {
+        return view('Peserta/viewPenilaian', $data);
     }
 }

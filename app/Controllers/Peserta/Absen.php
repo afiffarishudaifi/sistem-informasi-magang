@@ -11,6 +11,11 @@ class Absen extends BaseController
     protected $Model_absen;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+
         $this->Model_absen = new Model_absen();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -18,7 +23,11 @@ class Absen extends BaseController
 
     public function index()
     {	
-    	$session = session();
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+        
         $model = new Model_absen();
         $absen = $model->view_data_sudah($session->get('id_login'));
 

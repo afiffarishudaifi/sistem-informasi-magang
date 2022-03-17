@@ -12,12 +12,20 @@ class Admin extends BaseController
     public function __construct()
     {
         $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_admin = new Model_admin();
         helper(['form', 'url']);
     }
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_admin();
         $admin = $model->view_data()->getResultArray();
         $jabatan = $model->data_jabatan()->getResultArray();

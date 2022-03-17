@@ -11,6 +11,10 @@ class JobdeskPeserta extends BaseController
     protected $Model_jobdesk;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_jobdesk = new Model_jobdesk();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -19,6 +23,11 @@ class JobdeskPeserta extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_jobdesk();
         $jobdesk = $model->view_data()->getResultArray();
         $data = [

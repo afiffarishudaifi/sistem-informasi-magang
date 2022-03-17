@@ -36,8 +36,11 @@ $uri = service('uri');
               <span class="site-menu-title">Pengajuan Absensi</span>
             </a>
           </li>
-          <li class="site-menu-item has-sub">
-            <a href="javascript:void(0)">
+          <li class="site-menu-item has-sub <?php
+                                            if ($uri->getSegment(2) == 'Penilaian') {
+                                              echo "active";
+                                            } ?>">
+            <a href="<?= base_url('Peserta/Penilaian'); ?>">
               <i class="site-menu-icon md-border-color" aria-hidden="true"></i>
               <span class="site-menu-title">Penilaian Magang</span>
             </a>

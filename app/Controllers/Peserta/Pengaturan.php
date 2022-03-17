@@ -12,17 +12,21 @@ class Pengaturan extends BaseController
     public function __construct()
     {
         $session = session();
-
-        // if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa' || $session->get('status_login') != 'Sekolah') {
-        //     return redirect()->to('Login');
-        // }
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
         $this->Model_peserta = new Model_peserta();
 
         helper(['form', 'url']);
     }
 
     public function index()
-    {
+    {   
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+        
         $model = new Model_peserta();
         $sekolah = $model->data_sekolah()->getResultArray();
 

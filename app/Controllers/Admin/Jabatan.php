@@ -11,6 +11,10 @@ class Jabatan extends BaseController
     protected $Model_jabatan;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_jabatan = new Model_jabatan();
         helper(['form', 'url']);
     }
@@ -18,6 +22,10 @@ class Jabatan extends BaseController
     public function index()
     {
         $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_jabatan();
         $Jabatan = $model->view_data()->getResultArray();
 

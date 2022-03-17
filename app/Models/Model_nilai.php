@@ -69,10 +69,12 @@ class Model_nilai extends Model
         return $builder->get();
     }
 
-    public function data_sertifikat()
+    public function data_nilai($id)
     {
         $db      = \Config\Database::connect();
-        $builder = $db->table('sertifikat');
+        $builder = $db->table('nilai');
+        $builder->select('id_nilai, kedisiplinan, tanggung_jawab, kerja_sama, kerajinan, inisiatif, jumlah, rata_rata');
+        $builder->where('id_siswa', $id);
         return $builder->get();
     }
 }

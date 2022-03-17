@@ -12,6 +12,10 @@ class Nilai extends BaseController
     protected $Model_nilai;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_nilai = new Model_nilai();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -19,6 +23,11 @@ class Nilai extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_nilai();
         $nilai = $model->view_data()->getResultArray();
 

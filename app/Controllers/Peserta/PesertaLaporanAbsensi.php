@@ -11,14 +11,23 @@ class PesertaLaporanAbsensi extends BaseController
     protected $Model_laporan_absen;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+        
         $this->Model_laporan_absen = new Model_laporan_absen();
         helper(['form', 'url']);
         $this->db = db_connect();
     }
 
     public function index()
-    {
+    {   
         $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+            return redirect()->to('Login');
+        }
+        
 
         $data = [
             'judul' => 'Laporan Absensi ' . $session->get('nama_login')
@@ -63,9 +72,12 @@ class PesertaLaporanAbsensi extends BaseController
         echo json_encode($data);
     }
 
-    public function data_cetak($tanggal = null, $status = null)
+    public function data_cetak()
     {
         $session = session();
+
+        $status = $this->request->getPost('input_status');
+        $tanggal = $this->request->getPost('tanggal');
 
         if ($tanggal) $tgl = explode(' - ', $tanggal);
         if ($tanggal) { $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0])); } else { $param['cek_waktu1'] = date("Y-m-d"); };
@@ -77,27 +89,14 @@ class PesertaLaporanAbsensi extends BaseController
             $param['status_absen'] = null;
         }
 
-
         $param['id_siswa'] = $session->get('id_login');
 
         $model = new Model_laporan_absen();
-        $laporan = $model->peserta_filter($param)->getResultArray();
-
-        $respon = $laporan;
-        $data = array();
-
-        if ($respon) {
-            foreach ($respon as $value) {
-                $isi['id_absen'] = $value['id_absen'];
-                $isi['nama_siswa'] = $value['nama_siswa'];
-                $isi['status_absen'] = $value['status_absen'];
-                $isi['keterangan'] = $value['keterangan'];
-                $isi['konfirmasi_absen'] = $value['konfirmasi_absen'];
-                $isi['waktu_absen'] = $value['waktu_absen'];
-                array_push($data, $isi);
-            }
-        }
-
-        echo json_encode($data);
+        $laporan = $model->filter($param)->getResultArray();
+        $data = [
+            'judul' => 'Laporan Absensi Magang ' . $tanggal,
+            'laporan' => $laporan
+        ];
+        return view('Peserta/cetakLaporanAbsensi', $data);
     }
 }

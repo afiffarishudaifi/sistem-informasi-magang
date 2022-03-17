@@ -11,12 +11,21 @@ class IndeksPenilaian extends BaseController
     protected $Model_indekspenilaian;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_indekspenilaian = new Model_indekspenilaian();
         helper(['form', 'url']);
     }
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_indekspenilaian();
         $indeks = $model->view_data()->getResultArray();
 

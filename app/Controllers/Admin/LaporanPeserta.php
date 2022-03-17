@@ -11,6 +11,10 @@ class LaporanPeserta extends BaseController
     protected $Model_laporan_peserta;
     public function __construct()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
         $this->Model_laporan_peserta = new Model_laporan_peserta();
         helper(['form', 'url']);
         $this->db = db_connect();
@@ -18,6 +22,11 @@ class LaporanPeserta extends BaseController
 
     public function index()
     {
+        $session = session();
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Admin') {
+            return redirect()->to('Login/loginAdmin');
+        }
+        
         $model = new Model_laporan_peserta();
         $data = $model->view_data()->getResultArray();
 
