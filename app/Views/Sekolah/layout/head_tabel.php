@@ -47,6 +47,7 @@
     
     <!-- Scripts -->
     <script src="<?= base_url() ?>/docs/themeforest/global/vendor/breakpoints/breakpoints.js"></script>
+    <link rel="stylesheet" href="<?= base_url() ?>/docs/tambahan/assets/plugins/daterangepicker/daterangepicker.css">
     <script>
       Breakpoints();
     </script>

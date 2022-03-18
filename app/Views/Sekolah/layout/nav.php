@@ -51,13 +51,6 @@
           <!-- Navbar Toolbar Right -->
           <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
             <li class="nav-item dropdown">
-              <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
-                aria-expanded="false" data-animation="scale-up" role="button">
-                <i class="icon md-notifications" aria-hidden="true"></i>
-                <span class="badge badge-pill badge-danger up">5</span>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
               <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
                 data-animation="scale-up" role="button">
                 <span class="avatar avatar-online">

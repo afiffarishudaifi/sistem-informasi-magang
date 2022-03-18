@@ -35,6 +35,7 @@ class Model_peserta extends Model
         $builder = $db->table('siswa');
         $builder->select("siswa.nama_siswa, DATE_FORMAT(pengajuan_magang.waktu_mulai, '%Y-%m-%d') as waktu_mulai, DATE_FORMAT(pengajuan_magang.waktu_selesai, '%Y-%m-%d') as waktu_selesai");
         $builder->join('pengajuan_magang', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.status','Aktif');
         $builder->where('siswa.id_siswa',$id);
         return $builder->get();
     }
@@ -45,6 +46,7 @@ class Model_peserta extends Model
         $builder = $db->table('siswa');
         $builder->select("siswa.nama_siswa, DATE_FORMAT(pengajuan_magang.waktu_mulai, '%Y-%m-%d') as waktu_mulai, DATE_FORMAT(pengajuan_magang.waktu_selesai, '%Y-%m-%d') as waktu_selesai");
         $builder->join('pengajuan_magang', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.status','Aktif');
         $builder->where('siswa.id_sekolah',$id);
         return $builder->get();
     }

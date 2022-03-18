@@ -55,7 +55,12 @@ $uri = service('uri');
             </a>
           </li>
           <li class="site-menu-category">LAPORAN</li>
-          <li class="site-menu-item has-sub">
+          <li class="site-menu-item has-sub <?php
+                            if (
+                                $uri->getSegment(2) == 'LaporanAbsensi' || $uri->getSegment(2) == 'LaporanJobdesk'
+                            ) {
+                                echo "active";
+                            } ?>">
             <a href="javascript:void(0)">
               <i class="site-menu-icon md-assignment" aria-hidden="true"></i>
               <span class="site-menu-title">Laporan</span>
@@ -63,18 +68,18 @@ $uri = service('uri');
             </a>
             <ul class="site-menu-sub">
               <li class="site-menu-item <?php
-                                        if ($uri->getSegment(2) == 'PesertaLaporanJobdesk') {
+                                        if ($uri->getSegment(2) == 'LaporanJobdesk') {
                                           echo "active";
                                         } ?>">
-                <a class="animsition-link" href="<?= base_url('Peserta/PesertaLaporanJobdesk'); ?>">
+                <a class="animsition-link" href="<?= base_url('Peserta/LaporanJobdesk'); ?>">
                   <span class="site-menu-title">Jobdesk Magang</span>
                 </a>
               </li>
               <li class="site-menu-item <?php
-                                        if ($uri->getSegment(2) == 'PesertaLaporanAbsensi') {
+                                        if ($uri->getSegment(2) == 'LaporanAbsensi') {
                                           echo "active";
                                         } ?>">
-                <a class="animsition-link" href="<?= base_url('Peserta/PesertaLaporanAbsensi'); ?>">
+                <a class="animsition-link" href="<?= base_url('Peserta/LaporanAbsensi'); ?>">
                   <span class="site-menu-title">Absensi Magang</span>
                 </a>
               </li>

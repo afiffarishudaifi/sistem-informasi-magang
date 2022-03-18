@@ -29,7 +29,8 @@ class Jobdesk extends BaseController
         }
         
         $model = new Model_jobdesk();
-        $jobdesk = $model->view_data()->getResultArray();
+        $id = $session->get('id_login');
+        $jobdesk = $model->view_data_siswa($id)->getResultArray();
         $data = [
             'judul' => 'Tabel Job Deskripsi',
             'jobdesk' => $jobdesk

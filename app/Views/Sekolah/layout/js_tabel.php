@@ -65,6 +65,8 @@
 
 
     <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/moment/moment.min.js"></script>
+    <script src="<?= base_url() ?>/docs/tambahan/assets/plugins/daterangepicker/daterangepicker.js"></script>
 
     <script type="text/javascript">
 

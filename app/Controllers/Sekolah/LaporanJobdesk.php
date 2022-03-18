@@ -1,38 +1,37 @@
 <?php
 
-namespace App\Controllers\Peserta;
+namespace App\Controllers\Sekolah;
 
 use App\Controllers\BaseController;
-use App\Models\Model_laporan_absen;
+use App\Models\Model_laporan_jobdesk;
 
-class PesertaLaporanAbsensi extends BaseController
+class LaporanJobdesk extends BaseController
 {
 
-    protected $Model_laporan_absen;
+    protected $Model_laporan_jobdesk;
     public function __construct()
     {
         $session = session();
-        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Sekolah') {
             return redirect()->to('Login');
         }
-        
-        $this->Model_laporan_absen = new Model_laporan_absen();
+        $this->Model_laporan_jobdesk = new Model_laporan_jobdesk();
         helper(['form', 'url']);
         $this->db = db_connect();
     }
 
     public function index()
-    {   
+    {
         $session = session();
-        if (!$session->get('nama_login') || $session->get('status_login') != 'Siswa') {
+        if (!$session->get('nama_login') || $session->get('status_login') != 'Sekolah') {
             return redirect()->to('Login');
         }
         
 
         $data = [
-            'judul' => 'Laporan Absensi ' . $session->get('nama_login')
+            'judul' => 'Laporan Jobdesk'
         ];
-        return view('Peserta/viewLaporanAbsen', $data);
+        return view('Sekolah/viewLaporanJobdesk', $data);
     }
 
     public function data($tanggal = null, $status = null)
@@ -44,27 +43,26 @@ class PesertaLaporanAbsensi extends BaseController
         if ($tanggal) { $param['cek_waktu2'] = date("Y-m-d", strtotime($tgl[1])); } else { $param['cek_waktu2'] = date("Y-m-d"); };
 
         if ($status != 'null') {
-            $param['status_absen'] = $status;
+            $param['status_jobdesk'] = $status;
         } else {
-            $param['status_absen'] = null;
+            $param['status_jobdesk'] = null;
         }
 
-        $param['id_siswa'] = $session->get('id_login');
-
-        $model = new Model_laporan_absen();
-        $laporan = $model->peserta_filter($param)->getResultArray();
+        $model = new Model_laporan_jobdesk();
+        $param['id_sekolah'] = $session->get('id_login');
+        $laporan = $model->filter_sekolah($param)->getResultArray();
 
         $respon = $laporan;
         $data = array();
 
         if ($respon) {
             foreach ($respon as $value) {
-                $isi['id_absen'] = $value['id_absen'];
                 $isi['nama_siswa'] = $value['nama_siswa'];
-                $isi['status_absen'] = $value['status_absen'];
-                $isi['keterangan'] = $value['keterangan'];
-                $isi['konfirmasi_absen'] = $value['konfirmasi_absen'];
-                $isi['waktu_absen'] = $value['waktu_absen'];
+                $isi['nama_jobdesk'] = $value['nama_jobdesk'];
+                $isi['deskripsi'] = $value['deskripsi'];
+                $isi['waktu_mulai'] = $value['waktu_mulai'];
+                $isi['waktu_selesai'] = $value['waktu_selesai'];
+                $isi['status_jobdesk'] = $value['status_jobdesk'];
                 array_push($data, $isi);
             }
         }
@@ -84,19 +82,18 @@ class PesertaLaporanAbsensi extends BaseController
         if ($tanggal) { $param['cek_waktu2'] = date("Y-m-d", strtotime($tgl[1])); } else { $param['cek_waktu2'] = date("Y-m-d"); };
 
         if ($status != 'null') {
-            $param['status_absen'] = $status;
+            $param['status_jobdesk'] = $status;
         } else {
-            $param['status_absen'] = null;
+            $param['status_jobdesk'] = null;
         }
 
-        $param['id_siswa'] = $session->get('id_login');
-
-        $model = new Model_laporan_absen();
-        $laporan = $model->filter($param)->getResultArray();
+        $model = new Model_laporan_jobdesk();
+        $param['id_sekolah'] = $session->get('id_login');
+        $laporan = $model->filter_sekolah($param)->getResultArray();
         $data = [
-            'judul' => 'Laporan Absensi Magang ' . $tanggal,
+            'judul' => 'Laporan Jobdesk Magang ' . $tanggal,
             'laporan' => $laporan
         ];
-        return view('Peserta/cetakLaporanAbsensi', $data);
+        return view('Sekolah/cetakLaporanJobdesk', $data);
     }
 }

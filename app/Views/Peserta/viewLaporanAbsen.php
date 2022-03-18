@@ -28,7 +28,7 @@
                     <h3 class="panel-title"><?= $judul; ?></h3>
                 </header>
                 <div class="panel-body">
-                    <form method="POST" action="<?= base_url('Peserta/PesertaLaporanAbsensi/data_cetak') ?>" style="padding-bottom: 20px;">
+                    <form method="POST" action="<?= base_url('Peserta/LaporanAbsensi/data_cetak') ?>" style="padding-bottom: 20px;">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -92,7 +92,7 @@
             }
         });
         function ganti(status) {
-            $('.table').DataTable().ajax.url('<?= base_url() ?>/Peserta/PesertaLaporanAbsensi/data/' + $('#tanggal').val() + '/' + status).load();
+            $('.table').DataTable().ajax.url('<?= base_url() ?>/Peserta/LaporanAbsensi/data/' + $('#tanggal').val() + '/' + status).load();
         };
 
         $(function() {            
@@ -100,7 +100,7 @@
             $('.table').DataTable({
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "ajax": {
-                    "url": "<?= base_url() ?>/Peserta/PesertaLaporanAbsensi/data/" + $('#tanggal').val() + '/' + $('#input_status').val(),
+                    "url": "<?= base_url() ?>/Peserta/LaporanAbsensi/data/" + $('#tanggal').val() + '/' + $('#input_status').val(),
                     "dataSrc": ""
                 },
                 "columns": [{
@@ -125,7 +125,7 @@
 
         $('#tanggal').on('apply.daterangepicker', function(ev, picker) {
             var tanggal = picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY');
-            $('.table').DataTable().ajax.url('<?= base_url() ?>/Peserta/PesertaLaporanAbsensi/data/' + tanggal + '/' + $('#input_status').val()).load();
+            $('.table').DataTable().ajax.url('<?= base_url() ?>/Peserta/LaporanAbsensi/data/' + tanggal + '/' + $('#input_status').val()).load();
         });
     </script>
 

@@ -15,7 +15,19 @@ class Model_nilai extends Model
         $builder = $db->table('nilai');
         $builder->select('nilai.id_nilai, siswa.id_siswa, siswa.nama_siswa, nilai.kedisiplinan, nilai.tanggung_jawab, nilai.kerja_sama, nilai.kerajinan, nilai.inisiatif, nilai.jumlah, nilai.rata_rata');
         $builder->join('siswa', 'nilai.id_siswa = siswa.id_siswa');
-        $builder->where('siswa.status', 'Aktif');
+        $builder->where('siswa.status', 'Selesai');
+        return $builder->get();
+    }
+
+    public function view_data_sekolah($id)
+    {
+
+        $db      = \Config\Database::connect();
+        $builder = $db->table('nilai');
+        $builder->select('nilai.id_nilai, siswa.id_siswa, siswa.nama_siswa, nilai.kedisiplinan, nilai.tanggung_jawab, nilai.kerja_sama, nilai.kerajinan, nilai.inisiatif, nilai.jumlah, nilai.rata_rata');
+        $builder->join('siswa', 'nilai.id_siswa = siswa.id_siswa');
+        $builder->where('siswa.id_sekolah', $id);
+        $builder->where('siswa.status', 'Selesai');
         return $builder->get();
     }
 

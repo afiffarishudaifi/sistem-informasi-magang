@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 
-<?= $this->include("Peserta/layout/head_tabel"); ?>
+<?= $this->include("Sekolah/layout/head_tabel"); ?>
 
 <body class="animsition">
 
-    <?= $this->include("Peserta/layout/nav") ?>
+    <?= $this->include("Sekolah/layout/nav") ?>
 
-    <?= $this->include("Peserta/layout/sidebar") ?>
+    <?= $this->include("Sekolah/layout/sidebar") ?>
 
     <!-- Page -->
     <div class="page">
@@ -28,7 +28,7 @@
                     <h3 class="panel-title"><?= $judul; ?></h3>
                 </header>
                 <div class="panel-body">
-                    <form method="POST" action="<?= base_url('Peserta/LaporanJobdesk/data_cetak') ?>" style="padding-bottom: 20px;">
+                    <form method="POST" action="<?= base_url('Sekolah/LaporanJobdesk/data_cetak') ?>" style="padding-bottom: 20px;">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -80,9 +80,9 @@
     <!-- End Page -->
 
     <!-- Footer -->
-    <?= $this->include("Peserta/layout/footer") ?>
+    <?= $this->include("Sekolah/layout/footer") ?>
 
-    <?= $this->include("Peserta/layout/js_tabel") ?>
+    <?= $this->include("Sekolah/layout/js_tabel") ?>
 
     <script>
         $('#tanggal').daterangepicker({
@@ -91,7 +91,7 @@
             }
         });
         function ganti(status) {
-            $('.table').DataTable().ajax.url('<?= base_url() ?>/Peserta/LaporanJobdesk/data/' + $('#tanggal').val() + '/' + status).load();
+            $('.table').DataTable().ajax.url('<?= base_url() ?>/Sekolah/LaporanJobdesk/data/' + $('#tanggal').val() + '/' + status).load();
         };
 
         $(function() {            
@@ -99,7 +99,7 @@
             $('.table').DataTable({
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "ajax": {
-                    "url": "<?= base_url() ?>/Peserta/LaporanJobdesk/data/" + $('#tanggal').val() + '/' + $('#input_status').val(),
+                    "url": "<?= base_url() ?>/Sekolah/LaporanJobdesk/data/" + $('#tanggal').val() + '/' + $('#input_status').val(),
                     "dataSrc": ""
                 },
                 "columns": [{
@@ -127,7 +127,7 @@
 
         $('#tanggal').on('apply.daterangepicker', function(ev, picker) {
             var tanggal = picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY');
-            $('.table').DataTable().ajax.url('<?= base_url() ?>/Peserta/LaporanJobdesk/data/' + tanggal + '/' + $('#input_status').val()).load();
+            $('.table').DataTable().ajax.url('<?= base_url() ?>/Sekolah/LaporanJobdesk/data/' + tanggal + '/' + $('#input_status').val()).load();
         });
     </script>
 
