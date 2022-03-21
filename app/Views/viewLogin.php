@@ -42,18 +42,14 @@
     </script>
   </head>
   <body class="animsition page-login-v2 layout-full page-dark">
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
 
     <!-- Page -->
     <div class="page" data-animsition-in="fade-in" data-animsition-out="fade-out">
       <div class="page-content">
         <div class="page-brand-info">
           <div class="brand">
-            <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets/images/logo@2x.png" alt="...">
-            <h2 class="brand-text font-size-40">Remark</h2>
+            <img class="brand-img" style="width: 10%;" src="<?= base_url() ?>/docs/themeforest/base/assets/images/favicon.ico" alt="...">
+            <h2 class="brand-text font-size-40">E-Magang</h2>
           </div>
           <p class="font-size-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -61,8 +57,8 @@
 
         <div class="page-login-main">
           <div class="brand hidden-md-up">
-            <img class="brand-img" src="<?= base_url() ?>/docs/themeforest/base/assets/images/logo-colored@2x.png" alt="...">
-            <h3 class="brand-text font-size-40">Remark</h3>
+            <img class="brand-img" style="width: 10%;" src="<?= base_url() ?>/docs/img/img_logo/logokab.gif" alt="...">
+            <h3 class="brand-text font-size-40">E-Magang</h3>
           </div>
           <h3 class="font-size-24">E-Magang</h3>
           <p>Login untuk dapat akses ke sistem.</p>
@@ -70,12 +66,12 @@
           <form method="POST" action="<?= base_url('Login/loginSistem'); ?>" autocomplete="off">
             <div class="form-group form-material floating" data-plugin="formMaterial">
                 <input type="text" class="form-control" id="username" name="username"
-                      data-parsley-required="true" autocomplete="off" autofocus="" />
+                      data-parsley-required="true" autocomplete="off" autofocus="" required="" />
                 <label class="floating-label">Username</label>
             </div>
             <div class="form-group form-material floating" data-plugin="formMaterial">
                 <input type="password" class="form-control" id="password" name="password"
-                      data-parsley-required="true" autocomplete="off" />
+                      data-parsley-required="true" autocomplete="off" required="" />
                 <label class="floating-label">Password</label>
             </div>
             <div class="form-group form-material floating" data-plugin="formMaterial">

@@ -28,7 +28,7 @@
 	<center>
 		<table width="625">
 			<tr>
-				<td><img src="<?= base_url() ?>/docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif" width="90" height="90"></td>
+				<td><img src="<?= base_url() ?>/docs/img/img_logo/logokab.gif" width="90" height="90"></td>
 				<td>
 				<center>
 					<font size="4"><b>PEMERINTAH KABUPATEN MADIUN</b></font><br>
