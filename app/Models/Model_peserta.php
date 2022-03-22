@@ -13,7 +13,7 @@ class Model_peserta extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('siswa');
-		$builder->select('siswa.id_siswa, siswa.nama_siswa, sekolah.nama_sekolah');
+		$builder->select('siswa.id_siswa, siswa.nama_siswa, sekolah.nama_sekolah, status, alamat_siswa');
 		$builder->join('sekolah', 'sekolah.id_sekolah = siswa.id_sekolah');
         return $builder->get();
     }

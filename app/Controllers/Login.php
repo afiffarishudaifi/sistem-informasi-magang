@@ -26,11 +26,15 @@ class Login extends BaseController
         $model = new Model_login();
         $siswa_tedaftar = array();
 
-        $siswa = $model->data_siswa()->getResultArray();
-        foreach ($siswa as $value) {
+        $hasil = $model->data_siswa_magang()->getResultArray();
+        foreach ($hasil as $value) {
             array_push($siswa_tedaftar, $value['id_siswa']);
         }
-        $hasil = $model->data_seleksi($siswa_tedaftar)->getResultArray();
+        if(count($siswa_tedaftar) != 0) {
+            $hasil = $model->data_seleksi($siswa_tedaftar)->getResultArray();
+        } else {
+            $hasil = $model->data_siswa()->getResultArray();
+        }
 
         $data = [
             'hasil' => $hasil
@@ -131,88 +135,57 @@ class Login extends BaseController
         $model = new Model_login();
         $encrypter = \Config\Services::encrypter();
 
-        // $status = $this->request->getPost('status');
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        // if ($status == 'Siswa') {
-            $data = $model->loginSiswa($username)->getRowArray();
+        $data = $model->loginSiswa($username)->getRowArray();
+
+        if ($data) {
+            $pass = $data['password_siswa'];
+            $status = 'Siswa';
+            $verify_pass =  $encrypter->decrypt(base64_decode($pass));
+            if ($verify_pass == $password) {
+                $ses_data = [
+                    'id_login' => $data['id_siswa'],
+                    'nama_login' => $data['nama_siswa'],
+                    'foto' => 'no_image.png',
+                    'status_login' => $status,
+                    'logged_in' => TRUE,
+                    'is_admin' => TRUE
+                ];
+                $session->set($ses_data);
+                return redirect()->to('/Peserta/Dashboard');
+            } else {
+                $session->setFlashdata('msg', 'Password Tidak Sesuai');
+                return redirect()->to('/Login');
+            }
+        } else {
+            $data = $model->loginSekolah($username)->getRowArray();
 
             if ($data) {
-                $pass = $data['password_siswa'];
-                $status = 'Siswa';
+                $pass = $data['password_sekolah'];
+                $status = 'Sekolah';
                 $verify_pass =  $encrypter->decrypt(base64_decode($pass));
                 if ($verify_pass == $password) {
                     $ses_data = [
-                        'id_login' => $data['id_siswa'],
-                        'nama_login' => $data['nama_siswa'],
+                        'id_login' => $data['id_sekolah'],
+                        'nama_login' => $data['nama_sekolah'],
                         'foto' => 'no_image.png',
                         'status_login' => $status,
                         'logged_in' => TRUE,
                         'is_admin' => TRUE
                     ];
                     $session->set($ses_data);
-                    return redirect()->to('/Peserta/Dashboard');
+                    return redirect()->to('/Sekolah/Dashboard');
                 } else {
                     $session->setFlashdata('msg', 'Password Tidak Sesuai');
                     return redirect()->to('/Login');
                 }
             } else {
-                // $session->setFlashdata('msg', 'Username Tidak di Temukan');
-                // return redirect()->to('/Login');
-                $data = $model->loginSekolah($username)->getRowArray();
-
-                if ($data) {
-                    $pass = $data['password_sekolah'];
-                    $status = 'Sekolah';
-                    $verify_pass =  $encrypter->decrypt(base64_decode($pass));
-                    if ($verify_pass == $password) {
-                        $ses_data = [
-                            'id_login' => $data['id_sekolah'],
-                            'nama_login' => $data['nama_sekolah'],
-                            'foto' => 'no_image.png',
-                            'status_login' => $status,
-                            'logged_in' => TRUE,
-                            'is_admin' => TRUE
-                        ];
-                        $session->set($ses_data);
-                        return redirect()->to('/Sekolah/Dashboard');
-                    } else {
-                        $session->setFlashdata('msg', 'Password Tidak Sesuai');
-                        return redirect()->to('/Login');
-                    }
-                } else {
-                    $session->setFlashdata('msg', 'Username Tidak di Temukan');
-                    return redirect()->to('/Login');
-                }
+                $session->setFlashdata('msg', 'Username Tidak di Temukan');
+                return redirect()->to('/Login');
             }
-        // } else {
-        //     $data = $model->loginSekolah($username)->getRowArray();
-
-        //     if ($data) {
-        //         $pass = $data['password_sekolah'];
-        //         $status = 'Sekolah';
-        //         $verify_pass =  $encrypter->decrypt(base64_decode($pass));
-        //         if ($verify_pass == $password) {
-        //             $ses_data = [
-        //                 'id_login' => $data['id_sekolah'],
-        //                 'nama_login' => $data['nama_sekolah'],
-        //             	'foto' => 'no_image.png',
-        //                 'status_login' => $status,
-        //                 'logged_in' => TRUE,
-        //                 'is_admin' => TRUE
-        //             ];
-        //             $session->set($ses_data);
-        //             return redirect()->to('/Sekolah/Dashboard');
-        //         } else {
-        //             $session->setFlashdata('msg', 'Password Tidak Sesuai');
-        //             return redirect()->to('/Login');
-        //         }
-        //     } else {
-        //         $session->setFlashdata('msg', 'Username Tidak di Temukan');
-        //         return redirect()->to('/Login');
-        //     }
-        // }
+        }
     }
 
     public function registrasiSiswa()

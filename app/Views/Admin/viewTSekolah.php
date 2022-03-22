@@ -34,7 +34,7 @@
                                 <th>Nama Sekolah</th>
                                 <th>Alamat Sekolah</th>
                                 <th>No Telepon</th>
-                                <th>Aksi</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -43,7 +43,7 @@
                                 <th>Nama Sekolah</th>
                                 <th>Alamat Sekolah</th>
                                 <th>No Telepon</th>
-                                <th>Aksi</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>

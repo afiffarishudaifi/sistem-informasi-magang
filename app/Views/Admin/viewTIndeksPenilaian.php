@@ -34,7 +34,7 @@
                                 <th>Nilai Awal</th>
                                 <th>Nilai Akhir</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -43,7 +43,7 @@
                                 <th>Nilai Awal</th>
                                 <th>Nilai Akhir</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>

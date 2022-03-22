@@ -74,7 +74,7 @@
                                     <td>
                                         <center>
                                             <a href="" data-toggle="modal" data-toggle="modal" data-target="#tolakModal" name="btn-tolak" onclick="detail_edit(<?= $item['id_pengajuan']; ?>)" class="btn btn-sm btn-icon btn-edit btn-warning"><i class="icon md-close" aria-hidden="true"></i></a>
-                                            <a href="" data-toggle="modal" data-toggle="modal" data-target="#terimaModal" name="btn-terima" onclick="validasi(<?= $item['id_pengajuan']; ?>)" class="btn btn-sm btn-icon btn-edit btn-success"><i class="icon md-check" aria-hidden="true"></i></a>
+                                            <a href="" data-toggle="modal" data-toggle="modal" data-target="#terimaModal" name="btn-terima" onclick="validasi(<?= $item['id_pengajuan']; ?>,<?= $item['id_siswa']; ?>)" class="btn btn-sm btn-icon btn-edit btn-success"><i class="icon md-check" aria-hidden="true"></i></a>
                                         </center>
                                     </td>
                                     <td>
@@ -140,6 +140,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="id_pengajuan" id="id_pengajuan" class="id_pengajuan">
+                        <input type="hidden" name="id_siswa" id="id_siswa" class="id_siswa">
                         <input type="hidden" name="status_pengajuan" id="status_pengajuan" value="Diterima">
                         <button type="reset" class="btn btn-secondary" id="batal_up" data-dismiss="modal">Batal</button>
                         <button type="submit" name="terima" class="btn btn-success">Terima</button>
@@ -224,8 +225,9 @@
             $('#deleteModal').modal('show');
         };
 
-        function validasi(id_pengajuan) {
+        function validasi(id_pengajuan, id_siswa) {
             $('.id_pengajuan').val(id_pengajuan);
+            $('.id_siswa').val(id_siswa);
             $('#terimaModal').modal('show');
         };
 

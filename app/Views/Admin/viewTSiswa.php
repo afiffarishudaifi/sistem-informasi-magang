@@ -34,6 +34,8 @@
                                 <th style="text-align: center;">No</th>
                                 <th style="text-align: center;">Nama</th>
                                 <th style="text-align: center;">Sekolah</th>
+                                <th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Alamat Siswa</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -42,6 +44,8 @@
                                 <th style="text-align: center;">No</th>
                                 <th style="text-align: center;">Nama</th>
                                 <th style="text-align: center;">Sekolah</th>
+                                <th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Alamat Siswa</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </tfoot>
@@ -54,6 +58,8 @@
                                 <td width="1%"><?= $no++; ?></td>
                                 <td><?= $item['nama_siswa']; ?></td>
                                 <td><?= $item['nama_sekolah']; ?></td>
+                                <td><?= $item['status']; ?></td>
+                                <td><?= $item['alamat_siswa']; ?></td>
                                 <td>
                                     <center>
                                         <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal"

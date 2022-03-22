@@ -91,8 +91,11 @@ $session = session();
               <span class="site-menu-title">Timeline Peserta</span>
             </a>
           </li>
-          <li class="site-menu-item has-sub ">
-            <a href="javascript:void(0)">
+          <li class="site-menu-item has-sub <?php
+                                            if ($uri->getSegment(2) == 'PengajuanMagang') {
+                                              echo "active";
+                                            } ?>">
+            <a href="<?= base_url('Admin/PengajuanMagang'); ?>">
               <i class="site-menu-icon md-notifications-none" aria-hidden="true"></i>
               <span class="site-menu-title">Pengajuan Magang</span>
             </a>

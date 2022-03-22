@@ -15,6 +15,7 @@ class Model_pengajuan extends Model
         $builder = $db->table('pengajuan_magang');
         $builder->select('pengajuan_magang.id_pengajuan, siswa.id_siswa, siswa.nama_siswa, pengajuan_magang.waktu_mulai, pengajuan_magang.waktu_selesai, pengajuan_magang.status_pengajuan, pengajuan_magang.pengantar, pengajuan_magang.proposal');
         $builder->join('siswa', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('pengajuan_magang.status_pengajuan','Pengajuan');
         return $builder->get();
     }
 

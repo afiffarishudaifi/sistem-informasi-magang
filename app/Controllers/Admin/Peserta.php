@@ -32,7 +32,7 @@ class Peserta extends BaseController
         $sekolah = $model->data_sekolah()->getResultArray();
 
         $data = [
-            'judul' => 'Tabel Siswa',
+            'judul' => 'Tabel Peserta',
             'siswa' => $siswa,
             'sekolah' => $sekolah
         ];

@@ -56,7 +56,7 @@ class Model_login extends Model
         return $builder->get();
     }
 
-    public function data_siswa()
+    public function data_siswa_magang()
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('pengajuan_magang');
@@ -70,6 +70,13 @@ class Model_login extends Model
         $builder = $db->table('siswa');
         $builder->select('id_siswa, nama_siswa');
         $builder->whereNotIn('id_siswa', $id);
+        return $builder->get();
+    }
+
+    public function data_siswa()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
         return $builder->get();
     }
 

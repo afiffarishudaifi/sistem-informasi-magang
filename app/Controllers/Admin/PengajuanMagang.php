@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Model_pengajuan;
+use App\Models\Model_peserta;
 
 class PengajuanMagang extends BaseController
 {
@@ -44,14 +45,24 @@ class PengajuanMagang extends BaseController
         date_default_timezone_set('Asia/Jakarta');
 
         $id = $this->request->getPost('id_pengajuan');
+        $id_siswa = $this->request->getPost('id_siswa');
 
         $data = array(
-            'id_admin'          => 1, //$session->get('id_login')
+            'id_admin'          => $session->get('id_login'),
             'status_pengajuan'      => $this->request->getVar('status_pengajuan'),
             'updated_at'        => date('Y-m-d H:i:s')
         );
 
         $model->update_data($data, $id);
+
+        $model_peserta = new Model_peserta();
+        if ($this->request->getPost('status_pengajuan') == 'Diterima') {
+            $data = array(
+                'status'      => 'Aktif',
+                'updated_at'        => date('Y-m-d H:i:s')
+            );
+            $model_peserta->update_data($data, $id_siswa);
+        }
         $session->setFlashdata('sukses', 'Data berhasil disimpan');
         return redirect()->to(base_url('Admin/PengajuanMagang'));
     }
