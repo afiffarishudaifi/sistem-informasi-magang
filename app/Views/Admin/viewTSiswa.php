@@ -203,7 +203,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id_siswa" id="id_siswa">
+                        <input type="hidden" style="display: none;" name="id_siswa" id="id_siswa">
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Nama Siswa</label>
@@ -320,7 +320,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id" class="id">
+                        <input type="hidden" style="display: none;" name="id" class="id">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Hapus</button>
                     </div>

@@ -44,10 +44,6 @@
     </script>
   </head>
   <body class="animsition dashboard">
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     
     <?= $this->include("Sekolah/layout/nav") ?>  
 
@@ -57,82 +53,73 @@
     <div class="page">
       <div class="page-content container-fluid">
         <div class="row" data-plugin="matchHeight" data-by-row="true">
-          <div class="col-xl-3 col-md-6">
+          <div class="col-xl-4 col-md-6">
             <!-- Widget Linearea One-->
             <div class="card card-shadow" id="widgetLineareaOne">
               <div class="card-block p-20 pt-10">
                 <div class="clearfix">
                   <div class="grey-800 float-left py-10">
-                    <i class="icon md-account grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    User
+                    <i class="icon md-account-circle grey-600 font-size-24 vertical-align-bottom mr-5"></i> Peserta Magang Aktif
                   </div>
-                  <span class="float-right grey-700 font-size-30">1,253</span>
                 </div>
+                <div class="float-right grey-700 font-size-30">
+                  <?= $total_peserta_aktif ?>
+                </div>
+                <br><br>
                 <div class="mb-20 grey-500">
-                  <i class="icon md-long-arrow-up green-500 font-size-16"></i>                  15% From this yesterday
+                  <a href="<?= base_url('Sekolah/Peserta/Aktif'); ?>">Lihat Detail Data</i></a>
                 </div>
-                <div class="ct-chart h-50"></div>
               </div>
             </div>
             <!-- End Widget Linearea One -->
           </div>
-          <div class="col-xl-3 col-md-6">
+          <div class="col-xl-4 col-md-6">
             <!-- Widget Linearea Two -->
             <div class="card card-shadow" id="widgetLineareaTwo">
               <div class="card-block p-20 pt-10">
                 <div class="clearfix">
                   <div class="grey-800 float-left py-10">
-                    <i class="icon md-flash grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    VISITS
+                    <i class="icon md-flash grey-600 font-size-24 vertical-align-bottom mr-5"></i>Peserta Tidak Aktif 
                   </div>
-                  <span class="float-right grey-700 font-size-30">2,425</span>
                 </div>
+                <div class="float-right grey-700 font-size-30">
+                  <?= $total_peserta_tidak_aktif ?>
+                </div>
+                <br><br>
                 <div class="mb-20 grey-500">
-                  <i class="icon md-long-arrow-up green-500 font-size-16"></i>                  34.2% From this week
+                  <a href="<?= base_url('Sekolah/Peserta/TidakAktif'); ?>">Lihat Detail Data</i></a>
                 </div>
-                <div class="ct-chart h-50"></div>
               </div>
             </div>
             <!-- End Widget Linearea Two -->
           </div>
-          <div class="col-xl-3 col-md-6">
+          <div class="col-xl-4 col-md-6">
             <!-- Widget Linearea Three -->
             <div class="card card-shadow" id="widgetLineareaThree">
               <div class="card-block p-20 pt-10">
                 <div class="clearfix">
                   <div class="grey-800 float-left py-10">
-                    <i class="icon md-chart grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Total Clicks
+                    <i class="icon md-account grey-600 font-size-24 vertical-align-bottom mr-5"></i> Pengajuan Peserta Magang
                   </div>
-                  <span class="float-right grey-700 font-size-30">1,864</span>
                 </div>
+                <div class="float-right grey-700 font-size-30">
+                  <?= $total_pengajuan ?>
+                </div>
+                <br><br>
                 <div class="mb-20 grey-500">
-                  <i class="icon md-long-arrow-down red-500 font-size-16"></i>                  15% From this yesterday
+                  <a href="<?= base_url('Sekolah/Peserta/Pengajuan'); ?>">Lihat Detail Data</i></a>
                 </div>
-                <div class="ct-chart h-50"></div>
               </div>
             </div>
             <!-- End Widget Linearea Three -->
           </div>
-          <div class="col-xl-3 col-md-6">
-            <!-- Widget Linearea Four -->
-            <div class="card card-shadow" id="widgetLineareaFour">
-              <div class="card-block p-20 pt-10">
-                <div class="clearfix">
-                  <div class="grey-800 float-left py-10">
-                    <i class="icon md-view-list grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Items
-                  </div>
-                  <span class="float-right grey-700 font-size-30">845</span>
-                </div>
-                <div class="mb-20 grey-500">
-                  <i class="icon md-long-arrow-up green-500 font-size-16"></i>                  18.4% From this yesterday
-                </div>
-                <div class="ct-chart h-50"></div>
-              </div>
-            </div>
-            <!-- End Widget Linearea Four -->
-          </div>
-
           <div class="col-xxl-12 col-lg-12">
+            <center>
+              <h1>
+                Selamat Datang di E-Magang
+              </h1>
+            </center>
           </div>
-
         </div>
       </div>
     </div>

@@ -127,4 +127,26 @@ class Model_peserta extends Model
         $builder->where('username_siswa', $username);
         return $builder->get();
     }
+
+    public function view_data_aktif($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
+        $builder->select('siswa.id_siswa, siswa.nama_siswa, sekolah.nama_sekolah, status, alamat_siswa');
+        $builder->join('sekolah', 'sekolah.id_sekolah = siswa.id_sekolah');
+        $builder->where('sekolah.id_sekolah', $id);
+        $builder->where('status','Aktif');
+        return $builder->get();
+    }
+
+    public function view_data_tidak_aktif($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('siswa');
+        $builder->select('siswa.id_siswa, siswa.nama_siswa, sekolah.nama_sekolah, status, alamat_siswa');
+        $builder->join('sekolah', 'sekolah.id_sekolah = siswa.id_sekolah');
+        $builder->where('sekolah.id_sekolah', $id);
+        $builder->where('status','Tidak Aktif');
+        return $builder->get();
+    }
 }

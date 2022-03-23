@@ -33,7 +33,7 @@ $session = session();
 		        data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
 		        <?= csrf_field(); ?>
 
-                    <input type="hidden" value="<?= $session->get('id_login'); ?>" name="id_siswa" id="id_siswa">
+                    <input type="hidden" value="<?= $session->get('id_login'); ?>" name="id_siswa" id="id_siswa" style="display: none;">
                       <div class="form-group form-material">
                           <label class="form-control-label">Nama Peserta Magang</label>
                           <input type="text" class="form-control" id="edit_nama" name="edit_nama"

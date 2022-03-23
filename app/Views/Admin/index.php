@@ -137,7 +137,6 @@
             </div>
             <!-- End Widget Linearea Four -->
           </div>
-
           <div class="col-xxl-12 col-lg-12">
             <center>
               <h1>

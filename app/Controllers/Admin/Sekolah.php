@@ -64,14 +64,24 @@ class Sekolah extends BaseController
         date_default_timezone_set('Asia/Jakarta');
 
         $id = $this->request->getPost('id_sekolah');
-        $data = array(
-            'username_sekolah'     => $this->request->getPost('edit_username'),
-            'password_sekolah'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
-            'nama_sekolah'         => $this->request->getPost('edit_nama'),
-            'alamat_sekolah'       => $this->request->getPost('edit_alamat'),
-            'no_telp_sekolah'      => $this->request->getPost('edit_no_telp'),
-            'updated_at'           => date('Y-m-d H:i:s')
-        );
+        if ($this->request->getPost('edit_password')) {
+            $data = array(
+                'username_sekolah'     => $this->request->getPost('edit_username'),
+                'password_sekolah'     => base64_encode($encrypter->encrypt($this->request->getPost('edit_password'))),
+                'nama_sekolah'         => $this->request->getPost('edit_nama'),
+                'alamat_sekolah'       => $this->request->getPost('edit_alamat'),
+                'no_telp_sekolah'      => $this->request->getPost('edit_no_telp'),
+                'updated_at'           => date('Y-m-d H:i:s')
+            );
+        } else {
+            $data = array(
+                'username_sekolah'     => $this->request->getPost('edit_username'),
+                'nama_sekolah'         => $this->request->getPost('edit_nama'),
+                'alamat_sekolah'       => $this->request->getPost('edit_alamat'),
+                'no_telp_sekolah'      => $this->request->getPost('edit_no_telp'),
+                'updated_at'           => date('Y-m-d H:i:s')
+            );
+        }
 
         $model->update_data($data, $id);
         $session->setFlashdata('sukses', 'Data sudah berhasil diubah');

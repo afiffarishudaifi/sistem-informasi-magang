@@ -174,7 +174,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="id_nilai" id="id_nilai">
+                        <input type="hidden" name="id_nilai" id="id_nilai" style="display: none;">
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Nama Peserta</label>

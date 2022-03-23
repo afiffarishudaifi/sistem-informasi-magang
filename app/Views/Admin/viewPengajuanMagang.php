@@ -111,8 +111,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id_pengajuan" id="id_pengajuan">
-                        <input type="hidden" name="status_pengajuan" id="status_pengajuan" value="Ditolak">
+                        <input type="hidden" style="display: none;"  name="id_pengajuan" id="id_pengajuan">
+                        <input type="hidden" style="display: none;"  name="status_pengajuan" id="status_pengajuan" value="Ditolak">
                         <button type="reset" class="btn btn-secondary" id="batal_up" data-dismiss="modal">Batal</button>
                         <button type="submit" name="tolak" class="btn btn-warning">TOLAK</button>
                     </div>
@@ -139,9 +139,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id_pengajuan" id="id_pengajuan" class="id_pengajuan">
-                        <input type="hidden" name="id_siswa" id="id_siswa" class="id_siswa">
-                        <input type="hidden" name="status_pengajuan" id="status_pengajuan" value="Diterima">
+                        <input type="hidden" style="display: none;"  name="id_pengajuan" id="id_pengajuan" class="id_pengajuan">
+                        <input type="hidden" style="display: none;"  name="id_siswa" id="id_siswa" class="id_siswa">
+                        <input type="hidden" style="display: none;"  name="status_pengajuan" id="status_pengajuan" value="Diterima">
                         <button type="reset" class="btn btn-secondary" id="batal_up" data-dismiss="modal">Batal</button>
                         <button type="submit" name="terima" class="btn btn-success">Terima</button>
                     </div>

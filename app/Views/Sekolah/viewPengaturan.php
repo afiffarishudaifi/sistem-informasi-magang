@@ -33,69 +33,41 @@ $session = session();
 		        data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
 		        <?= csrf_field(); ?>
 
-                    <input type="hidden" value="<?= $session->get('id_login'); ?>" name="id_admin" id="id_admin">
 
-                    <div class="form-group form-material">
-                      <label class="form-control-label">Nama Admin</label>
-                      <input type="text" class="form-control" id="edit_nama" name="edit_nama"
-                            data-parsley-required="true" placeholder="Masukkan Nama Admin" autofocus="" autocomplete="off" />
-                  	</div>
+            <input type="hidden" style="display: none;" name="id_sekolah" id="id_sekolah" style="display: none;">
 
-                      <div class="form-group form-material">
-                          <label class="form-control-label">Jabatan</label>
-                          <select name="edit_jabatan" id="edit_jabatan" class="form-control">
-                            <?php foreach ($jabatan as $value) { ?>
-                              <option value="<?= $value['id_jabatan'] ?>"><?= $value['nama_jabatan'] ?></option>
-                            <?php } ?>
-                          </select>
-                      </div>
+            <div class="form-group form-material">
+                <label class="form-control-label">Nama Sekolah</label>
+                <input type="text" class="form-control" id="edit_nama" name="edit_nama"
+                    data-parsley-required="true" placeholder="Masukkan Nama Sekolah" autocomplete="off" />
+            </div>
 
-                      <div class="form-group form-material">
-                          <label class="form-control-label">Username Admin</label>
-                          <input type="text" class="form-control" id="edit_username" name="edit_username"
-                                data-parsley-required="true" placeholder="Masukkan Username Admin" autocomplete="off" />
-                            <span class="text-danger" id="error_username"></span>
-                      </div>
+            <div class="form-group form-material">
+                <label class="form-control-label">Alamat Sekolah</label>
+                <textarea class="form-control" id="edit_alamat" name="edit_alamat" rows="2"></textarea>
+            </div>
 
-                      <div class="form-group form-material">
-                          <label class="form-group form-material">Password Admin</label>
-                          <input type="Password" class="form-control" id="edit_password" name="edit_password" placeholder="Masukkan Password Admin" autofocus="on">
-                      </div>
-                      <div class="form-group form-material">
-                          <label class="form-group form-material">Ulangi Password</label>
-                          <input type="Password" class="form-control" id="edit_password_konfirmasi" name="edit_password_konfirmasi" placeholder="Masukkan Ulangi Password" autofocus="on" data-parsley-equalto="#edit_password">
-                      </div>
+            <div class="form-group form-material">
+                <label class="form-control-label">No Telepon</label>
+                <input type="text" class="form-control" id="edit_no_telp" name="edit_no_telp"
+                    data-parsley-required="true" placeholder="Masukkan No Telepon Sekolah"
+                    autocomplete="off" />
+            </div>
 
-                      <div class="form-group form-material">
-                          <label class="form-control-label">No Telp</label>
-                          <input type="number" class="form-control" id="edit_no_telp" name="edit_no_telp"
-                                data-parsley-required="true" placeholder="Masukkan No Telp" autocomplete="off" />
-                      </div>
+            <div class="form-group form-material">
+                <label class="form-control-label">Password</label>
+                <input type="password" class="form-control" id="edit_password" name="edit_password" placeholder="Masukkan Password Sekolah"
+                    autocomplete="off" />
+            </div>
+            <div class="form-group form-material">
+                <label class="form-control-label">Ulangi Password</label>
+                <input type="Password" class="form-control" id="edit_password_konfirmasi"
+                    name="edit_password_konfirmasi" placeholder="Ulangi Password Sekolah" autofocus="on"
+                    data-parsley-equalto="#edit_password">
+            </div>
 
-                      <div class="form-group">
-                          <div class="col-md-12">
-                              <center>
-                                  <img id="foto_lama" style="width: 120px; height: 160px;" src="">
-                              </center>
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label class="form-control-label"><b>Foto Admin</b></label>
-                        <br>
-                          <input type="file" id="edit_foto" class="dropify-event" name="edit_foto" accept="image/png, image/gif, image/jpeg"
-                          />
-                      </div>
-
-                      <div class="form-group form-material">
-                          <label class="form-control-label">Status Admin</label>
-                          <select name="edit_status" class="form-control" id="edit_status">
-                              <option value="Aktif" selected="">Aktif</option>
-                              <option value="Tidak Aktif">Tidak Aktif</option>
-                          </select>
-                      </div>
-                    <button type="submit" name="update" class="btn btn-primary">Simpan</button>
-	            </div>
+            <input type="hidden" style="display: none;" value="<?= $session->get('id_login'); ?>" name="id_sekolah" id="id_sekolah">
+            <button type="submit" name="update" class="btn btn-primary">Simpan</button>
 		    </form>
 		    <!-- End Modal Edit Class-->
           </div>
@@ -119,31 +91,13 @@ $session = session();
 
         $(function() {
 
-        	$.getJSON('<?php echo base_url('Sekolah/Admin/data_edit'); ?>' + '/' + <?= $session->get('id_login'); ?>, {},
+        	$.getJSON('<?php echo base_url('Sekolah/Pengaturan/data_edit'); ?>' + '/' + <?= $session->get('id_login'); ?>, {},
             function(json) {
-                $('#id_admin').val(json.id_admin);
-                $('#edit_username').val(json.username_admin);
-                $('#edit_nama').val(json.nama_admin);
-                $('#edit_email').val(json.email_admin);
-                $('#edit_no_telp').val(json.no_telp_admin);
-                $('#edit_status').val(json.status_admin);
-
-
-
-                if (json.foto_resmi_admin != '' || json.foto_resmi_admin != null) {
-                    $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + json.foto_resmi_admin) ;
-                } else {
-                    $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + "docs/img/img_admin/noimage.jpg");
-                }
-
-                $('#edit_jabatan').append('<option selected value="' + json.id_jabatan + '">' + json.nama_jabatan +
-                    '</option>');
-                $('#edit_jabatan').select2('data', {
-                    id: json.id_jabatan,
-                    text: json.nama_jabatan
-                });
-                $('#edit_jabatan').trigger('change');
-
+                $('#id_sekolah').val(json.id_sekolah);
+                $('#edit_username').val(json.username_sekolah);
+                $('#edit_nama').val(json.nama_sekolah);
+                $('#edit_alamat').val(json.alamat_sekolah);
+                $('#edit_no_telp').val(json.no_telp_sekolah);
             });
 
 

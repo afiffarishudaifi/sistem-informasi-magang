@@ -48,9 +48,9 @@
                         </tfoot>
                         <tbody>
                             <?php
-              $no = 1;
-              foreach ($sekolah as $item) {
-              ?>
+                                $no = 1;
+                                foreach ($sekolah as $item) {
+                            ?>
                             <tr>
                                 <td width="1%"><?= $no++; ?></td>
                                 <td><?= $item['nama_sekolah']; ?></td>
