@@ -19,7 +19,7 @@ $session = session();
           </li>
           <li class="site-menu-item has-sub <?php
                                             if (
-                                              $uri->getSegment(2) == 'Admin' || $uri->getSegment(2) == 'IndeksPenilaian' ||
+                                              $uri->getSegment(2) == 'Admin' ||
                                               $uri->getSegment(2) == 'Jabatan' || $uri->getSegment(2) == 'Jobdesk' ||
                                               $uri->getSegment(2) == 'Sekolah' ||  $uri->getSegment(2) == 'Peserta'
                                             ) {
@@ -37,14 +37,6 @@ $session = session();
                                         } ?>">
                 <a class="animsition-link" href="<?= base_url('Admin/Admin'); ?>">
                   <span class="site-menu-title">Admin</span>
-                </a>
-              </li>
-              <li class="site-menu-item <?php
-                                        if ($uri->getSegment(2) == 'IndeksPenilaian') {
-                                          echo "active";
-                                        } ?>">
-                <a class="animsition-link" href="<?= base_url('Admin/IndeksPenilaian'); ?>">
-                  <span class="site-menu-title">Indeks Penilaian</span>
                 </a>
               </li>
               <li class="site-menu-item <?php
