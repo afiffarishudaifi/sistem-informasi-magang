@@ -51,8 +51,7 @@
             <img class="brand-img" style="width: 10%;" src="<?= base_url() ?>/docs/themeforest/base/assets/images/favicon.ico" alt="...">
             <h2 class="brand-text font-size-40">E-Magang</h2>
           </div>
-          <p class="font-size-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p class="font-size-20">Selamat Datang di E-Magang Kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun.</p>
         </div>
 
         <div class="page-login-main">

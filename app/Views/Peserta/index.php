@@ -59,7 +59,12 @@
         <div class="row" data-plugin="matchHeight" data-by-row="true">
           <div class="col-xxl-12 col-lg-12">
             <center>
-              <h1>Selamat Datang Peserta Magang<br>Di E-Magang</h1>
+              <img src="<?= base_url() ?>/docs/img/img_logo/logokab.gif" width="150" height="150">
+              <br>
+                <h3>
+                  Selamat Datang di E-Magang Kantor Badan Kesatuan<br>
+                  Bangsa dan Politik Dalam Negeri Kabupaten Madiun
+                </h3>
             </center>
           </div>
         </div>
