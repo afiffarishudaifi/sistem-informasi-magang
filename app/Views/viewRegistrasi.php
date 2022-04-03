@@ -62,7 +62,7 @@
                 </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_sekolah">
-                  <select name="input_sekolah" id="input_sekolah" class="form-control">
+                  <select name="input_sekolah" id="input_sekolah" class="form-control" required>
                     <?php foreach ($sekolah as $value) { ?>
                       <option value="<?= $value['id_sekolah'] ?>"><?= $value['nama_sekolah'] ?></option>
                     <?php } ?>

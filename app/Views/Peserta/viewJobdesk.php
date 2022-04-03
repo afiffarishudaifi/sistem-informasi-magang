@@ -101,22 +101,24 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Deskripsi</label>
-                            <textarea class="form-control" id="input_deskripsi" name="input_deskripsi" rows="2"></textarea>
+                            <textarea class="form-control" id="input_deskripsi" name="input_deskripsi" rows="2" required></textarea>
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Waktu Mulai</label>
-                            <input type="datetime-local" value="<?= date('Y-m-d') ?>T00:00" class="form-control" id="input_waktu_mulai" name="input_waktu_mulai" data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
+                            <input type="datetime-local" value="<?= date('Y-m-d') ?>T00:00" class="form-control" id="input_waktu_mulai" name="input_waktu_mulai" data-parsley-required="true" 
+                            placeholder="Masukkan Waktu Mulai" autocomplete="off" />
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Waktu Selesai</label>
-                            <input type="datetime-local" value="<?= date('Y-m-d') ?>T00:00" class="form-control" id="input_waktu_selesai" name="input_waktu_selesai" data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
+                            <input type="datetime-local" value="<?= date('Y-m-d') ?>T00:00" class="form-control" id="input_waktu_selesai" name="input_waktu_selesai" data-parsley-required="true" 
+                            placeholder="Masukkan Waktu Selesai" autocomplete="off" />
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Jobdesk</label>
-                            <select name="input_status" class="form-control" id="input_status">
+                            <select name="input_status" class="form-control" id="input_status" required>
                                 <option value="Selesai" selected="">Selesai</option>
                                 <option value="Belum Selesai">Belum Selesai</option>
                             </select>
@@ -155,22 +157,24 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Deskripsi</label>
-                            <textarea class="form-control" id="edit_deskripsi" name="edit_deskripsi" rows="2"></textarea>
+                            <textarea class="form-control" id="edit_deskripsi" name="edit_deskripsi" rows="2" required></textarea>
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Waktu Mulai</label>
-                            <input type="datetime-local" value="<?= date('d/m/Y') ?>T00:00" class="form-control" id="edit_waktu_mulai" name="edit_waktu_mulai" data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
+                            <input type="datetime-local" value="<?= date('d/m/Y') ?>T00:00" class="form-control" id="edit_waktu_mulai" name="edit_waktu_mulai" 
+                            data-parsley-required="true" placeholder="Masukkan Waktu Mulai" autocomplete="off" />
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Waktu Selesai</label>
-                            <input type="datetime-local" value="<?= date('d/m/Y') ?>T00:00" class="form-control" id="edit_waktu_selesai" name="edit_waktu_selesai" data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
+                            <input type="datetime-local" value="<?= date('d/m/Y') ?>T00:00" class="form-control" id="edit_waktu_selesai" name="edit_waktu_selesai" 
+                            data-parsley-required="true" placeholder="Masukkan Waktu Selesai" autocomplete="off" />
                         </div>
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Jobdesk</label>
-                            <select name="edit_status" class="form-control" id="edit_status">
+                            <select name="edit_status" class="form-control" id="edit_status" required>
                                 <option value="Selesai" selected="">Selesai</option>
                                 <option value="Belum Selesai">Belum Selesai</option>
                             </select>

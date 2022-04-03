@@ -40,7 +40,7 @@
                   	<div class="form-group">
 	                    <label class="form-control-label"><b>Foto Bukti Absensi</b></label>
 	                    <br>
-	                      <input type="file" id="input_foto" class="dropify-event" name="input_foto" accept="image/png, image/gif, image/jpeg"/>
+	                      <input type="file" id="input_foto" class="dropify-event" name="input_foto" accept="image/png, image/gif, image/jpeg"/ required>
     					<div id="emailHelp" class="form-text">upload foto sebagai bukti pendukung melakukan absen.</div>
                   	</div>
 

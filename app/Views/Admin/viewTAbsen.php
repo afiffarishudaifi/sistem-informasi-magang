@@ -102,7 +102,7 @@
                             <label class="form-control-label">Nama Siswa</label>
                             <br>
                             <select name="input_siswa" id="input_siswa" style="width: 100%;"
-                                class="form-control select2" data-plugin="select2">
+                                class="form-control select2" data-plugin="select2" required>
                             </select>
                         </div>
 
@@ -110,7 +110,7 @@
                             <label class="form-control-label"><b>Foto Bukti</b></label>
                             <br>
                             <input type="file" id="input_foto" class="dropify-event" name="input_foto"
-                                accept="image/png, image/gif, image/jpeg" />
+                                accept="image/png, image/gif, image/jpeg" / required>
                         </div>
 
                         <div class="form-group form-material">
@@ -121,7 +121,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Absen</label>
-                            <select name="input_status" class="form-control" id="input_status">
+                            <select name="input_status" class="form-control" id="input_status" required>
                                 <option value="Hadir" selected="">Hadir</option>
                                 <option value="Izin">Izin</option>
                                 <option value="Sakit">Sakit</option>
@@ -161,7 +161,7 @@
                             <label class="form-control-label">Nama Siswa</label>
                             <br>
                             <select name="edit_siswa" id="edit_siswa" style="width: 100%;" class="form-control select2"
-                                data-plugin="select2">
+                                data-plugin="select2" required>
                             </select>
                         </div>
 
@@ -188,7 +188,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Absen</label>
-                            <select name="edit_status" class="form-control" id="edit_status">
+                            <select name="edit_status" class="form-control" id="edit_status" required>
                                 <option value="Hadir" selected="">Hadir</option>
                                 <option value="Izin">Izin</option>
                                 <option value="Sakit">Sakit</option>

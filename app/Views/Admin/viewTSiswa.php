@@ -107,7 +107,7 @@
                             <label class="form-control-label">Sekolah</label>
                             <br>
                             <select name="input_sekolah" id="input_sekolah" style="width: 100%;"
-                                class="form-control select2" data-plugin="select2">
+                                class="form-control select2" data-plugin="select2" required>
                             </select>
                         </div>
 
@@ -171,7 +171,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Siswa</label>
-                            <select name="input_status" class="form-control" id="input_status">
+                            <select name="input_status" class="form-control" id="input_status" required>
                                 <option value="Aktif" selected="">Aktif</option>
                                 <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>
@@ -215,7 +215,7 @@
                             <label class="form-control-label">Sekolah</label>
                             <br>
                             <select name="edit_sekolah" id="edit_sekolah" style="width: 100%;"
-                                class="form-control select2" data-plugin="select2">
+                                class="form-control select2" data-plugin="select2" required>
                             </select>
                         </div>
 
@@ -286,7 +286,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Siswa</label>
-                            <select name="edit_status" class="form-control" id="edit_status">
+                            <select name="edit_status" class="form-control" id="edit_status" required>
                                 <option value="Aktif" selected="">Aktif</option>
                                 <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>

@@ -102,7 +102,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Alamat Sekolah</label>
-                            <textarea class="form-control" id="input_alamat" name="input_alamat" rows="2"></textarea>
+                            <textarea class="form-control" id="input_alamat" name="input_alamat" rows="2" required></textarea>
                         </div>
 
                         <div class="form-group form-material">
@@ -171,7 +171,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Alamat Sekolah</label>
-                            <textarea class="form-control" id="edit_alamat" name="edit_alamat" rows="2"></textarea>
+                            <textarea class="form-control" id="edit_alamat" name="edit_alamat" rows="2" required></textarea>
                         </div>
 
                         <div class="form-group form-material">
@@ -192,8 +192,7 @@
                         <div class="form-group form-material">
                             <label class="form-control-label">Password</label>
                             <input type="password" class="form-control" id="edit_password" name="edit_password"
-                                data-parsley-required="true" placeholder="Masukkan Password Sekolah"
-                                autocomplete="off" />
+                                placeholder="Masukkan Password Sekolah" autocomplete="off" />
                         </div>
                         <div class="form-group form-material">
                             <label class="form-control-label">Ulangi Password</label>

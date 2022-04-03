@@ -57,7 +57,7 @@
             <form method="post" action="<?= base_url('Login/simpanPengajuan'); ?>" data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
 
             	  <div class="form-group form-material floating" data-plugin="formMaterial">
-                  <select name="input_siswa" id="input_siswa" class="form-control">
+                  <select name="input_siswa" id="input_siswa" class="form-control" required>
                       <?php foreach ($hasil as $value) { ?>
                         <option value="<?= $value['id_siswa'] ?>"><?= $value['nama_siswa'] ?></option>
                       <?php } ?>

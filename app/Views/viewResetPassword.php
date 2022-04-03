@@ -54,11 +54,11 @@
             <label class="floating-label">Username</label>
           </div>
           <div class="form-group form-material floating" data-plugin="formMaterial">
-            <input type="password" class="form-control empty" id="input_password" name="input_password" data-parsley-equalto="#input_konf_password" required="">
+            <input type="password" class="form-control empty" id="input_password" name="input_password" required data-parsley-equalto="#input_konf_password" required="">
             <label class="floating-label">Password Baru</label>
           </div>
           <div class="form-group form-material floating" data-plugin="formMaterial">
-            <input type="password" class="form-control empty" id="input_konf_password" name="input_konf_password" data-parsley-equalto="#input_password" required="">
+            <input type="password" class="form-control empty" id="input_konf_password" required name="input_konf_password" data-parsley-equalto="#input_password" required="">
             <label class="floating-label">Konfirmasi Password Baru</label>
           </div>
           <div class="form-group">

@@ -102,7 +102,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Jabatan</label>
-                            <select name="input_jabatan" id="input_jabatan" class="form-control">
+                            <select name="input_jabatan" id="input_jabatan" class="form-control" required>
                                 <?php foreach ($jabatan as $value) { ?>
                                 <option value="<?= $value['id_jabatan'] ?>"><?= $value['nama_jabatan'] ?></option>
                                 <?php } ?>
@@ -144,7 +144,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Admin</label>
-                            <select name="input_status" class="form-control" id="input_status">
+                            <select name="input_status" class="form-control" id="input_status" required>
                                 <option value="Aktif" selected="">Aktif</option>
                                 <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>
@@ -187,7 +187,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Jabatan</label>
-                            <select name="edit_jabatan" id="edit_jabatan" class="form-control">
+                            <select name="edit_jabatan" id="edit_jabatan" class="form-control" required>
                                 <?php foreach ($jabatan as $value) { ?>
                                 <option value="<?= $value['id_jabatan'] ?>"><?= $value['nama_jabatan'] ?></option>
                                 <?php } ?>
@@ -236,7 +236,7 @@
 
                         <div class="form-group form-material">
                             <label class="form-control-label">Status Admin</label>
-                            <select name="edit_status" class="form-control" id="edit_status">
+                            <select name="edit_status" class="form-control" id="edit_status" required>
                                 <option value="Aktif" selected="">Aktif</option>
                                 <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>
