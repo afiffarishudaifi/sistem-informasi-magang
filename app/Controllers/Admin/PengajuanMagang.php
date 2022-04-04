@@ -47,26 +47,35 @@ class PengajuanMagang extends BaseController
         $id = $this->request->getPost('id_pengajuan');
         $id_siswa = $this->request->getPost('id_siswa');
 
+        $data_siswa = $model->cek_data_pengajuan($id)->getRowArray();
+        $nama = $data_siswa['nama_siswa'];
+        $waktu_mulai = $data_siswa['waktu_mulai'];
+        $waktu_selesai = $data_siswa['waktu_selesai'];
+        $email = $data_siswa['email_siswa'];
+
         if($this->request->getPost('status_pengajuan') == 'Ditolak') {
             $email = \Config\Services::email();
             $email->setFrom('bakesbangpoldagrikabmadiun@gmail.com','Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun');
-            $email->setTo('ditamega0411@gmail.com');
-
-            // $email->attach(base_url('docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif'));
+            $email->setTo('afiffaris5@gmail.com');
 
             $email->setSubject('Pemberitahuan Pengajuan Magang');
-            $email->setMessage('Dengan ini kami melakukan Penolakan atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020.');
+            // $email->setMessage('Dengan ini kami melakukan Penolakan atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020.');
+            $email->setMessage('Maaf ' . $nama .'! <br>
+            Anda belum diterima magang / praktek kerja lapangan pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri kabupaten madiun.
 
+            Terima kasih atas ketertarikan Anda untuk melakukan pengajuan magang / praktek kerja lapangan pada kantor Badan kesatuan bangsa dan politik dalam negeri kabupaten madiun');
             $email->send();
         } else {
             $email = \Config\Services::email();
             $email->setFrom('bakesbangpoldagrikabmadiun@gmail.com','Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun');
-            $email->setTo('ditamega0411@gmail.com');
+            $email->setTo('afiffaris5@gmail.com');
 
             $email->attach(base_url('docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif'));
 
             $email->setSubject('Pemberitahuan Pengajuan Magang');
-            $email->setMessage('Dengan ini kami melakukan konfirmasi atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020. Bersama ini kami kirimkan surat penerimaan pengajuan magang oleh saudara Dita Mega Saputri dari Politeknik Negeri Madiun. Untuk mengkonfirmasi pihak Badan Kesatuan Bangsa dan Politik Dalam Negeri, saudara diharapakan datang ke kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun untuk membahas rencana magang paling lambat pada tanggal 12-02-2022.');
+            // $email->setMessage('Dengan ini kami melakukan konfirmasi atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020. Bersama ini kami kirimkan surat penerimaan pengajuan magang oleh saudara Dita Mega Saputri dari Politeknik Negeri Madiun. Untuk mengkonfirmasi pihak Badan Kesatuan Bangsa dan Politik Dalam Negeri, saudara diharapakan datang ke kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun untuk membahas rencana magang paling lambat pada tanggal 12-02-2022.');
+            $email->setMessage('Selamat '. $nama .'! <br>
+            Kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri kabupaten madiun telah menerima anda untuk melakukan magang / praktek kerja lapanga mulai tangga ' . $waktu_mulai . ' Hingga tanggal ' . $waktu_selesai . ' Selanjutnya anda bisa login pada aplikasi E-Magang dengan username dan password yang sudah terdaftar.');
 
             $email->send();
         }
@@ -77,16 +86,16 @@ class PengajuanMagang extends BaseController
             'updated_at'        => date('Y-m-d H:i:s')
         );
 
-        $model->update_data($data, $id);
+        // $model->update_data($data, $id);
 
-        $model_peserta = new Model_peserta();
-        if ($this->request->getPost('status_pengajuan') == 'Diterima') {
-            $data = array(
-                'status'      => 'Aktif',
-                'updated_at'        => date('Y-m-d H:i:s')
-            );
-            $model_peserta->update_data($data, $id_siswa);
-        }
+        // $model_peserta = new Model_peserta();
+        // if ($this->request->getPost('status_pengajuan') == 'Diterima') {
+        //     $data = array(
+        //         'status'      => 'Aktif',
+        //         'updated_at'        => date('Y-m-d H:i:s')
+        //     );
+        //     $model_peserta->update_data($data, $id_siswa);
+        // }
         $session->setFlashdata('sukses', 'Data berhasil disimpan');
         return redirect()->to(base_url('Admin/PengajuanMagang'));
     }

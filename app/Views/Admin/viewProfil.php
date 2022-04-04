@@ -41,6 +41,13 @@ $session = session();
                         </div>
 
                         <div class="form-group form-material">
+                            <label class="form-control-label">Kepala Instansi</label>
+                            <input type="text" class="form-control" id="edit_kepala" name="edit_kepala"
+                                data-parsley-required="true" placeholder="Masukkan Nama Instansi" autofocus=""
+                                autocomplete="off" />
+                        </div>
+
+                        <div class="form-group form-material">
                             <label class="form-control-label">No Telp</label>
                             <input type="number" class="form-control" id="edit_no_telp" name="edit_no_telp"
                                 data-parsley-required="true" placeholder="Masukkan No Telp" autocomplete="off" />
@@ -67,7 +74,7 @@ $session = session();
                         </div>
 
                         <div class="form-group">
-                            <label class="form-control-label"><b>Foto Admin</b></label>
+                            <label class="form-control-label"><b>Logo Instansi</b></label>
                             <br>
                             <input type="file" id="edit_foto" class="dropify-event" name="edit_foto"
                                 accept="image/png, image/gif, image/jpeg" />
@@ -104,6 +111,7 @@ $session = session();
                 $('#edit_email').val(json.email);
                 $('#edit_no_telp').val(json.no_telp);
                 $('#edit_alamat').val(json.alamat);
+                $('#edit_kepala').val(json.kepala);
 
                 if (json.foto != '' || json.foto != null) {
                     $("#foto_lama").attr("src", "<?= base_url() . '/' ?>" + json.foto);

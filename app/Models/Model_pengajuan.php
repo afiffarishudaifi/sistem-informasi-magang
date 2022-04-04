@@ -19,6 +19,16 @@ class Model_pengajuan extends Model
         return $builder->get();
     }
 
+    public function cek_data_pengajuan($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('pengajuan_magang');
+        $builder->select("pengajuan_magang.id_pengajuan, siswa.id_siswa, email_siswa, siswa.nama_siswa, DATE_FORMAT(pengajuan_magang.waktu_mulai, '%d-%m-%Y') as waktu_mulai, DATE_FORMAT(pengajuan_magang.waktu_selesai, '%d-%m-%Y') as waktu_selesai");
+        $builder->join('siswa', 'pengajuan_magang.id_siswa = siswa.id_siswa');
+        $builder->where('id_pengajuan', $id);
+        return $builder->get();
+    }
+
     public function detail_data($id)
     {
         $db      = \Config\Database::connect();

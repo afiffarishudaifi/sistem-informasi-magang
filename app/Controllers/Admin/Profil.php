@@ -90,6 +90,7 @@ class Profil extends BaseController
             $isi['email'] = $value['email'];
             $isi['no_telp'] = $value['no_telp'];
             $isi['foto'] = $value['foto'];
+            $isi['kepala'] = $value['kepala'];
         endforeach;
         echo json_encode($isi);
     }

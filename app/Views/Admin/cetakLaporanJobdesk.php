@@ -33,8 +33,8 @@
 				<center>
 					<font size="4"><b>PEMERINTAH KABUPATEN MADIUN</b></font><br>
 					<font size="3"><b>BADAN KESATUAN BANGSA DAN POLITIK DALAM NEGERI</b></font><br>
-					<font size="2"><i>Jalan Alun MT. Haryono Telp. (0351) 451295</i></font><br>
-					<font size="2"><i>Email : bakesbangpoldagrikabmadiun@gmail.com</i></font><br>
+					<font size="2"><i><?= $profil['alamat'] ?></i></font><br>
+					<font size="2"><i>Email : <?= $profil['email'] ?></i></font><br>
 					<font size="3">CARUBAN (63153)</font>
 				</center>
 				</td>
@@ -77,7 +77,7 @@
 		<table width="625">
 			<tr>
 				<td width="430"><br><br><br><br></td>
-				<td class="text" align="center">Kepala BANKESBANPOLDAGRI<br><br><br><br>Kepala Kantor</td>
+				<td class="text" align="center">Kepala BANKESBANPOLDAGRI<br><br><br><br><?= $profil['kepala'] ?></td>
 			</tr>
 	     </table>
 	</center>
