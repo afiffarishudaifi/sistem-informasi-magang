@@ -4,6 +4,7 @@ namespace App\Controllers\Sekolah;
 
 use App\Controllers\BaseController;
 use App\Models\Model_laporan_peserta;
+use App\Models\Model_profil;
 
 class LaporanPeserta extends BaseController
 {
@@ -97,9 +98,12 @@ class LaporanPeserta extends BaseController
         $model = new Model_laporan_peserta();
         $param['id_sekolah'] = $session->get('id_login');
         $laporan = $model->filter_sekolah($param)->getResultArray();
+        $model_profil = new Model_profil();
+        $profil = $model_profil->view_data()->getRowArray();
         $data = [
             'judul' => 'Laporan Peserta Magang ' . $tanggal,
-            'laporan' => $laporan
+            'laporan' => $laporan,
+            'profil' => $profil
         ];
         return view('Sekolah/cetakLaporanPeserta', $data);
     }

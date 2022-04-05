@@ -4,6 +4,7 @@ namespace App\Controllers\Sekolah;
 
 use App\Controllers\BaseController;
 use App\Models\Model_laporan_penilaian;
+use App\Models\Model_profil;
 
 class LaporanPenilaian extends BaseController
 {

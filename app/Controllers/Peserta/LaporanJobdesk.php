@@ -4,6 +4,7 @@ namespace App\Controllers\Peserta;
 
 use App\Controllers\BaseController;
 use App\Models\Model_laporan_jobdesk;
+use App\Models\Model_profil;
 
 class LaporanJobdesk extends BaseController
 {
@@ -92,9 +93,12 @@ class LaporanJobdesk extends BaseController
 
         $model = new Model_laporan_jobdesk();
         $laporan = $model->peserta_filter($param)->getResultArray();
+        $model_profil = new Model_profil();
+        $profil = $model_profil->view_data()->getRowArray();
         $data = [
             'judul' => 'Laporan Jobdesk Magang ' . $tanggal,
-            'laporan' => $laporan
+            'laporan' => $laporan,
+            'profil' => $profil
         ];
         return view('Peserta/cetakLaporanJobdesk', $data);
     }

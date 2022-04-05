@@ -4,6 +4,7 @@ namespace App\Controllers\Sekolah;
 
 use App\Controllers\BaseController;
 use App\Models\Model_laporan_jobdesk;
+use App\Models\Model_profil;
 
 class LaporanJobdesk extends BaseController
 {
@@ -90,9 +91,12 @@ class LaporanJobdesk extends BaseController
         $model = new Model_laporan_jobdesk();
         $param['id_sekolah'] = $session->get('id_login');
         $laporan = $model->filter_sekolah($param)->getResultArray();
+        $model_profil = new Model_profil();
+        $profil = $model_profil->view_data()->getRowArray();
         $data = [
             'judul' => 'Laporan Jobdesk Magang ' . $tanggal,
-            'laporan' => $laporan
+            'laporan' => $laporan,
+            'profil' => $profil
         ];
         return view('Sekolah/cetakLaporanJobdesk', $data);
     }
