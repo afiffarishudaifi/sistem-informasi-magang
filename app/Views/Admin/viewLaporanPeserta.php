@@ -15,8 +15,6 @@
         <div class="page-header">
             <h1 class="page-title"><?= $judul; ?></h1>
             <div class="page-header-actions">
-                <!-- <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" -->
-                <!-- data-target="#addModal"><i class="fa fa-plus"></i> Tambah Data</button> -->
             </div>
         </div>
 

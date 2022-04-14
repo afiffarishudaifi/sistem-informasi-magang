@@ -36,8 +36,8 @@
                                 <th>Kerja Sama</th>
                                 <th>Kerajinan</th>
                                 <th>Inisiatif</th>
-                                <th>Jumlah</th>
                                 <th>Rata-Rata</th>
+                                <th>Cetak</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -50,8 +50,8 @@
                                 <th>Kerja Sama</th>
                                 <th>Kerajinan</th>
                                 <th>Inisiatif</th>
-                                <th>Jumlah</th>
                                 <th>Rata-Rata</th>
+                                <th>Cetak</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
@@ -68,8 +68,12 @@
                                     <td><?= $item['kerja_sama']; ?></td>
                                     <td><?= $item['kerajinan']; ?></td>
                                     <td><?= $item['inisiatif']; ?></td>
-                                    <td><?= $item['jumlah']; ?></td>
                                     <td><?= $item['rata_rata']; ?></td>
+                                    <td>
+                                        <center>
+                                            <a href="<?= base_url('Admin/Nilai/generate') . '/' . $item['id_nilai'] ?>"  class="btn btn-sm btn-cetak btn-info">Cetak</i></a>
+                                        </center>
+                                    </td>
                                     <td>
                                         <center>
                                             <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal" name="btn-edit" onclick="detail_edit(<?= $item['id_nilai']; ?>)" class="btn btn-sm btn-edit btn-warning">Edit</i></a>
