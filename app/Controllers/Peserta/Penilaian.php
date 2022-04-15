@@ -4,6 +4,8 @@ namespace App\Controllers\Peserta;
 
 use App\Controllers\BaseController;
 use App\Models\Model_nilai;
+use App\Models\Model_profil;
+use Dompdf\Dompdf;
 
 class Penilaian extends BaseController
 {
@@ -35,5 +37,44 @@ class Penilaian extends BaseController
             'nilai' => $nilai
         ];
         return view('Peserta/viewPenilaian', $data);
+    }
+
+    public function generate()
+    {
+        $session = session();
+        $filename = date('y-m-d-H-i-s'). '-cetak sertifikat';
+
+        $model = new Model_nilai();
+
+        $id_siswa = $session->get('id_login');
+
+        $data_nilai = $model->detail_data_cetak_peserta($id_siswa)->getRowArray();
+
+        
+        $model_profil = new Model_profil();
+        $profil = $model_profil->view_data()->getRowArray();
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $data = [
+            'nama' => $data_nilai['nama_siswa'],
+            'asal' => $data_nilai['nama_sekolah'],
+            'jurusan' => $data_nilai['jurusan'],
+            'kepala' => $profil['kepala']
+        ];
+
+        // load HTML content
+        $dompdf->loadHtml(view('Admin/cetakSertifikat', $data));
+
+        // (optional) setup the paper size and orientation
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->set_option('isRemoteEnabled', true);
+
+        // render html as PDF
+        $dompdf->render();
+
+        // output the generated pdf
+        $dompdf->stream($filename);
     }
 }

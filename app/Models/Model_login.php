@@ -24,7 +24,7 @@ class Model_login extends Model
         $db      = \Config\Database::connect();
         $builder = $db->table('siswa');
         $builder->where('username_siswa', $username);
-        $builder->where('status', 'Aktif');
+        $builder->where('status !=', 'Tidak Aktif');
         return $builder->get();
     }
 

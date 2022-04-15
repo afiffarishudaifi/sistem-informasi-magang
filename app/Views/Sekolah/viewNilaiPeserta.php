@@ -34,8 +34,7 @@
                                 <th>Kerja Sama</th>
                                 <th>Kerajinan</th>
                                 <th>Inisiatif</th>
-                                <th>Jumlah</th>
-                                <th>Nilai</th>
+                                <th>Cetak</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -47,8 +46,7 @@
                                 <th>Kerja Sama</th>
                                 <th>Waktu Selesai</th>
                                 <th>Inisiatif</th>
-                                <th>Jumlah</th>
-                                <th>Nilai</th>
+                                <th>Cetak</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -64,8 +62,11 @@
                                     <td><?= $item['kerja_sama']; ?></td>
                                     <td><?= $item['kerajinan']; ?></td>
                                     <td><?= $item['inisiatif']; ?></td>
-                                    <td><?= $item['jumlah']; ?></td>
-                                    <td><?= $item['rata_rata']; ?></td>
+                                    <td>
+                                        <center>
+                                            <a href="<?= base_url('Sekolah/Penilaian/generate') . '/' . $item['id_nilai'] ?>"  class="btn btn-sm btn-cetak btn-info">Cetak</i></a>
+                                        </center>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>

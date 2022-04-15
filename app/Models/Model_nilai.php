@@ -100,4 +100,16 @@ class Model_nilai extends Model
         $builder->where('id_nilai', $id);
         return $builder->get();
     }
+
+    public function detail_data_cetak_peserta($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('nilai');
+        $builder->select('nilai.id_nilai, siswa.jurusan, siswa.id_siswa, siswa.nama_siswa, sekolah.nama_sekolah');
+        $builder->join('siswa', 'nilai.id_siswa = siswa.id_siswa');
+        $builder->join('sekolah', 'sekolah.id_sekolah = siswa.id_sekolah');
+        $builder->where('siswa.id_siswa', $id);
+        return $builder->get();
+    }
+    
 }

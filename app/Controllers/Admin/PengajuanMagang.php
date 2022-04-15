@@ -86,16 +86,16 @@ class PengajuanMagang extends BaseController
             'updated_at'        => date('Y-m-d H:i:s')
         );
 
-        // $model->update_data($data, $id);
+        $model->update_data($data, $id);
 
-        // $model_peserta = new Model_peserta();
-        // if ($this->request->getPost('status_pengajuan') == 'Diterima') {
-        //     $data = array(
-        //         'status'      => 'Aktif',
-        //         'updated_at'        => date('Y-m-d H:i:s')
-        //     );
-        //     $model_peserta->update_data($data, $id_siswa);
-        // }
+        $model_peserta = new Model_peserta();
+        if ($this->request->getPost('status_pengajuan') == 'Diterima') {
+            $data = array(
+                'status'      => 'Aktif',
+                'updated_at'        => date('Y-m-d H:i:s')
+            );
+            $model_peserta->update_data($data, $id_siswa);
+        }
         $session->setFlashdata('sukses', 'Data berhasil disimpan');
         return redirect()->to(base_url('Admin/PengajuanMagang'));
     }
