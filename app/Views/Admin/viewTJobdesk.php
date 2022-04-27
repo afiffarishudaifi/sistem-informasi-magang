@@ -67,9 +67,6 @@
                                 <td><?= $item['status_jobdesk']; ?></td>
                                 <td>
                                     <center>
-                                        <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal"
-                                            name="btn-edit" onclick="detail_edit(<?= $item['id_jobdesk']; ?>)"
-                                            class="btn btn-sm btn-edit btn-warning">Edit</i></a>
                                         <a href="" class="btn btn-sm btn-delete btn-danger"
                                             onclick="Hapus(<?= $item['id_jobdesk']; ?>)" data-toggle="modal"
                                             data-target="#deleteModal" data-id="<?= $item['id_jobdesk']; ?>">Hapus</a>

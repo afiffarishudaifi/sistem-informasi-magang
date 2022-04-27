@@ -35,7 +35,7 @@
                                 <th style="text-align: center;">Nama</th>
                                 <th style="text-align: center;">Sekolah</th>
                                 <th style="text-align: center;">Status</th>
-                                <th style="text-align: center;">Alamat Siswa</th>
+                                <th style="text-align: center;">Alamat Peserta</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -45,7 +45,7 @@
                                 <th style="text-align: center;">Nama</th>
                                 <th style="text-align: center;">Sekolah</th>
                                 <th style="text-align: center;">Status</th>
-                                <th style="text-align: center;">Alamat Siswa</th>
+                                <th style="text-align: center;">Alamat Peserta</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </tfoot>
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group form-material">
-                            <label class="form-control-label">Alamat Siswa</label>
+                            <label class="form-control-label">Alamat Peserta</label>
                             <textarea class="form-control" id="input_alamat" name="input_alamat"
                                 data-parsley-required="true" placeholder="Masukkan Alamat"></textarea>
                         </div>
@@ -258,7 +258,7 @@
                         </div>
 
                         <div class="form-group form-material">
-                            <label class="form-control-label">Alamat Siswa</label>
+                            <label class="form-control-label">Alamat Peserta</label>
                             <textarea class="form-control" id="edit_alamat" name="edit_alamat"
                                 data-parsley-required="true" placeholder="Masukkan Alamat"></textarea>
                         </div>

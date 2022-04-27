@@ -67,7 +67,7 @@
                 <div class="form-group form-material floating" data-plugin="formMaterial">
                     <input type="datetime-local" class="form-control" id="input_mulai" name="input_mulai"
                       data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" />
-                    <label class="floating-label">Selesai Magang</label>
+                    <label class="floating-label">Mulai Magang</label>
                 </div>
 
                 <div class="form-group form-material floating" data-plugin="formMaterial">
