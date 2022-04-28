@@ -15,8 +15,8 @@
         <div class="page-header">
             <h1 class="page-title"><?= $judul; ?></h1>
             <div class="page-header-actions">
-                <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
-                        class="fa fa-plus"></i> Tambah Data</button>
+                <!-- <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
+                        class="fa fa-plus"></i> Tambah Data</button> -->
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                                 <th>Waktu Mulai</th>
                                 <th>Waktu Selesai</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
+                                <!-- <th>Aksi</th> -->
                             </tr>
                         </thead>
                         <tfoot>
@@ -49,7 +49,7 @@
                                 <th>Waktu Mulai</th>
                                 <th>Waktu Selesai</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
+                                <!-- <th>Aksi</th> -->
                             </tr>
                         </tfoot>
                         <tbody>
@@ -65,13 +65,13 @@
                                 <td><?= $item['waktu_mulai']; ?></td>
                                 <td><?= $item['waktu_selesai']; ?></td>
                                 <td><?= $item['status_jobdesk']; ?></td>
-                                <td>
+                                <!-- <td>
                                     <center>
                                         <a href="" class="btn btn-sm btn-delete btn-danger"
                                             onclick="Hapus(<?= $item['id_jobdesk']; ?>)" data-toggle="modal"
                                             data-target="#deleteModal" data-id="<?= $item['id_jobdesk']; ?>">Hapus</a>
                                     </center>
-                                </td>
+                                </td> -->
                             </tr>
                             <?php } ?>
                         </tbody>

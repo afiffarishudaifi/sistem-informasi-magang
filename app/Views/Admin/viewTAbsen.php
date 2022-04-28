@@ -15,8 +15,8 @@
         <div class="page-header">
             <h1 class="page-title"><?= $judul; ?></h1>
             <div class="page-header-actions">
-                <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
-                        class="fa fa-plus"></i> Tambah Data</button>
+                <!-- <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
+                        class="fa fa-plus"></i> Tambah Data</button> -->
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                                 <th style="text-align: center;">Nama Peserta</th>
                                 <th style="text-align: center;">Bukti Absen</th>
                                 <th style="text-align: center;">Status Absen</th>
-                                <th style="text-align: center;">Aksi</th>
+                                <!-- <th style="text-align: center;">Aksi</th> -->
                             </tr>
                         </thead>
                         <tfoot>
@@ -44,7 +44,7 @@
                                 <th style="text-align: center;">Nama Peserta</th>
                                 <th style="text-align: center;">Bukti Absen</th>
                                 <th style="text-align: center;">Status Absen</th>
-                                <th style="text-align: center;">Aksi</th>
+                                <!-- <th style="text-align: center;">Aksi</th> -->
                             </tr>
                         </tfoot>
                         <tbody>
@@ -57,7 +57,7 @@
                                 <td><?= $item['nama_siswa']; ?></td>
                                 <td><?= $item['status_absen']; ?></td>
                                 <td><?= $item['status_absen']; ?></td>
-                                <td>
+                                <!-- <td>
                                     <center>
                                         <a href="" data-toggle="modal" data-toggle="modal"
                                             data-target="#verifikasiModal" name="btn-edit"
@@ -67,7 +67,7 @@
                                             onclick="Hapus(<?= $item['id_absen']; ?>)" data-toggle="modal"
                                             data-target="#deleteModal" data-id="<?= $item['id_absen']; ?>">Hapus</a>
                                     </center>
-                                </td>
+                                </td> -->
                             </tr>
                             <?php } ?>
                         </tbody>

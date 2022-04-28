@@ -51,12 +51,12 @@ class PengajuanMagang extends BaseController
         $nama = $data_siswa['nama_siswa'];
         $waktu_mulai = $data_siswa['waktu_mulai'];
         $waktu_selesai = $data_siswa['waktu_selesai'];
-        $email = $data_siswa['email_siswa'];
+        $email_peserta = $data_siswa['email_siswa'];
 
         if($this->request->getPost('status_pengajuan') == 'Ditolak') {
             $email = \Config\Services::email();
             $email->setFrom('bakesbangpoldagrikabmadiun@gmail.com','Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun');
-            $email->setTo($email);
+            $email->setTo($email_peserta);
 
             $email->setSubject('Pemberitahuan Pengajuan Magang');
             // $email->setMessage('Dengan ini kami melakukan Penolakan atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020.');
@@ -68,7 +68,7 @@ class PengajuanMagang extends BaseController
         } else {
             $email = \Config\Services::email();
             $email->setFrom('bakesbangpoldagrikabmadiun@gmail.com','Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun');
-            $email->setTo($email);
+            $email->setTo($email_peserta);
 
             $email->attach(base_url('docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif'));
 

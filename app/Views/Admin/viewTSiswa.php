@@ -15,8 +15,8 @@
         <div class="page-header">
             <h1 class="page-title"><?= $judul; ?></h1>
             <div class="page-header-actions">
-                <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
-                        class="fa fa-plus"></i> Tambah Data</button>
+                <!-- <button class="btn btn-sm btn-primary btn-round" data-toggle="modal" data-target="#addModal"><i
+                        class="fa fa-plus"></i> Tambah Data</button> -->
             </div>
         </div>
 
@@ -36,7 +36,7 @@
                                 <th style="text-align: center;">Sekolah</th>
                                 <th style="text-align: center;">Status</th>
                                 <th style="text-align: center;">Alamat Peserta</th>
-                                <th style="text-align: center;">Aksi</th>
+                                <!-- <th style="text-align: center;">Aksi</th> -->
                             </tr>
                         </thead>
                         <tfoot>
@@ -46,7 +46,7 @@
                                 <th style="text-align: center;">Sekolah</th>
                                 <th style="text-align: center;">Status</th>
                                 <th style="text-align: center;">Alamat Peserta</th>
-                                <th style="text-align: center;">Aksi</th>
+                                <!-- <th style="text-align: center;">Aksi</th> -->
                             </tr>
                         </tfoot>
                         <tbody>
@@ -60,7 +60,7 @@
                                 <td><?= $item['nama_sekolah']; ?></td>
                                 <td><?= $item['status']; ?></td>
                                 <td><?= $item['alamat_siswa']; ?></td>
-                                <td>
+                                <!-- <td>
                                     <center>
                                         <a href="" data-toggle="modal" data-toggle="modal" data-target="#updateModal"
                                             name="btn-edit" onclick="detail_edit(<?= $item['id_siswa']; ?>)"
@@ -69,7 +69,7 @@
                                             onclick="Hapus(<?= $item['id_siswa']; ?>)" data-toggle="modal"
                                             data-target="#deleteModal" data-id="<?= $item['id_siswa']; ?>">Hapus</a>
                                     </center>
-                                </td>
+                                </td> -->
                             </tr>
                             <?php } ?>
                         </tbody>
