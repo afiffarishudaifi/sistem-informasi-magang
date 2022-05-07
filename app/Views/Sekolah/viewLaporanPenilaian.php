@@ -29,7 +29,7 @@
                 </header>
 
                 <div class="panel-body">
-                	<form method="POST" style="padding-bottom: 20px;">
+                	<form method="POST" action="<?= base_url('Sekolah/LaporanPenilaian/data_cetak') ?>" style="padding-bottom: 20px;">
                 		<div class="row">
                 			<div class="col-md-4">
                 				<div class="input-group">
@@ -42,7 +42,7 @@
                                 </div>
                 			</div>
                             <div class="col-md-2">
-                                <button class="btn btn-sm btn-success"><span class="fa fa-print"></span> Cetak</button>
+                                <button type="submit" class="btn btn-sm btn-success"><span class="fa fa-print"></span> Cetak</button>
                             </div>
                 		</div>
                 	</form>
