@@ -104,7 +104,7 @@ class Login extends BaseController
                 $ses_data = [
                     'id_login' => $data['id_admin'],
                     'nama_login' => $data['nama_admin'],
-                    'foto' => 'no_image.png',
+                    'foto' => $data['foto_resmi_admin'],
                     'status_login' => $status,
                     'logged_in' => TRUE,
                     'is_admin' => TRUE

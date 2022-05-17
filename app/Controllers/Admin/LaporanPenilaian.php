@@ -71,6 +71,7 @@ class LaporanPenilaian extends BaseController
     public function data_cetak($tanggal = null)
     {
         $session = session();
+        $tanggal = $this->request->getPost('tanggal');
 
         if ($tanggal) $tgl = explode(' - ', $tanggal);
         if ($tanggal) { $param['cek_waktu1'] = date("Y-m-d", strtotime($tgl[0])); } else { $param['cek_waktu1'] = date("Y-m-d"); };
@@ -78,24 +79,6 @@ class LaporanPenilaian extends BaseController
 
         $model = new Model_laporan_penilaian();
         $laporan = $model->filter($param)->getResultArray();
-
-        // $respon = $laporan;
-        // $data = array();
-
-        // if ($respon) {
-        //     foreach ($respon as $value) {
-        //         $isi['nama_siswa'] = $value['nama_siswa'];
-        //         $isi['kedisiplinan'] = $value['kedisiplinan'];
-        //         $isi['tanggung_jawab'] = $value['tanggung_jawab'];
-        //         $isi['kerja_sama'] = $value['kerja_sama'];
-        //         $isi['kerajinan'] = $value['kerajinan'];
-        //         $isi['inisiatif'] = $value['inisiatif'];
-        //         $isi['rata_rata'] = $value['rata_rata'];
-        //         array_push($data, $isi);
-        //     }
-        // }
-
-        // echo json_encode($data);
 
         $model_profil = new Model_profil();
         $profil = $model_profil->view_data()->getRowArray();
