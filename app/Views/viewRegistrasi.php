@@ -56,7 +56,7 @@
             </div>
             <form method="post" action="<?= base_url('Login/simpanSiswa'); ?>" data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_nama">
-                    <input type="text" class="form-control" id="input_nama" name="input_nama"
+                    <input required type="text" class="form-control" id="input_nama" name="input_nama"
                         data-parsley-required="true" autocomplete="off" autofocus="" />
                     <label class="floating-label">Nama Peserta Magang</label>
                 </div>
@@ -70,49 +70,49 @@
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_nis">
-                  <input type="text" class="form-control" id="input_nis" name="input_nis"
+                  <input required type="text" class="form-control" id="input_nis" name="input_nis"
                         data-parsley-required="true" autocomplete="off" />
                   <label class="floating-label">Nomor Induk</label>
                     <span class="text-danger" id="error_nis"></span>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_username">
-                  <input type="text" class="form-control" id="input_username" name="input_username"
+                  <input required type="text" class="form-control" id="input_username" name="input_username"
                         data-parsley-required="true" autocomplete="off" />
                   <label class="floating-label">Username Peserta Magang</label>
                     <span class="text-danger" id="error_username"></span>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_password">
-                  <input type="Password" class="form-control" id="input_password" name="input_password"
+                  <input required type="Password" class="form-control" id="input_password" name="input_password"
                       data-parsley-required="true" autofocus="on">
                   <label class="floating-label">Password Peserta Magang</label>
               </div>
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_konfirmasi_password">
-                  <input type="Password" class="form-control" id="input_password_konfirmasi" name="input_password_konfirmasi"
+                  <input required type="Password" class="form-control" id="input_password_konfirmasi" name="input_password_konfirmasi"
                       data-parsley-required="true" autofocus="on" data-parsley-equalto="#input_password">
                   <label class="floating-label">Ulangi Password</label>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_email">
-                  <input type="email" class="form-control" id="input_email" name="input_email"
+                  <input required type="email" class="form-control" id="input_email" name="input_email"
                         data-parsley-required="true" autocomplete="off" />
                   <label class="floating-label">Email Peserta Magang</label>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_no_telp">
-                  <input type="number" class="form-control" id="input_no_telp" name="input_no_telp"
+                  <input required type="number" class="form-control" id="input_no_telp" name="input_no_telp"
                         data-parsley-required="true" autocomplete="off" />
                   <label class="floating-label">No Telp</label>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_alamat">
-                  <textarea class="form-control" id="input_alamat" name="input_alamat" data-parsley-required="true" ></textarea>
+                  <textarea required class="form-control" id="input_alamat" name="input_alamat" data-parsley-required="true" ></textarea>
                   <label class="floating-label">Alamat Peserta Magang</label>
               </div>
 
               <div class="form-group form-material floating" data-plugin="formMaterial" id="see_jurusan">
-                  <input type="text" class="form-control" id="input_jurusan" name="input_jurusan"
+                  <input required type="text" class="form-control" id="input_jurusan" name="input_jurusan"
                         data-parsley-required="true" autocomplete="off" />
                   <label class="floating-label">Jurusan/Program Studi</label>
               </div>

@@ -66,27 +66,27 @@
 
                 <div class="form-group form-material floating" data-plugin="formMaterial">
                     <input type="datetime-local" class="form-control" id="input_mulai" name="input_mulai"
-                      data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" />
+                      data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" / required>
                     <label class="floating-label">Mulai Magang</label>
                 </div>
 
                 <div class="form-group form-material floating" data-plugin="formMaterial">
                     <input type="datetime-local" class="form-control" id="input_selesai" name="input_selesai"
-                      data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" />
+                      data-parsley-required="true" autocomplete="off" value="<?= date('Y-m-d') ?>T00:00" / required>
                     <label class="floating-label">Selesai Magang</label>
                 </div>
 
 		            <div class="form-group">
 		                <label class="label"><b>File Pengantar</b></label>
 		                <br>
-		                  <input type="file" id="input_pengantar" data-parsley-required="true" class="dropify-event" name="input_pengantar" accept="application/pdf"
+		                  <input required type="file" id="input_pengantar" data-parsley-required="true" class="dropify-event" name="input_pengantar" accept="application/pdf"
 		                  />
 		            </div>
 
 		            <div class="form-group" data-plugin="formMaterial">
 		                <label class="floating-label" style="text-align: left;"><b>File Pengajuan</b></label>
 		                <br>
-		                  <input type="file" id="input_proposal" data-parsley-required="true" class="dropify-event" name="input_proposal" accept="application/pdf"
+		                  <input required type="file" id="input_proposal" data-parsley-required="true" class="dropify-event" name="input_proposal" accept="application/pdf"
 		                  />
 		            </div>
 
