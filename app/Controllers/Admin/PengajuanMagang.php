@@ -46,6 +46,7 @@ class PengajuanMagang extends BaseController
 
         $id = $this->request->getPost('id_pengajuan');
         $id_siswa = $this->request->getPost('id_siswa');
+        $file = $this->request->getFile('file');
 
         $data_siswa = $model->cek_data_pengajuan($id)->getRowArray();
         $nama = $data_siswa['nama_siswa'];
@@ -59,7 +60,6 @@ class PengajuanMagang extends BaseController
             $email->setTo($email_peserta);
 
             $email->setSubject('Pemberitahuan Pengajuan Magang');
-            // $email->setMessage('Dengan ini kami melakukan Penolakan atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020.');
             $email->setMessage('Maaf ' . $nama .'! <br>
             Anda belum diterima magang / praktek kerja lapangan pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri kabupaten madiun.
 
@@ -70,10 +70,10 @@ class PengajuanMagang extends BaseController
             $email->setFrom('bakesbangpoldagrikabmadiun@gmail.com','Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun');
             $email->setTo($email_peserta);
 
-            $email->attach(base_url('docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif'));
+            // $email->attach(base_url('docs/img/img_logo/1643622777_07e1231c2b3237328d8d.gif'));
+            $email->attach($file);
 
             $email->setSubject('Pemberitahuan Pengajuan Magang');
-            // $email->setMessage('Dengan ini kami melakukan konfirmasi atas pengajuan magang pada kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun pada tanggal 12-12-2020. Bersama ini kami kirimkan surat penerimaan pengajuan magang oleh saudara Dita Mega Saputri dari Politeknik Negeri Madiun. Untuk mengkonfirmasi pihak Badan Kesatuan Bangsa dan Politik Dalam Negeri, saudara diharapakan datang ke kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri Kabupaten Madiun untuk membahas rencana magang paling lambat pada tanggal 12-02-2022.');
             $email->setMessage('Selamat '. $nama .'! <br>
             Kantor Badan Kesatuan Bangsa dan Politik Dalam Negeri kabupaten madiun telah menerima anda untuk melakukan magang / praktek kerja lapanga mulai tangga ' . $waktu_mulai . ' Hingga tanggal ' . $waktu_selesai . ' Selanjutnya anda bisa login pada aplikasi E-Magang dengan username dan password yang sudah terdaftar.');
 

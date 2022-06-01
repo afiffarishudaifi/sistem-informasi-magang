@@ -123,7 +123,7 @@
     <!-- End Modal Tolak Class-->
 
     <!-- Modal Terima Class-->
-    <form action="<?php echo base_url('Admin/PengajuanMagang/konfirmasi_pengajuan'); ?>" method="post" id="form_edit" data-parsley-validate="true" autocomplete="off">
+    <form action="<?= base_url('Admin/PengajuanMagang/konfirmasi_pengajuan'); ?>" method="post" id="form_edit" data-parsley-validate="true" autocomplete="off" enctype="multipart/form-data">
         <div class="modal fade" id="terimaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <?= csrf_field(); ?>
             <div class="modal-dialog modal-success" role="document">
@@ -135,7 +135,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4>Terima Pengajuan Magang Peserta?</h4>
+                        <h4>Terima Pengajuan Magang Peserta?</h4><br>
+                        <h5>Upload Surat Balasan</h5><br>
+                        <input type="file" name="file" id="file" class="file" required="" accept=
+                            "application/msword,application/pdf">
 
                     </div>
                     <div class="modal-footer">
@@ -153,7 +156,7 @@
 
 
     <!-- Start Modal Delete Class -->
-    <form action="<?php echo base_url('Admin/PengajuanMagang/delete_pengajuan'); ?>" method="post">
+    <form action="<?= base_url('Admin/PengajuanMagang/delete_pengajuan'); ?>" method="post">
         <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
