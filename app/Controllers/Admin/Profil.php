@@ -39,37 +39,12 @@ class Profil extends BaseController
         $encrypter = \Config\Services::encrypter();
         
         $id = 1;
-
-        $avatar      = $this->request->getFile('edit_foto');
-        if ($avatar != '') {
-            $namabaru     = $avatar->getRandomName();
-            $avatar->move('docs/img/img_logo/', $namabaru);
-
-            $data = array(
-                'nama'     => $this->request->getPost('edit_nama'),
-                'email'     => $this->request->getPost('edit_email'),
-                'no_telp'     => $this->request->getPost('edit_no_telp'),
-                'alamat'     => $this->request->getPost('edit_alamat'),
-                'foto'     => "docs/img/img_logo/" . $namabaru
-            );
-
-            $data_foto = $model->detail_data($id)->getRowArray();
-
-            if ($data_foto != null) {
-                if ($data_foto['foto'] != 'docs/img/img_logo/noimage.jpg') {
-                    if (file_exists($data_foto['foto'])) {
-                        unlink($data_foto['foto']);
-                    }
-                }
-            }
-        } else {
-            $data = array(
-                'nama'     => $this->request->getPost('edit_nama'),
-                'email'     => $this->request->getPost('edit_email'),
-                'no_telp'     => $this->request->getPost('edit_no_telp'),
-                'alamat'     => $this->request->getPost('edit_alamat')
-            );
-        }
+        $data = array(
+            'nama'     => $this->request->getPost('edit_nama'),
+            'email'     => $this->request->getPost('edit_email'),
+            'no_telp'     => $this->request->getPost('edit_no_telp'),
+            'alamat'     => $this->request->getPost('edit_alamat')
+        );
 
         $model->update_data($data, $id);
         $session->setFlashdata('sukses', 'Data sudah berhasil diubah');

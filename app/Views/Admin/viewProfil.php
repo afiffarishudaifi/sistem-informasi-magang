@@ -64,22 +64,6 @@ $session = session();
                             <textarea class="form-control" id="edit_alamat" name="edit_alamat"
                                 data-parsley-required="true" placeholder="Masukkan Alamat"></textarea>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <center>
-                                    <img id="foto_lama" style="width: 120px; height: 160px;" src="">
-                                </center>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-control-label"><b>Logo Instansi</b></label>
-                            <br>
-                            <input type="file" id="edit_foto" class="dropify-event" name="edit_foto"
-                                accept="image/png, image/gif, image/jpeg" />
-                        </div>
-
                         <button type="submit" name="update" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
