@@ -20,7 +20,7 @@ class Pengaturan extends BaseController
         $data = [
             'judul' => 'Pengaturan Akun'
         ];
-        return view('sekolah/viewPengaturan', $data);
+        return view('Sekolah/viewPengaturan', $data);
     }
 
     public function data_edit($id_sekolah)
